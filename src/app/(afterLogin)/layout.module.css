@@ -1,0 +1,40 @@
+.container {
+  @apply flex bg-slate-300;
+}
+
+.topSection {
+  @apply flex sm:hidden w-full fixed top-0 left-0;
+}
+
+.leftSectionWrapper {
+  @apply hidden sm:flex flex-grow justify-end bg-pink-100;
+}
+.leftSection {
+  width: 80px;
+  @apply h-dvh;
+  @media screen and (min-width: 1024px) {
+    width: 245px;
+  }
+}
+
+.rightSectionWrapper {
+  @apply flex flex-grow justify-start bg-pink-200;
+}
+.rightSection {
+  padding-top: 44px;
+  @apply h-dvh w-full;
+  @media screen and (min-width: 640px) {
+    padding-top: 0;
+    width: 500px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 700px;
+  }
+  @media screen and (min-width: 1300px) {
+    width: 900px;
+  }
+}
+
+.bottomSection {
+  @apply flex sm:hidden w-full fixed bottom-0 left-0;
+}

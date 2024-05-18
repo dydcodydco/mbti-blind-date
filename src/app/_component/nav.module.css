@@ -1,0 +1,28 @@
+.topNav {
+  height: 44px;
+  @apply flex justify-between w-dvw items-center p-2 bg-pink-300;
+  & > a {
+    & > h1 {
+      @apply font-bold text-xl inline-block;
+    }
+    & > span {
+      @apply text-sm;
+    }
+  }
+}
+
+.lefNav {
+  width: inherit;
+  @apply fixed h-dvh flex flex-col items-center lg:items-start bg-pink-400;
+  & > div {
+    @apply flex flex-col gap-2 items-center lg:items-start flex-1;
+  }
+}
+.lefNavLink {
+  @apply py-2 flex items-center justify-center;
+}
+
+.bottomNav {
+  height: 50px;
+  @apply w-dvw flex justify-evenly py-2 bg-pink-500;
+}
