@@ -1,0 +1,13 @@
+.signupForm {
+  /* @apply p-2; */
+  & > div {
+    @apply mb-6;
+  }
+  & > button {
+    @apply mt-5 w-full;
+  }
+}
+
+.signupSection {
+  @apply p-2 h-dvh flex flex-col;
+}

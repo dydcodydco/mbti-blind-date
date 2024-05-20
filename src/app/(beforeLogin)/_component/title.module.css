@@ -1,0 +1,14 @@
+.title {
+  @apply flex flex-wrap items-baseline justify-center mt-7 mb-5 text-2xl;
+  & > svg {
+    max-width: 40px;
+    height: 30px;
+    @apply rotate-2 mr-1;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  & > span {
+    @apply text-lg;
+  }
+}

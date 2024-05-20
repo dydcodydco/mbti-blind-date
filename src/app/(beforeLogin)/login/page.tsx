@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import style from './login.module.css';
+import Title from '../_component/Title'
+import React, { useCallback } from 'react'
 
 const FormSchema = z.object({
   id: z.string().min(2, {
@@ -25,7 +27,7 @@ const FormSchema = z.object({
   })
 })
 
-export default function Page() {
+const Page = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -34,13 +36,14 @@ export default function Page() {
     },
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  const onSubmit = useCallback((data: z.infer<typeof FormSchema>) => {
     console.log(data);
-  }
+  }, []);
 
   return (
     <section className={style.loginSection}>
-      <h1 className=''>MBTI가 어떻게 되세요?</h1>
+      <Title />
+      
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className={style.loginForm}>
           <FormField
@@ -82,3 +85,5 @@ export default function Page() {
     </section>
   )
 }
+
+export default React.memo(Page);
