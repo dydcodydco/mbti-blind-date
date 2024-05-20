@@ -1,0 +1,16 @@
+.loginForm {
+  /* @apply p-2; */
+  & > div {
+    @apply mb-6;
+  }
+  & > button {
+    @apply mt-5 w-full;
+  }
+}
+
+.loginSection {
+  @apply p-2 h-dvh flex flex-col;
+  & > h1 {
+    @apply mt-7 mb-5 text-2xl text-center;
+  }
+}
