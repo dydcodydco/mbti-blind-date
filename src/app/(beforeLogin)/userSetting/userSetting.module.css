@@ -22,3 +22,17 @@
     }
   }
 }
+
+.radioLabel {
+  @apply w-full;
+  & > input {
+    @apply hidden;
+  }
+  & > input:checked + div {
+    @apply border-black;
+  }
+  & > input + div:hover,
+  & > input + div:focus {
+    background-color: white;
+  }
+}

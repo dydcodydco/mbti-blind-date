@@ -11,12 +11,15 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import MbtiSelect from './MbtiSelect';
-import style from '../userSetting.module.css'
 import { setUserContext } from './setUserProvider';
+import style from '../userSetting.module.css'
+import ReligionSelect from './ReligionSelect';
 
 export default function SetUser() {
-  const { progress, setProgress, gender, setGender, nickname, setNickname, birthdayYear,
-    birthdayMonth, birthdayDay, regionArr, region, setRegion, tallArr, tall, setTall } = useContext(setUserContext);
+  const {
+    progress, setProgress, gender, setGender, nickname, setNickname, birthdayYear,
+    birthdayMonth, birthdayDay, regionArr, region, setRegion, tallArr, tall, setTall,
+  } = useContext(setUserContext);
   
   const onClickBirthday = useCallback(() => {
     console.log(`${birthdayYear}-${birthdayMonth}-${birthdayDay}`);
@@ -61,7 +64,7 @@ export default function SetUser() {
       </div>
 
       {progress === 20 && <div className='pt-5 flex flex-col flex-grow'>
-        <h1>닉네임을 정해주세요. {!!gender}</h1>
+        <h1>닉네임을 정해주세요.</h1>
         <div className='flex justify-between mt-3 flex-grow'>
           <Input
             type="text" placeholder="nickname" value={nickname}
@@ -106,27 +109,11 @@ export default function SetUser() {
         <Button className='w-full' onClick={() => setProgress(50)} disabled={!tall}>다음</Button>
       </div>
 
-      {/* <div className={`pt-5 flex flex-col flex-grow ${progress === 50 ? '' : 'hidden'}`}>
-        <h1>{nickname}님이 주로 활동하는 지역은 어디인가요?</h1>
-        <div className='flex justify-center mt-3 flex-grow'>
-          <div>
-            <Carousel opts={{skipSnaps: true, loop: true, startIndex: 15}} orientation="vertical" className={style.carousel} setApi={setRegionApi}>
-              <CarouselContent className='h-[170px]'>
-                {regionArr.map((year) => (
-                  <CarouselItem key={year} className='basis-[30%] pt-[20px]'>
-                    <div>
-                      <span>{year}</span>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
-          </div>
-        </div>
-        <Button className='w-full' onClick={() => setProgress(60)} disabled={!region}>다음</Button>
-      </div> */}
+      {progress === 50 && <ReligionSelect />}
 
-      {progress === 50 && <MbtiSelect />}
+
+
+      {progress === 80 && <MbtiSelect />}
     </>
   )
 }
