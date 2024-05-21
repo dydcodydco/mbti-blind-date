@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import style from './userSetting.module.css';
@@ -8,14 +8,15 @@ import Title from '../_component/Title';
 
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { ArrowLeft } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import Birthday from '../_component/Birthday';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { ArrowLeft } from "lucide-react";
-import { Input } from "@/components/ui/input";
 
 export default function Page () {
   const {handleSubmit, register, formState: {errors}} = useForm({defaultValues: {
@@ -27,56 +28,32 @@ export default function Page () {
   const [mbti, setMbti] = useState('');
   const [progress, setProgress] = useState(0);
   const [gender, setGender] = useState('');
-  const [yearApi, setYearApi] = useState<CarouselApi>();
-  const [monthApi, setMonthApi] = useState<CarouselApi>();
-  const [dayApi, setDayApi] = useState<CarouselApi>();
-  const birthdayYears = Array.from({ length: 30 }, (_, i) => new Date().getFullYear() - 20 - i);
-  const birthdayMonths = Array.from({ length: 12 }, (_, i) => i + 1);
-  const birthdayDays = Array.from({ length: 31 }, (_, i) => i + 1);
-  const [birthdayYear, setBirthdayYear] = useState(birthdayYears[0]);
-  const [birthdayMonth, setBirthdayMonth] = useState(birthdayMonths[0]);
-  const [birthdayDay, setBirthdayDay] = useState(birthdayDays[0]);
   const [nickname, setNickname] = useState('');
-
-  useEffect(() => {
-    if (yearApi) {
-      yearApi.on("select", () => {
-        setBirthdayYear(birthdayYears[yearApi.selectedScrollSnap()]);
-      })
-    }
-    if (monthApi) {
-      monthApi.on("select", () => {
-        setBirthdayMonth(birthdayMonths[monthApi.selectedScrollSnap()]);
-      })
-    }
-    if (dayApi) {
-      dayApi.on("select", () => {
-        setBirthdayDay(birthdayDays[dayApi.selectedScrollSnap()]);
-      })
-    }
-  }, [yearApi, monthApi, dayApi, birthdayYears, birthdayMonths, birthdayDays]);
-
+  const [birthdayYear, setBirthdayYear] = useState(new Date().getFullYear() - 20);
+  const [birthdayMonth, setBirthdayMonth] = useState(1);
+  const [birthdayDay, setBirthdayDay] = useState(1);
   const onClickBirthday = useCallback(() => {
     console.log(`${birthdayYear}-${birthdayMonth}-${birthdayDay}`);
     setProgress(40);
   }, [birthdayYear, birthdayMonth, birthdayDay]);
 
-  const onClickBack = useCallback(() => {
-    switch (progress) {
-      case 20:
-        setProgress(0);
-        break;
-      case 40:
-        setProgress(20);
-        break;
-      case 60:
-        setProgress(40);
-        break;
-      case 80:
-        setProgress(60);
-        break;
+  const [regionApi, setRegionApi] = useState<CarouselApi>();
+  const regionArr = useMemo(() => {
+    return ['서울', '부산', '인천', '대구', '대전', '광주', '울산', '세종', '경기도', '충청북도', '충청남도', '전라남도',
+      '경상북도', '경상남도', '강원', '전북', '제주도'];
+  }, []);
+  const [region, setRegion] = useState(regionArr[0]);
+  useEffect(() => {
+    if (regionApi) {
+      regionApi.on("select", () => {
+        setRegion(regionArr[regionApi.selectedScrollSnap()]);
+      })
     }
-  }, [progress]);
+  }, [regionApi, regionArr]);
+
+  const [tallApi, setTallApi] = useState<CarouselApi>();
+  const tallArr = Array.from({ length: 61 }, (_, i) => i + 140);
+  const [tall, setTall] = useState(tallArr[20]);
 
   const onMbtiSubmit = useCallback((data: any) => {
     console.log(data);
@@ -85,6 +62,29 @@ export default function Page () {
     setProgress(60);
   }, []);
 
+  const onClickBack = useCallback(() => {
+    switch (progress) {
+      case 20:
+        setProgress(0);
+        break;
+      case 40:
+        setProgress(30);
+        break;
+      case 50:
+        setProgress(40);
+        break;
+      case 60:
+        setProgress(50);
+        break;
+      case 70:
+        setProgress(60);
+        break;
+      case 80:
+        setProgress(70);
+        break;
+    }
+  }, [progress]);
+  
   return (
     <div className={style.userSetting}>
       <Button variant="outline" size="icon" className='absolute left-2 top-[30px] w-[30px] h-[30px]' onClick={onClickBack}>
@@ -94,65 +94,23 @@ export default function Page () {
       <Progress value={progress}/>
 
       {progress < 20 && <div className='pt-5 flex flex-col flex-grow'>
-        <h1>성별을 선택해주세요. {!!gender}</h1>
+        <h1>성별을 선택해주세요.</h1>
         <div className='flex justify-between mt-3 flex-grow'>
           <Button variant={gender === 'man' ? 'default' : 'outline'} onClick={() => setGender('man')}>남자</Button>
           <Button variant={gender === 'woman' ? 'default' : 'outline'} onClick={() => setGender('woman')}>여자</Button>
         </div>
-        <Button className='w-full' onClick={() => setProgress(20)} disabled={!gender}>다음</Button>
+        <Button className='w-full' onClick={() => setProgress(30)} disabled={!gender}>다음</Button>
       </div>}
 
-      <div className={`pt-5 flex flex-col flex-grow ${20 <= progress && progress < 40 ? '' : 'hidden'}`}>
+      <div className={`pt-5 flex flex-col flex-grow ${progress === 30 ? '' : 'hidden'}`}>
         <h1>생일을 선택해주세요.</h1>
-          <div className='flex flex-grow'>
-            <div className='flex justify-evenly w-full'>
-              <div>
-                <Carousel opts={{skipSnaps: true, loop: true}} orientation="vertical" className={style.carousel} setApi={setYearApi}>
-                  <CarouselContent className='h-[170px]'>
-                    {birthdayYears.map((year) => (
-                      <CarouselItem key={year} className='basis-[30%] pt-[20px]'>
-                        <div>
-                          <span>{year}</span>
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                </Carousel>
-              </div>
-
-              <div>
-                <Carousel opts={{skipSnaps: true, loop: true}} orientation="vertical" className={style.carousel} setApi={setMonthApi}>
-                  <CarouselContent className='h-[170px]'>
-                    {birthdayMonths.map((year) => (
-                      <CarouselItem key={year} className="basis-[30%] pt-[20px]">
-                        <div>
-                          <span>{year}</span>
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                </Carousel>
-              </div>
-
-              <div>
-                <Carousel opts={{skipSnaps: true, loop: true}} orientation="vertical" className={style.carousel} setApi={setDayApi}>
-                  <CarouselContent className='h-[170px]'>
-                    {birthdayDays.map((year) => (
-                      <CarouselItem key={year} className='basis-[30%] pt-[20px]'>
-                        <div>
-                          <span>{year}</span>
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                </Carousel>
-              </div>
-            </div>
-          </div>
+        <div className='flex flex-grow'>
+          <Birthday setBirthdayYear={setBirthdayYear} setBirthdayMonth={setBirthdayMonth} setBirthdayDay={setBirthdayDay} />
+        </div>
         <Button className='w-full' onClick={onClickBirthday}>다음</Button>
       </div>
 
-      {40 <= progress && progress < 60 && <div className='pt-5 flex flex-col flex-grow'>
+      {progress === 40 && <div className='pt-5 flex flex-col flex-grow'>
         <h1>닉네임을 정해주세요. {!!gender}</h1>
         <div className='flex justify-between mt-3 flex-grow'>
           <Input
@@ -162,15 +120,63 @@ export default function Page () {
         <Button className='w-full' onClick={() => setProgress(60)} disabled={!nickname}>다음</Button>
       </div>}
 
-      {60 <= progress && progress < 80 && <div className='pt-5 flex flex-col flex-grow'>
-        <h1>{nickname}님의 개인정보를 선택해주세요. {!!gender}</h1>
-        <div className='flex justify-between mt-3 flex-grow'>
-          
+      <div className={`pt-5 flex flex-col flex-grow ${progress === 60 ? '' : 'hidden'}`}>
+        <h1>{nickname}님이 주로 활동하는 지역은 어디인가요?</h1>
+        <div className='flex justify-center mt-3 flex-grow'>
+          <div className='w-full'>
+            <Carousel opts={{skipSnaps: true, loop: true}} orientation="vertical" className={style.carousel} setApi={setRegionApi}>
+              <CarouselContent className='h-[170px]'>
+                {regionArr.map((region) => (
+                  <CarouselItem key={region} className='basis-[30%] pt-[20px]'>
+                    <div>{region}</div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
         </div>
-        <Button className='w-full' onClick={() => setProgress(60)} disabled={!nickname}>다음</Button>
-      </div>}
+        <Button className='w-full' onClick={() => setProgress(70)} disabled={!region}>다음</Button>
+      </div>
 
-      {80 <= progress && progress < 100 && <form className={style.mbtiForm} onSubmit={handleSubmit(onMbtiSubmit)}>
+      <div className={`pt-5 flex flex-col flex-grow ${progress === 70 ? '' : 'hidden'}`}>
+        <h1>{nickname}님의 키를 알려주세요?</h1>
+        <div className='flex justify-center mt-3 flex-grow'>
+          <div className='w-full'>
+            <Carousel opts={{skipSnaps: true, loop: true, startIndex: 20}} orientation="vertical" className={style.carousel} setApi={setTallApi}>
+              <CarouselContent className='h-[170px]'>
+                {tallArr.map((tall) => (
+                  <CarouselItem key={tall} className='basis-[30%] pt-[20px]'>
+                    <div>{tall}</div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
+        </div>
+        <Button className='w-full' onClick={() => setProgress(80)} disabled={!tall}>다음</Button>
+      </div>
+
+      {/* <div className={`pt-5 flex flex-col flex-grow ${progress === 50 ? '' : 'hidden'}`}>
+        <h1>{nickname}님이 주로 활동하는 지역은 어디인가요?</h1>
+        <div className='flex justify-center mt-3 flex-grow'>
+          <div>
+            <Carousel opts={{skipSnaps: true, loop: true, startIndex: 15}} orientation="vertical" className={style.carousel} setApi={setRegionApi}>
+              <CarouselContent className='h-[170px]'>
+                {regionArr.map((year) => (
+                  <CarouselItem key={year} className='basis-[30%] pt-[20px]'>
+                    <div>
+                      <span>{year}</span>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
+        </div>
+        <Button className='w-full' onClick={() => setProgress(60)} disabled={!region}>다음</Button>
+      </div> */}
+
+      {90 <= progress && progress < 100 && <form className={style.mbtiForm} onSubmit={handleSubmit(onMbtiSubmit)}>
         <h1>MBTI를 선택해주세요.</h1>
         <div className='flex-grow mt-3'>
           <div>
