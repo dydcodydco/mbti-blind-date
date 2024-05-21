@@ -2,24 +2,6 @@
   @apply flex flex-col px-3 h-dvh;
 }
 
-.mbtiForm {
-  @apply flex flex-col flex-grow justify-between mt-5;
-  & > div > div {
-    @apply flex justify-between w-full mb-5 px-5;
-    & > label {
-      @apply inline-flex flex-grow;
-      &:first-child { justify-content: flex-start; }
-      &:last-child { justify-content: flex-end; }
-      & > svg {
-        max-width: 30px;
-      }
-      & > input {
-        width: 20px;
-      }
-    }
-  }
-}
-
 .carousel {
   @apply overflow-hidden text-center;
   & > div {
@@ -38,5 +20,35 @@
       z-index: 2;
       @apply w-full bottom-0 left-0 absolute border-t-2 border-black; 
     }
+  }
+}
+
+.mbtiForm {
+  @apply flex flex-col flex-grow mt-5;
+  & > div > div {
+    @apply flex justify-between w-full mb-2 flex-col;
+    & > h2 {
+      @apply text-sm mb-1;
+    }
+    & > div {
+      @apply flex gap-2;
+      & > label {
+        @apply inline-flex flex-grow;
+        & svg {
+          max-width: 15px;
+        }
+      }
+    }
+  }
+}
+
+.mbtiInput {
+  @apply hidden;
+  &:checked + label > div {
+    @apply border-black;
+  }
+  & + label > div:hover,
+  & + label > div:focus {
+    background-color: white;
   }
 }
