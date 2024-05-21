@@ -1,0 +1,42 @@
+.userSetting {
+  @apply flex flex-col px-3 h-dvh;
+}
+
+.mbtiForm {
+  @apply flex flex-col flex-grow justify-between mt-5;
+  & > div > div {
+    @apply flex justify-between w-full mb-5 px-5;
+    & > label {
+      @apply inline-flex flex-grow;
+      &:first-child { justify-content: flex-start; }
+      &:last-child { justify-content: flex-end; }
+      & > svg {
+        max-width: 30px;
+      }
+      & > input {
+        width: 20px;
+      }
+    }
+  }
+}
+
+.carousel {
+  @apply overflow-hidden text-center;
+  & > div {
+    @apply overflow-visible;
+    &::before {
+      content: "";
+      height: 55px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0));
+      z-index: 2;
+      @apply w-full top-0 left-0 absolute border-b-2 border-black; 
+    }
+    &::after {
+      content: "";
+      height: 55px;
+      background: linear-gradient(to top, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0));
+      z-index: 2;
+      @apply w-full bottom-0 left-0 absolute border-t-2 border-black; 
+    }
+  }
+}
