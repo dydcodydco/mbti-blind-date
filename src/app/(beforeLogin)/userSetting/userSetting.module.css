@@ -2,36 +2,6 @@
   @apply flex flex-col px-3 h-dvh;
 }
 
-.mbtiForm {
-  @apply flex flex-col flex-grow mt-5;
-  & > div > div {
-    @apply flex justify-between w-full mb-2 flex-col;
-    & > h2 {
-      @apply text-sm mb-1;
-    }
-    & > div {
-      @apply flex gap-2;
-      & > label {
-        @apply inline-flex flex-grow;
-        & svg {
-          max-width: 15px;
-        }
-      }
-    }
-  }
-}
-
-.mbtiInput {
-  @apply hidden;
-  &:checked + label > div {
-    @apply border-black;
-  }
-  & + label > div:hover,
-  & + label > div:focus {
-    background-color: white;
-  }
-}
-
 .carousel {
   @apply overflow-hidden text-center;
   & > div {

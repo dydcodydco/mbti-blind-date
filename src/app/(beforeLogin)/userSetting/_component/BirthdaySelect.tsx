@@ -1,15 +1,18 @@
+'useClient';
+
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { useEffect, useState } from 'react';
-import style from './birthday.module.css';
+import { useContext, useEffect, useState } from 'react';
+import style from './birthdaySelect.module.css';
+import { setUserContext } from './setUserProvider';
 
-type Props = { setBirthdayYear: Function, setBirthdayMonth: Function, setBirthdayDay: Function };
-
-export default function Birthday({setBirthdayYear, setBirthdayMonth, setBirthdayDay}: Props) {
+export default function Birthday() {
+  const { setBirthdayYear, setBirthdayMonth, setBirthdayDay } = useContext(setUserContext);
+  
   const [yearApi, setYearApi] = useState<CarouselApi>();
   const [monthApi, setMonthApi] = useState<CarouselApi>();
   const [dayApi, setDayApi] = useState<CarouselApi>();
