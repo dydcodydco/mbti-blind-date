@@ -1,10 +1,10 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import style from './mbtiSelect.module.css'
+import style from '../userSetting.module.css'
 import { useForm } from 'react-hook-form';
 import { useCallback, useContext } from 'react';
-import { setUserContext } from './setUserProvider';
+import { setUserContext } from './SetUserProvider';
 
 export default function MbtiSelect({ }) {
   const { setMbti, setProgress } = useContext(setUserContext);

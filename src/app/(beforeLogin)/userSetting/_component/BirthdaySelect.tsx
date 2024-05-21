@@ -6,12 +6,14 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { useContext, useEffect, useState } from 'react';
-import style from './birthdaySelect.module.css';
-import { setUserContext } from './setUserProvider';
+import { useCallback, useContext, useEffect, useState } from 'react';
+import style from '../userSetting.module.css';
+import { setUserContext } from './SetUserProvider';
+import { Button } from '@/components/ui/button';
 
 export default function Birthday() {
-  const { setBirthdayYear, setBirthdayMonth, setBirthdayDay } = useContext(setUserContext);
+  const { setBirthdayYear, setBirthdayMonth, setBirthdayDay,
+    progress, birthdayYear, birthdayMonth, birthdayDay, setProgress } = useContext(setUserContext);
   
   const [yearApi, setYearApi] = useState<CarouselApi>();
   const [monthApi, setMonthApi] = useState<CarouselApi>();
@@ -38,49 +40,60 @@ export default function Birthday() {
     }
   }, [yearApi, monthApi, dayApi, birthdayYears, birthdayMonths, birthdayDays, setBirthdayYear, setBirthdayMonth, setBirthdayDay]);
 
+  const onClickBirthday = useCallback(() => {
+    console.log(`${birthdayYear}-${birthdayMonth}-${birthdayDay}`);
+    setProgress(20);
+  }, [birthdayYear, birthdayMonth, birthdayDay, setProgress]);
   return (
-    <div className='flex justify-evenly w-full'>
-      <div>
-        <Carousel opts={{skipSnaps: true, loop: true}} orientation="vertical" className={style.carousel} setApi={setYearApi}>
-          <CarouselContent className='h-[170px]'>
-            {birthdayYears.map((year) => (
-              <CarouselItem key={year} className='basis-[30%] pt-[20px]'>
-                <div>
-                  <span>{year}</span>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+    <div className={`pt-5 flex flex-col flex-grow ${progress === 10 ? '' : 'hidden'}`}>
+      <h1>생일을 선택해주세요.</h1>
+      <div className='flex flex-grow'>
+        <div className='flex justify-evenly w-full'>
+          <div>
+            <Carousel opts={{skipSnaps: true, loop: true}} orientation="vertical" className={style.carousel} setApi={setYearApi}>
+              <CarouselContent className='h-[170px]'>
+                {birthdayYears.map((year) => (
+                  <CarouselItem key={year} className='basis-[30%] pt-[20px]'>
+                    <div>
+                      <span>{year}</span>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
+
+          <div>
+            <Carousel opts={{skipSnaps: true, loop: true}} orientation="vertical" className={style.carousel} setApi={setMonthApi}>
+              <CarouselContent className='h-[170px]'>
+                {birthdayMonths.map((year) => (
+                  <CarouselItem key={year} className="basis-[30%] pt-[20px]">
+                    <div>
+                      <span>{year}</span>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
+
+          <div>
+            <Carousel opts={{skipSnaps: true, loop: true}} orientation="vertical" className={style.carousel} setApi={setDayApi}>
+              <CarouselContent className='h-[170px]'>
+                {birthdayDays.map((year) => (
+                  <CarouselItem key={year} className='basis-[30%] pt-[20px]'>
+                    <div>
+                      <span>{year}</span>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
+        </div>
       </div>
 
-      <div>
-        <Carousel opts={{skipSnaps: true, loop: true}} orientation="vertical" className={style.carousel} setApi={setMonthApi}>
-          <CarouselContent className='h-[170px]'>
-            {birthdayMonths.map((year) => (
-              <CarouselItem key={year} className="basis-[30%] pt-[20px]">
-                <div>
-                  <span>{year}</span>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
-
-      <div>
-        <Carousel opts={{skipSnaps: true, loop: true}} orientation="vertical" className={style.carousel} setApi={setDayApi}>
-          <CarouselContent className='h-[170px]'>
-            {birthdayDays.map((year) => (
-              <CarouselItem key={year} className='basis-[30%] pt-[20px]'>
-                <div>
-                  <span>{year}</span>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
+      <Button className='w-full' onClick={onClickBirthday}>다음</Button>
     </div>
   )
 }

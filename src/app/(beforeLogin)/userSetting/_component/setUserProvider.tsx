@@ -90,7 +90,7 @@ export default function SetUserProvider({ children }: Props) {
       { ko: "기타", en: "Other" }
     ]
   }, []);
-  const [religion, setReligion] = useState(null);
+  const [religion, setReligion] = useState({});
 
   const contextValue = useMemo(() => ({
     mbti, setMbti, progress, setProgress, gender, setGender, nickname, setNickname, birthdayYear, setBirthdayYear, birthdayMonth, setBirthdayMonth,
