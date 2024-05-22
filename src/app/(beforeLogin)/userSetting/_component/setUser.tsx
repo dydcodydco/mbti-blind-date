@@ -4,12 +4,16 @@ import { useContext } from 'react';
 import BirthdaySelect from './BirthdaySelect';
 import MbtiSelect from './MbtiSelect';
 import { setUserContext } from './SetUserProvider';
-import style from '../userSetting.module.css'
 import ReligionSelect from './ReligionSelect';
 import TallSelect from './TallSelect';
 import RegionSelect from './RegionSelect';
 import NicknameSelect from './NicknameSelect';
 import GenderSelect from './GenderSelect';
+import DrinkSelect from './DrinkSelect';
+import SmokeSelect from './SmokeSelect';
+import SchoolSelect from './SchoolSelect';
+import JobSelect from './JobSelect';
+import ImageSelect from './ImageSelect';
 
 export default function SetUser() {
   const { progress } = useContext(setUserContext);
@@ -27,7 +31,15 @@ export default function SetUser() {
 
       {progress === 50 && <ReligionSelect />}
 
-      {progress === 80 && <MbtiSelect />}
+      {progress === 60 && <DrinkSelect />}
+
+      {progress === 65 && <SmokeSelect />}
+
+      {progress === 70 && <SchoolSelect />}
+
+      {progress === 75 && <JobSelect />}
+
+      {progress === 90 && <MbtiSelect />}
     </>
   )
 }

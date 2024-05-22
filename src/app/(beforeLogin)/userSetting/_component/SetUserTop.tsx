@@ -30,11 +30,17 @@ export default function SetUserTop() {
       case 60:
         setProgress(50);
         break;
-      case 70:
+      case 65:
         setProgress(60);
         break;
-      case 80:
+      case 70:
+        setProgress(65);
+        break;
+      case 75:
         setProgress(70);
+        break;
+      case 80:
+        setProgress(75);
         break;
     }
   }, [progress, setProgress]);

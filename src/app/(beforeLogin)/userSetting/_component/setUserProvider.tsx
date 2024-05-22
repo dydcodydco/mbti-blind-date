@@ -32,6 +32,14 @@ type SetUserContextType = {
   religionArr: ReligionType[],
   religion: ReligionType,
   setReligion: Dispatch<SetStateAction<ReligionType>>;
+  drink: string,
+  setDrink: Dispatch<SetStateAction<string>>;
+  smoke: string,
+  setSmoke: Dispatch<SetStateAction<string>>;
+  school: string;
+  setSchool: Dispatch<SetStateAction<string>>;
+  job: string;
+  setJob: Dispatch<SetStateAction<string>>;
 };
 
 const defaultValues: SetUserContextType = {
@@ -54,10 +62,18 @@ const defaultValues: SetUserContextType = {
   setRegion: () => {},
   tallArr: Array.from({ length: 61 }, (_, i) => i + 140),
   tall: 160,
-  setTall: () => { },
+  setTall: () => {},
   religionArr: [],
-  religion: {},
+  religion: {ko: '', en: ''},
   setReligion: () => {},
+  drink: '',
+  setDrink: () => { },
+  smoke: '',
+  setSmoke: () => { },
+  school: '',
+  setSchool: () => { },
+  job: '',
+  setJob: () => { },
 };
 
 export const setUserContext = createContext<SetUserContextType>(defaultValues);
@@ -91,12 +107,19 @@ export default function SetUserProvider({ children }: Props) {
       { ko: "기타", en: "Other" }
     ]
   }, []);
-  const [religion, setReligion] = useState({});
+  const [religion, setReligion] = useState({ko: '', en: ''});
+  const [drink, setDrink] = useState('');
+  const [smoke, setSmoke] = useState('');
+  const [school, setSchool] = useState('');
+  const [job, setJob] = useState('');
 
   const contextValue = useMemo(() => ({
     mbti, setMbti, progress, setProgress, gender, setGender, nickname, setNickname, birthdayYear, setBirthdayYear, birthdayMonth, setBirthdayMonth,
-    birthdayDay, setBirthdayDay, regionArr, region, setRegion, tallArr, tall, setTall, religion, setReligion, religionArr
-  }), [mbti, progress, gender, nickname, birthdayYear, birthdayMonth, birthdayDay, regionArr, region, tallArr, tall, religion, setReligion, religionArr]);
+    birthdayDay, setBirthdayDay, regionArr, region, setRegion, tallArr, tall, setTall, religion, setReligion, religionArr, drink, setDrink,
+    smoke, setSmoke, school, setSchool, job, setJob, userImages, setUserImages
+  }), [mbti, progress, gender, nickname, birthdayYear, birthdayMonth, birthdayDay,
+    regionArr, region, tallArr, tall, religion, setReligion, religionArr, drink,
+    setDrink, smoke, setSmoke, school, setSchool, job, setJob, userImages, setUserImages]);
 
   return (
     <setUserContext.Provider value={contextValue}>
