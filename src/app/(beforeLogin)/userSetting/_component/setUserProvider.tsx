@@ -40,6 +40,8 @@ type SetUserContextType = {
   setSchool: Dispatch<SetStateAction<string>>;
   job: string;
   setJob: Dispatch<SetStateAction<string>>;
+  userImages: File[];
+  setUserImages: Dispatch<SetStateAction<File[]>>;
 };
 
 const defaultValues: SetUserContextType = {
@@ -74,6 +76,8 @@ const defaultValues: SetUserContextType = {
   setSchool: () => { },
   job: '',
   setJob: () => { },
+  userImages: [],
+  setUserImages: () => {},
 };
 
 export const setUserContext = createContext<SetUserContextType>(defaultValues);
@@ -112,6 +116,7 @@ export default function SetUserProvider({ children }: Props) {
   const [smoke, setSmoke] = useState('');
   const [school, setSchool] = useState('');
   const [job, setJob] = useState('');
+  const [userImages, setUserImages] = useState<File[]>([]);
 
   const contextValue = useMemo(() => ({
     mbti, setMbti, progress, setProgress, gender, setGender, nickname, setNickname, birthdayYear, setBirthdayYear, birthdayMonth, setBirthdayMonth,

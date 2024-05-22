@@ -5,11 +5,12 @@ import style from '../userSetting.module.css'
 import { useForm } from 'react-hook-form';
 import { useCallback, useContext } from 'react';
 import { setUserContext } from './SetUserProvider';
+import Link from 'next/link';
 
 export default function MbtiSelect({ }) {
   const { setMbti, setProgress } = useContext(setUserContext);
   
-  const {handleSubmit, register, formState: {errors}} = useForm({defaultValues: {
+  const {handleSubmit, register, formState: {errors, isValid}} = useForm({defaultValues: {
     ie: "",
     sn: '',
     ft: '',
@@ -20,11 +21,12 @@ export default function MbtiSelect({ }) {
     console.log(data);
     const { ie, sn, ft, pj } = data;
     setMbti(`${ie}${sn}${ft}${pj}`);
-    setProgress(70);
+    setProgress(100);
   }, [setMbti, setProgress]);
   return (
     <form className={style.mbtiForm} onSubmit={handleSubmit(onMbtiSubmit)}>
       <h1>MBTI를 선택해주세요.</h1>
+      <p>MBTI를 모르신다면 바로 알아보세요! <Link href='/'>검사하러가기</Link></p>
       <div className='flex-grow mt-3'>
         <div>
           <h2>외향형/내향형</h2>
@@ -115,7 +117,7 @@ export default function MbtiSelect({ }) {
         </div>
       </div>
 
-      <Button type="submit" className='w-full mt-6'>다음</Button>
+      <Button type="submit" className='w-full mt-6' disabled={!isValid}>다음</Button>
     </form>
   )
 }

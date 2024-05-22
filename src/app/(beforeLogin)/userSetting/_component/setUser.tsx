@@ -14,6 +14,7 @@ import SmokeSelect from './SmokeSelect';
 import SchoolSelect from './SchoolSelect';
 import JobSelect from './JobSelect';
 import ImageSelect from './ImageSelect';
+import SetUserComplete from './SetUserComplete';
 
 export default function SetUser() {
   const { progress } = useContext(setUserContext);
@@ -39,7 +40,11 @@ export default function SetUser() {
 
       {progress === 75 && <JobSelect />}
 
+      {progress === 80 && <ImageSelect />}
+
       {progress === 90 && <MbtiSelect />}
+
+      {progress === 100 && <SetUserComplete />}
     </>
   )
 }

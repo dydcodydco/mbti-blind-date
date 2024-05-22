@@ -42,6 +42,9 @@ export default function SetUserTop() {
       case 80:
         setProgress(75);
         break;
+      case 90:
+        setProgress(80);
+        break;
     }
   }, [progress, setProgress]);
 
