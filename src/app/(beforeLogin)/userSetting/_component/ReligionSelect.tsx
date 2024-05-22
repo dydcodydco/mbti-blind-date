@@ -7,18 +7,18 @@ import { setUserContext } from './SetUserProvider';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 export default function ReligionSelect() {
-  const { religionArr, setReligion, nickname, setProgress, progress, religion } = useContext(setUserContext);
-  const { register, handleSubmit, formState: {isValid}, setValue } = useForm();
+  const { religionArr, setReligion, nickname, setProgress, religion } = useContext(setUserContext);
+  const { register, handleSubmit, formState: {isValid} } = useForm({
+    defaultValues: {
+      religion: religion.en,
+    },
+  });
   const onReligionSubmit: SubmitHandler<any> = useCallback(({religion}) => {
     const religionObj = religionArr.find(d => d.en === religion);
     setReligion(religionObj!);
     setProgress(60);
     console.log('종교', religionObj);
   }, [religionArr, setReligion, setProgress]);
-
-  useEffect(() => {
-    setValue('religion', religion?.en);
-  }, [religion, setValue]);
   
   return (
     <form

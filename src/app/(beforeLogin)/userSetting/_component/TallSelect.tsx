@@ -5,7 +5,7 @@ import { setUserContext } from './SetUserProvider';
 import style from '../userSetting.module.css'
 
 export default function TallSelect() {
-  const { progress, nickname, tallArr, setProgress, tall, setTall } = useContext(setUserContext);
+  const { nickname, tallArr, setProgress, tall, setTall } = useContext(setUserContext);
   const [tallApi, setTallApi] = useState<CarouselApi>();
   useEffect(() => {
     if (tallApi) {

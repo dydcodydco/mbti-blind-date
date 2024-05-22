@@ -5,7 +5,7 @@ import { setUserContext } from './SetUserProvider';
 import style from '../userSetting.module.css'
 
 export default function RegionSelect() {
-  const { setRegion, regionArr, nickname, progress, setProgress, region } = useContext(setUserContext);
+  const { setRegion, regionArr, nickname, setProgress, region } = useContext(setUserContext);
   const [regionApi, setRegionApi] = useState<CarouselApi>();
   useEffect(() => {
     if (regionApi) {

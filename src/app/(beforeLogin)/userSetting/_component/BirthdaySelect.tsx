@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 
 export default function Birthday() {
   const { setBirthdayYear, setBirthdayMonth, setBirthdayDay,
-    progress, birthdayYear, birthdayMonth, birthdayDay, setProgress } = useContext(setUserContext);
+    birthdayYear, birthdayMonth, birthdayDay, setProgress } = useContext(setUserContext);
   
   const [yearApi, setYearApi] = useState<CarouselApi>();
   const [monthApi, setMonthApi] = useState<CarouselApi>();
@@ -53,7 +53,7 @@ export default function Birthday() {
     setProgress(20);
   }, [birthdayYear, birthdayMonth, birthdayDay, setProgress]);
   return (
-    <div className={`pt-5 flex flex-col flex-grow ${progress === 10 ? '' : 'hidden'}`}>
+    <div className={`pt-5 flex flex-col flex-grow`}>
       <h1>생일을 선택해주세요.</h1>
       <div className='flex flex-grow'>
         <div className='flex justify-evenly w-full'>
