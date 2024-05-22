@@ -40,6 +40,14 @@ export default function Birthday() {
     }
   }, [yearApi, monthApi, dayApi, birthdayYears, birthdayMonths, birthdayDays, setBirthdayYear, setBirthdayMonth, setBirthdayDay]);
 
+  useEffect(() => {
+    if (yearApi && monthApi && dayApi && birthdayYear && birthdayMonth && birthdayDay) {
+      yearApi.scrollTo(birthdayYears.findIndex(d => d === birthdayYear));
+      monthApi.scrollTo(birthdayMonths.findIndex(d => d === birthdayMonth));
+      dayApi.scrollTo(birthdayDays.findIndex(d => d === birthdayDay));
+    }
+  }, [yearApi, monthApi, dayApi, birthdayYears, birthdayMonths, birthdayDays, birthdayYear, birthdayMonth, birthdayDay]);
+
   const onClickBirthday = useCallback(() => {
     console.log(`${birthdayYear}-${birthdayMonth}-${birthdayDay}`);
     setProgress(20);

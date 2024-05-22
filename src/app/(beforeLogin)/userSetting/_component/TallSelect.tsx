@@ -11,16 +11,22 @@ export default function TallSelect() {
     if (tallApi) {
       tallApi.on("select", () => {
         setTall(tallArr[tallApi.selectedScrollSnap()]);
-      })
+      });
     }
   }, [tallApi, setTall, tallArr]);
   
+  useEffect(() => {
+    if (tallApi && tall) {
+      tallApi.scrollTo(tallArr.findIndex(d => d === tall));
+    }
+  }, [tallApi, tall, tallArr]);
+
   const onClickTall = useCallback(() => {
     setProgress(50);
     console.log('키', tall);
   }, [setProgress, tall]);
   return (
-    <div className={`pt-5 flex flex-col flex-grow ${progress === 40 ? '' : 'hidden'}`}>
+    <div className={`pt-5 flex flex-col flex-grow`}>
       <h1>{nickname}님의 키를 알려주세요.</h1>
       <div className='flex justify-center mt-3 flex-grow'>
         <div className='w-full'>

@@ -5,6 +5,7 @@ import { ReactNode, createContext, useMemo, useState, Dispatch, SetStateAction }
 export type ReligionType = {
   ko: string;
   en: string;
+  checked?: boolean;
 };
 
 type SetUserContextType = {
@@ -29,7 +30,7 @@ type SetUserContextType = {
   tall: number;
   setTall: Dispatch<SetStateAction<number>>;
   religionArr: ReligionType[],
-  religion: object,
+  religion: ReligionType,
   setReligion: Dispatch<SetStateAction<ReligionType>>;
 };
 

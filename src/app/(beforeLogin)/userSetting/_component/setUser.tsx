@@ -17,15 +17,15 @@ export default function SetUser() {
     <>
       {progress < 10 && <GenderSelect />}
 
-      <BirthdaySelect />
+      {progress === 10 && <BirthdaySelect />}
 
       {progress === 20 && <NicknameSelect />}
 
-      <RegionSelect />
+      {progress === 30 && <RegionSelect />}
 
-      <TallSelect />
+      {progress === 40 && <TallSelect />}
 
-      <ReligionSelect />
+      {progress === 50 && <ReligionSelect />}
 
       {progress === 80 && <MbtiSelect />}
     </>
