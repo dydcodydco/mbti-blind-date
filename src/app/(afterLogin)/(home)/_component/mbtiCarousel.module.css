@@ -1,4 +1,4 @@
 .menuWrapper {
   scrollbar-width: none;
-  @apply sticky top-[44px] left-0 overflow-x-auto overflow-y-hidden w-dvw p-1 bg-white;
+  @apply fixed sm:hidden top-[44px] sm:top-0 left-0 overflow-x-auto overflow-y-hidden w-dvw p-1 bg-white z-10;
 }
