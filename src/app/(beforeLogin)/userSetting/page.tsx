@@ -1,5 +1,5 @@
-import SetUserProvider from '@/app/(beforeLogin)/userSetting/_component/SetUserProvider';
-import SetUser from '@/app/(beforeLogin)/userSetting/_component/SetUser';
+import SetUserProvider from './_component/SetUserProvider';
+import SetUser from './_component/SetUser';
 import style from './userSetting.module.css';
 import SetUserTop from './_component/SetUserTop';
 

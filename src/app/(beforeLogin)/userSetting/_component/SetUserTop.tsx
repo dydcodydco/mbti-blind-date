@@ -5,7 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import Title from '../../_component/Title';
 import { Progress } from '@/components/ui/progress';
 import { useCallback, useContext } from 'react';
-import { setUserContext } from '@/app/(beforeLogin)/userSetting/_component/SetUserProvider';
+import { setUserContext } from './SetUserProvider';
 import style from '../userSetting.module.css'
 
 
