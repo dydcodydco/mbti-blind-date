@@ -9,7 +9,7 @@ interface userProps {
   age: number;
   distance: number;
   area: string;
-  image: string;
+  image: string[];
 }
 
 export default function UserCardArticle({ children, user }: { children: ReactNode, user: userProps }) {

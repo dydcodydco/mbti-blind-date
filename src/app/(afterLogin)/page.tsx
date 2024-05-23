@@ -7,7 +7,7 @@ export default function Page() {
     <>
       <MainTitle>홈</MainTitle>
       <MbtiCarousel />
-      <div className='flex flex-col gap-2 px-2 pb-[50px] pt-2' style={{height: '600dvh'}}>
+      <div className='flex flex-col gap-2 px-2 pb-[50px] pt-[74px] sm:pt-2' style={{height: '600dvh'}}>
         <UserCard />
         <UserCard />
         <UserCard />

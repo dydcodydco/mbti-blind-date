@@ -12,12 +12,14 @@ export default function UserCard() {
     age: faker.number.int({ min: 20, max: 50 }),
     distance: faker.number.int({ min: 5, max: 100 }),
     area: faker.location.city(),
-    image: faker.image.urlLoremFlickr({ category: 'cat' }),
+    image: [
+      faker.image.urlLoremFlickr({ category: 'cat' })
+    ],
   }
   return (
     <UserCardArticle user={user}>
       <Card className={style.userCard}>
-        <img src={user.image} className='rounded-xl' alt="img" />
+        <img src={user.image[0]} className='rounded-xl' alt="img" />
         <div className={style.userInfo}>
           <h2 className='text-white font-extrabold text-xl'>{user.nickname}, {user.age}</h2>
           <p className='text-white font-semibold text-base'>{user.distance}km, {user.area}</p>

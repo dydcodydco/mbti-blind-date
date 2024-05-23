@@ -1,0 +1,19 @@
+.userInfo {
+  background: linear-gradient(to top, rgba(0, 0, 0, 1) 20px, rgba(0, 0, 0, 0));
+  @apply absolute w-full h-[70px] rounded-none bottom-0 left-0 flex flex-col justify-end p-3;
+}
+
+.carousel {
+  @apply w-full h-full bg-pink-100;
+  & > div {
+    @apply h-full;
+    & > div {
+      @apply h-full;
+    }
+  }
+}
+
+.recommendSection {
+  height: calc(100% - 50px);
+  @apply relative;
+}

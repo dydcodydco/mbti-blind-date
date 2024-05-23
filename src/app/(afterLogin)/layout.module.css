@@ -21,11 +21,13 @@
   @apply flex flex-grow justify-start bg-white;
 }
 .rightSectionInner {
-  padding-top: 116px;
+  /* padding-top: 116px; */
+  padding-top: 44px;
   @apply h-dvh w-full flex justify-between;
   @media screen and (min-width: 640px) {
     padding-top: 0;
     width: 500px;
+    height: auto;
   }
   @media screen and (min-width: 1024px) {
     width: 800px;
@@ -35,9 +37,11 @@
   }
 }
 .main {
-  @apply h-dvh w-full;
+  /* @apply h-dvh w-full; */
+  @apply w-full;
   @media screen and (min-width: 1024px) {
     width: 550px;
+    height: auto;
   }
   @media screen and (min-width: 1300px) {
     width: 700px;
