@@ -1,5 +1,9 @@
+import MainTitle from '../_component/MainTitle';
+
 export default function Page() {
   return (
-    <div>profile</div>
+    <>
+      <MainTitle>프로필</MainTitle>
+    </>
   )
 }

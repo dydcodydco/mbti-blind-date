@@ -1,5 +1,9 @@
+import MainTitle from '../_component/MainTitle';
+
 export default function Page() {
   return (
-    <div>like</div>
+    <>
+      <MainTitle>좋아요</MainTitle>
+    </>
   )
 }

@@ -1,5 +1,9 @@
+import MainTitle from '../_component/MainTitle';
+
 export default function Page() {
   return (
-    <div>messages</div>
+    <>
+      <MainTitle>채팅</MainTitle>
+    </>
   )
 }

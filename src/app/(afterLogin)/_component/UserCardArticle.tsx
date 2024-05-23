@@ -1,11 +1,13 @@
+'use client';
+
 import { useRouter } from 'next/navigation';
 import { ReactNode, useCallback } from 'react';
 
 interface userProps {
   id: string;
   nickname: string;
-  age: string;
-  distance: string;
+  age: number;
+  distance: number;
   area: string;
   image: string;
 }

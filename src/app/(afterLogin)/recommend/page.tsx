@@ -1,5 +1,9 @@
+import MainTitle from '../_component/MainTitle';
+
 export default function Page() {
   return (
-    <div>recommend</div>
+    <>
+      <MainTitle>추천</MainTitle>
+    </>
   )
 }

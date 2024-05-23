@@ -1,5 +1,9 @@
+import MainTitle from '../_component/MainTitle';
+
 export default function Page() {
   return (
-    <div>세팅 페이지,</div>
+    <>
+      <MainTitle>세팅</MainTitle>
+    </>
   )
 }
