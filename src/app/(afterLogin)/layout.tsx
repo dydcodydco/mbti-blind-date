@@ -16,11 +16,14 @@ export default function Layout({children}: {children: ReactNode}) {
           <LeftNav />
         </div>
       </aside>
-      <main className={style.rightSectionWrapper}>
-        <div className={style.rightSection}>
-          {children}
+      <div className={style.rightSectionWrapper}>
+        <div className={style.rightSectionInner}>
+          <main className={style.main}>{children}</main>
+          <div className={style.rightSection}>
+            right section
+          </div>
         </div>
-      </main>
+      </div>
       <footer className={style.bottomSection}>
         <BottomNav />
       </footer>

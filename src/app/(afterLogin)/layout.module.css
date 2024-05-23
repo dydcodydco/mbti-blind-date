@@ -1,13 +1,13 @@
 .container {
-  @apply flex bg-slate-300;
+  @apply flex bg-white;
 }
 
 .topSection {
-  @apply flex sm:hidden w-full fixed top-0 left-0;
+  @apply flex sm:hidden w-full fixed top-0 left-0 z-10;
 }
 
 .leftSectionWrapper {
-  @apply hidden sm:flex flex-grow justify-end bg-pink-100;
+  @apply hidden sm:flex flex-grow justify-end bg-white;
 }
 .leftSection {
   width: 80px;
@@ -18,11 +18,11 @@
 }
 
 .rightSectionWrapper {
-  @apply flex flex-grow justify-start bg-pink-200;
+  @apply flex flex-grow justify-start bg-white;
 }
-.rightSection {
-  padding-top: 44px;
-  @apply h-dvh w-full;
+.rightSectionInner {
+  padding-top: 116px;
+  @apply h-dvh w-full flex justify-between;
   @media screen and (min-width: 640px) {
     padding-top: 0;
     width: 500px;
@@ -32,6 +32,19 @@
   }
   @media screen and (min-width: 1300px) {
     width: 900px;
+  }
+}
+.main {
+  @apply h-dvh w-full;
+  @media screen and (min-width: 1300px) {
+    width: 650px;
+  }
+}
+.rightSection {
+  @apply hidden bg-pink-200;
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    width: 250px;
   }
 }
 
