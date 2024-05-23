@@ -1,12 +1,9 @@
 .userCard {
   min-height: 400px;
-  @apply rounded-xl relative;
-  & > a {
-    @apply block;
-    height: 400px;
-    & > img {
-      @apply h-full w-full block;
-    }
+  height: 400px;
+  @apply rounded-xl relative block;
+  & > img {
+    @apply h-full w-full block;
   }
 }
 

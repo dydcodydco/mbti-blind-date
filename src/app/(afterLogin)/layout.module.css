@@ -13,7 +13,7 @@
   width: 80px;
   @apply h-dvh;
   @media screen and (min-width: 1024px) {
-    width: 245px;
+    width: 180px;
   }
 }
 
@@ -28,23 +28,34 @@
     width: 500px;
   }
   @media screen and (min-width: 1024px) {
-    width: 700px;
+    width: 800px;
   }
   @media screen and (min-width: 1300px) {
-    width: 900px;
+    width: 1000px;
   }
 }
 .main {
   @apply h-dvh w-full;
+  @media screen and (min-width: 1024px) {
+    width: 550px;
+  }
   @media screen and (min-width: 1300px) {
-    width: 650px;
+    width: 700px;
   }
 }
 .rightSection {
-  @apply hidden bg-pink-200;
+  @apply hidden flex-col;
   @media screen and (min-width: 1024px) {
     display: flex;
     width: 250px;
+  }
+  @media screen and (min-width: 1300px) {
+    display: flex;
+    width: 300px;
+  }
+  & > div {
+    position: fixed;
+    width: inherit;
   }
 }
 
