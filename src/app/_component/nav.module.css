@@ -1,6 +1,6 @@
 .topNav {
   height: 44px;
-  @apply flex justify-between w-dvw items-center p-2 bg-pink-300;
+  @apply flex justify-between w-dvw items-center p-2 bg-white;
   & > a {
     & > h1 {
       @apply font-bold text-xl inline-block;
@@ -13,7 +13,7 @@
 
 .lefNav {
   width: inherit;
-  @apply fixed h-dvh flex flex-col items-center lg:items-start bg-pink-400;
+  @apply fixed h-dvh flex flex-col items-center lg:items-start bg-white;
   & > div {
     @apply flex flex-col gap-2 items-center lg:items-start flex-1;
   }
@@ -24,5 +24,5 @@
 
 .bottomNav {
   height: 50px;
-  @apply w-dvw flex justify-evenly py-2 bg-pink-500;
+  @apply w-dvw flex justify-evenly py-1 bg-white;
 }

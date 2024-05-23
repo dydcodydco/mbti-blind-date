@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input"
 import style from './login.module.css';
 import Title from '../_component/Title'
 import React, { useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 
 const FormSchema = z.object({
   id: z.string().min(2, {
@@ -28,6 +29,7 @@ const FormSchema = z.object({
 })
 
 const Page = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -38,7 +40,8 @@ const Page = () => {
 
   const onSubmit = useCallback((data: z.infer<typeof FormSchema>) => {
     console.log(data);
-  }, []);
+    router.push('/userSetting');
+  }, [router]);
 
   return (
     <section className={style.loginSection}>

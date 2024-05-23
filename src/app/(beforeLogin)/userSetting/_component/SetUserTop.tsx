@@ -6,6 +6,7 @@ import Title from '../../_component/Title';
 import { Progress } from '@/components/ui/progress';
 import { useCallback, useContext } from 'react';
 import { setUserContext } from './SetUserProvider';
+import style from '../userSetting.module.css'
 
 
 export default function SetUserTop() {
@@ -54,7 +55,7 @@ export default function SetUserTop() {
         <ArrowLeft className="h-4 w-4"  />
       </Button>
       <Title />
-      <Progress value={progress}/>
+      <Progress className={style.progress} value={progress} />
     </>
   )
 }
