@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { useContext } from 'react';
 import { setUserContext } from './SetUserProvider';
