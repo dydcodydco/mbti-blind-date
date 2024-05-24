@@ -45,6 +45,7 @@ export default function RecommendSection() {
         faker.image.urlLoremFlickr({ category: 'cat' }),
         faker.image.urlLoremFlickr({ category: 'cat' }),
       ],
+      mbti: faker.helpers.arrayElement([{mbti: 'ESFP', score: 100}, {mbti: 'ESFP', score: 90}, {mbti: 'ESFP', score: 80}])
     }
   }
   const users = faker.helpers.multiple(createDummyUser, { count: 5 });
@@ -87,6 +88,7 @@ export default function RecommendSection() {
           <CarouselNext className='right-[15px] hidden sm:flex' />
         </Carousel>
         <div className={style.userInfo}>
+          <h2 className='text-white font-extrabold text-xl'>{users[userNumber].mbti.mbti}, 궁합 {users[userNumber].mbti.score}%</h2>
           <h2 className='text-white font-extrabold text-xl'>{users[userNumber].nickname}, {users[userNumber].age}</h2>
           <p className='text-white font-semibold text-base'>{users[userNumber].distance}km, {users[userNumber].area}</p>
         </div>

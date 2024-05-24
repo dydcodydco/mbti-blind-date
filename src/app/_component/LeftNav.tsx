@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import style from './nav.module.css';
-import { Heart, MessageCircleMore, Settings, WalletCards } from 'lucide-react';
+import { Calendar, CalendarHeart, Heart, MessageCircleMore, Settings, WalletCards } from 'lucide-react';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
 export default function LeftNavMenu() {
@@ -26,6 +26,11 @@ export default function LeftNavMenu() {
         <Link href="/recommend" className={style.lefNavLink}>
           <WalletCards className='lg:mr-2' strokeWidth={segment === 'recommend' ? 2.3 : 2} />
           <span className='hidden lg:inline-block'>추천</span>
+        </Link>
+
+        <Link href="/promise" className={style.lefNavLink}>
+          {segment === 'promise' ? <CalendarHeart className='lg:mr-2' /> : <Calendar className='lg:mr-2' /> }
+          <span className='hidden lg:inline-block'>약속</span>
         </Link>
       
         <Link href="/like" className={style.lefNavLink}>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import style from './nav.module.css';
 import { usePathname, useSelectedLayoutSegment } from 'next/navigation';
-import { Heart, MessageCircleMore, WalletCards } from 'lucide-react';
+import { Calendar, CalendarHeart, Heart, MessageCircleMore, WalletCards } from 'lucide-react';
 
 export default function BottomNav() {
   const segment = useSelectedLayoutSegment();
@@ -25,6 +25,11 @@ export default function BottomNav() {
       <Link href="/like" className="flex items-center justify-end flex-col">
         <Heart fill={segment === 'like' ? '#000': '#fff'} />
         <span className='text-[9px] mt-[2px]'>좋아요</span>
+      </Link>
+
+      <Link href="/promise" className="flex items-center justify-end flex-col">
+        {segment === 'promise' ? <CalendarHeart /> : <Calendar /> }
+        <span className='text-[9px] mt-[2px]'>약속</span>
       </Link>
       
       <Link href="/messages" className="flex items-center justify-end flex-col">
