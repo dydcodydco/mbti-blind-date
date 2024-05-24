@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import style from './nav.module.css';
-import { usePathname, useSelectedLayoutSegment } from 'next/navigation';
-import { Calendar, CalendarHeart, Heart, MessageCircleMore, WalletCards } from 'lucide-react';
+import { useSelectedLayoutSegment } from 'next/navigation';
+import { BookHeart, BookUser, Calendar, CalendarHeart, Heart, MessageCircle, MessageCircleMore, WalletCards } from 'lucide-react';
 
 export default function BottomNav() {
   const segment = useSelectedLayoutSegment();
@@ -18,14 +18,14 @@ export default function BottomNav() {
       </Link>
       
       <Link href="/recommend" className="flex items-center justify-end flex-col">
-        <WalletCards strokeWidth={segment === 'recommend' ? 2.3 : 2} />
+        {segment === 'recommend' ? <BookHeart /> : <BookUser />}
         <span className='text-[9px] mt-[2px]'>추천</span>
       </Link>
     
-      <Link href="/like" className="flex items-center justify-end flex-col">
+      {/* <Link href="/like" className="flex items-center justify-end flex-col">
         <Heart fill={segment === 'like' ? '#000': '#fff'} />
         <span className='text-[9px] mt-[2px]'>좋아요</span>
-      </Link>
+      </Link> */}
 
       <Link href="/promise" className="flex items-center justify-end flex-col">
         {segment === 'promise' ? <CalendarHeart /> : <Calendar /> }
@@ -33,7 +33,7 @@ export default function BottomNav() {
       </Link>
       
       <Link href="/messages" className="flex items-center justify-end flex-col">
-        <MessageCircleMore strokeWidth={segment === 'messages' ? 2.5 : 2} />
+        {segment === 'messages' ? <MessageCircleMore /> : <MessageCircle />}
         <span className='text-[9px] mt-[2px]'>채팅</span>
       </Link>
     
