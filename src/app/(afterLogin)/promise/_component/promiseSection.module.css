@@ -1,0 +1,11 @@
+.promiseContent {
+  @apply relative z-10 flex flex-col justify-between flex-grow p-3;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1) 0px,
+    rgba(0, 0, 0, 1) 25px,
+    rgba(0, 0, 0, 0) calc(50px + 30px),
+    rgba(0, 0, 0, 0) calc(100% - 50px),
+    rgba(0, 0, 0, 1) 102%
+  );
+}

@@ -3,7 +3,7 @@
 }
 
 .topSection {
-  @apply flex sm:hidden w-full fixed top-0 left-0 z-10;
+  @apply flex sm:hidden w-full fixed top-0 left-0 z-20;
 }
 
 .leftSectionWrapper {
@@ -64,5 +64,5 @@
 }
 
 .bottomSection {
-  @apply flex sm:hidden w-full fixed bottom-0 left-0;
+  @apply flex sm:hidden w-full fixed bottom-0 left-0 z-20;
 }
