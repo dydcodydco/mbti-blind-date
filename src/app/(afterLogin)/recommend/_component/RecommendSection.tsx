@@ -66,7 +66,7 @@ export default function RecommendSection() {
   }, [router, users, userNumber])
   return (
     <div className='p-2 flex flex-col pt-0 sm:pt-[44px] h-full'>
-      <Card className='w-full p-2 relative flex-grow max-h-[711px]' onClickCapture={onClick}>
+      <Card className='w-full p-2 relative flex-grow max-h-[711px]'>
         <div className="w-full flex justify-center gap-1 absolute top-10 z-10">
           {users[userNumber].image.map((_, index) => (
             <button
@@ -79,7 +79,7 @@ export default function RecommendSection() {
         <Carousel opts={{loop: true, dragThreshold: 5 }} setApi={setApi} className={style.carousel}>
           <CarouselContent>
             {users[userNumber].image.map((img, index) => (
-              <CarouselItem key={index}>
+              <CarouselItem key={index} onClickCapture={onClick}>
                 <img className='w-full h-full block rounded-lg' src={img} alt='image' />
               </CarouselItem>
             ))}
@@ -87,7 +87,7 @@ export default function RecommendSection() {
           <CarouselPrevious className='left-[15px] hidden sm:flex' />
           <CarouselNext className='right-[15px] hidden sm:flex' />
         </Carousel>
-        <div className={style.userInfo}>
+        <div className={style.userInfo} onClickCapture={onClick}>
           <h2 className='text-white font-extrabold text-xl'>{users[userNumber].mbti.mbti}, 궁합 {users[userNumber].mbti.score}%</h2>
           <h2 className='text-white font-extrabold text-xl'>{users[userNumber].nickname}, {users[userNumber].age}</h2>
           <p className='text-white font-semibold text-base'>{users[userNumber].distance}km, {users[userNumber].area}</p>
