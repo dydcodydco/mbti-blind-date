@@ -1,7 +1,7 @@
 import SetUserProvider from './_component/SetUserProvider';
 import SetUser from './_component/SetUser';
-import style from './userSetting.module.css';
 import SetUserTop from './_component/SetUserTop';
+import style from './userSetting.module.css';
 
 export default function Page () {  
   return (

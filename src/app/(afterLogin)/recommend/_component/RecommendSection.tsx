@@ -7,7 +7,6 @@ import style from '../recommend.module.css';
 import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import MainTitle from '@/app/(afterLogin)/_component/MainTitle';
 
 export default function RecommendSection() {
   faker.seed(123);
