@@ -7,9 +7,10 @@ import TopNav from '../_component/TopNav';
 import MbtiRecommendSection from './_component/MbtiRecommendSection';
 import FriendRecommendSection from './_component/FriendRecommendSection';
 
-export default function Layout({children}: {children: ReactNode}) {
+export default function Layout({children, modal}: {children: ReactNode, modal: ReactNode}) {
   return (
     <div className={style.container}>
+      {modal}
       <header className={style.topSection}>
         <TopNav />
       </header>

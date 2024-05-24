@@ -58,7 +58,7 @@ export default function PromiseSection() {
                     <h3 className='font-semibold text-white'>{d.User.nickname}</h3>
                   </div>
                 </Link>
-                <span><EllipsisVertical /></span>
+                <span><EllipsisVertical color={'white'} /></span>
               </div>
               <p className='font-extrabold text-xl text-white text-center'>{d.content}</p>
               <div>
