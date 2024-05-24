@@ -62,7 +62,7 @@ export default function RecommendSection() {
   }, [api, userNumber, users]);
 
   const onClick = useCallback(() => {
-    router.push(`/${users[userNumber].id}`)
+    router.push(`/${users[userNumber].id}`);
   }, [router, users, userNumber])
   return (
     <div className='p-2 flex flex-col pt-0 sm:pt-[44px] h-full'>
