@@ -55,7 +55,7 @@ export default function PromiseSection() {
                     <AvatarFallback>{d.User.nickname.slice(0, 2)}</AvatarFallback>
                   </Avatar>
                   <div className='ml-2 flex flex-col justify-center'>
-                    <h3 className='font-semibold text-white'>{d.User.nickname}</h3>
+                    <h3 className='font-semibold text-white'>{d.User.nickname}, {d.User.age}</h3>
                   </div>
                 </Link>
                 <span><EllipsisVertical color={'white'} /></span>
