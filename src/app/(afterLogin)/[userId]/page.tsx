@@ -1,10 +1,7 @@
-type Props = {
-  params: {userId: string}
-}
+import Home from '@/app/(afterLogin)/page';
 
-export default function Page({ params }: Props) {
-  const { userId } = params;
+export default function UserPage() {
   return (
-    <div>{userId} 유저 페이지 입니다.</div>
+    <Home />
   )
 }
