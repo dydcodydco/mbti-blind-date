@@ -6,7 +6,10 @@ import Head from 'next/head';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MBTI가 어떻게 되세요?",
+  title: {
+    template: '%s | MBTI',
+    default: 'MBTI가 어떻게 되세요?',
+  },
   description: "MBTI로 찾는 내 연인",
 };
 
@@ -26,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} antialiased`}>
         {children}
       </body>
     </html>

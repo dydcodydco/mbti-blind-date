@@ -3,6 +3,11 @@ import MainTitle from '../_component/MainTitle';
 import PromiseSection from './_component/PromiseSection';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '약속'
+}
 
 export default function Page() {
   return (
