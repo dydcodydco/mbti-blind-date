@@ -1,5 +1,5 @@
-import SetUserProvider from './_component/SetUserProvider';
-import SetUser from './_component/SetUser';
+import SetUserProvider from './_component/SetUserProvider2';
+import SetUser from './_component/SetUser2';
 import SetUserTop from './_component/SetUserTop';
 import style from './userSetting.module.css';
 
