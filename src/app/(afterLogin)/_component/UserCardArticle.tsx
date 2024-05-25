@@ -15,7 +15,7 @@ interface userProps {
 export default function UserCardArticle({ children, user }: { children: ReactNode, user: userProps }) {
   const router = useRouter();
   const onclick = useCallback(() => {
-    router.push(`/${user.id}`, { scroll: false });
+    router.push(`/${user.id}`);
   }, [router, user]);
   return (
     <article onClickCapture={onclick}>
