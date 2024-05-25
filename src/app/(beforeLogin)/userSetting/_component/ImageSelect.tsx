@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/card"
 import { User } from 'lucide-react'
 import { ChangeEventHandler, useCallback, useContext, useState } from 'react'
-import { setUserContext } from './SetUserProvider'
+import { setUserContext } from './SetUserProvider2'
 import { SubmitHandler } from 'react-hook-form';
 
 export default function ImageSelect() {

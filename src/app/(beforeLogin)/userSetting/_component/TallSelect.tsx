@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { setUserContext } from './SetUserProvider';
+import { setUserContext } from './SetUserProvider2';
 import style from '../userSetting.module.css'
 
 export default function TallSelect() {

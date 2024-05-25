@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { useContext } from 'react';
-import { setUserContext } from './SetUserProvider';
+import { setUserContext } from './SetUserProvider2';
 
 export default function GenderSelect() {
   const { gender, setGender, setProgress } = useContext(setUserContext);

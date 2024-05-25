@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useCallback, useContext, useEffect, useRef } from 'react';
-import { setUserContext } from './SetUserProvider';
+import { setUserContext } from './SetUserProvider2';
 
 export default function NicknameSelect() {
   const { nickname, setNickname, setProgress } = useContext(setUserContext);

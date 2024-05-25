@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import { useCallback, useContext, useEffect, useState } from 'react';
 import style from '../userSetting.module.css';
-import { setUserContext } from './SetUserProvider';
+import { setUserContext } from './SetUserProvider2';
 import { Button } from '@/components/ui/button';
 
 export default function Birthday() {

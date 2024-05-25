@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import style from '../userSetting.module.css';
 import { useCallback, useContext } from 'react';
-import { setUserContext } from './SetUserProvider';
+import { setUserContext } from './SetUserProvider2';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 export default function SmokeSelect() {

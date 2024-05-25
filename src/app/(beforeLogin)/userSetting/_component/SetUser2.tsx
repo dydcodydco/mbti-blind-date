@@ -3,7 +3,7 @@
 import { useContext } from 'react';
 import BirthdaySelect from './BirthdaySelect';
 import MbtiSelect from './MbtiSelect';
-import { setUserContext } from './SetUserProvider';
+import { setUserContext } from './SetUserProvider2';
 import ReligionSelect from './ReligionSelect';
 import TallSelect from './TallSelect';
 import RegionSelect from './RegionSelect';
