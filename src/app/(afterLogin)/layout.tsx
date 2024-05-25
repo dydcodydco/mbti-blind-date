@@ -24,7 +24,7 @@ export default function Layout({children, modal}: {children: ReactNode, modal: R
           <main className={style.main}>{children}</main>
           <section className={style.rightSection}>
             <div>
-              <h3 className='font-extrabold mb-3 mt-4'>궁합 좋은 MBTI</h3>
+              <h3 className='font-extrabold mb-3 mt-12'>궁합 좋은 MBTI</h3>
               <MbtiRecommendSection />
               <h3 className='font-extrabold mb-3 mt-8'>친구 추천</h3>
               <FriendRecommendSection />

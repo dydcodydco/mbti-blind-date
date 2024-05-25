@@ -19,7 +19,7 @@
   }
 }
 .lefNavLink {
-  @apply py-2 flex items-center justify-center;
+  @apply py-2 flex items-center justify-center pt-3;
 }
 
 .bottomNav {

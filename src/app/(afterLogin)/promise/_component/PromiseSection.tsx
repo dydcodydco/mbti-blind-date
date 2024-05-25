@@ -8,6 +8,17 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import 'dayjs/locale/ko';
 import dayjs from "dayjs";
 import style from './promiseSection.module.css';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
@@ -58,7 +69,25 @@ export default function PromiseSection() {
                     <h3 className='font-semibold text-white'>{d.User.nickname}, {d.User.age}</h3>
                   </div>
                 </Link>
-                <span><EllipsisVertical color={'white'} /></span>
+                
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <span><EllipsisVertical color={'white'} /></span>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56">
+                    <DropdownMenuLabel>문제가 있으신가요?</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem>
+                        신고하기
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className='text-red-500'>
+                        차단하기
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
               </div>
               <p className='font-extrabold text-xl text-white text-center'>{d.content}</p>
               <div>
