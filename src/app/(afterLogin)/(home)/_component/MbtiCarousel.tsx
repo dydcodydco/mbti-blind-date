@@ -73,16 +73,12 @@ export default function MbtiCarousel() {
     <div className={style.menuWrapper}>
       <div className='w-[800px] flex gap-1 flex-wrap'>
         <Button variant={'outline'} className='py-1 px-3 max-h-[30px] font-normal'>전체</Button>
-        <Button variant={'outline'} className='py-1 px-3 max-h-[30px] font-normal' style={{background: '#ADD8E6', borderColor: '#ADD8E6'}}>궁합 100%</Button>
-        <Button variant={'outline'} className='py-1 px-3 max-h-[30px] font-normal' style={{ background: '#90EE90', borderColor: '#90EE90' }}>궁합 80%</Button>
+        <Button className='py-1 px-3 max-h-[30px] font-normal'>궁합 100%</Button>
+        <Button className='py-1 px-3 max-h-[30px] font-normal'>궁합 80%</Button>
         {mbtiList.map(d => (
           <Button
-            key={d.mbti} title={d.feat} variant={'outline'} className='py-1 px-3 max-h-[30px] font-normal'
-            style={{
-              background: d.score === 100 ? '#ADD8E6' : d.score === 80 ? '#90EE90' : !d.score ? '#ffffff' :'#FFFACD',
-              borderColor: d.score === 100 ? '#ADD8E6' : d.score === 80 ? '#90EE90' : !d.score ? '' : '#FFFACD'
-            }}
-          >
+            key={d.mbti} title={d.feat} variant={d.score === 100 || d.score === 90 ? 'default' : 'outline'}
+            className='py-1 px-3 max-h-[30px] font-normal'>
             {d.mbti}</Button>
         ))}
       </div>

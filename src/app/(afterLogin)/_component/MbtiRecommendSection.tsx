@@ -30,17 +30,11 @@ export default function MbtiRecommendSection() {
   return (
     <div className='grid gap-1 flex-wrap grid-cols-3'>
       <Button variant={'outline'} className='py-1 px-3 max-h-[30px] font-normal'>전체</Button>
-      <Button variant={'outline'} className='py-1 px-3 max-h-[30px] font-normal' style={{background: '#ADD8E6', borderColor: '#ADD8E6'}}>궁합 100%</Button>
-      <Button variant={'outline'} className='py-1 px-3 max-h-[30px] font-normal' style={{ background: '#90EE90', borderColor: '#90EE90' }}>궁합 80%</Button>
+      <Button className='py-1 px-3 max-h-[30px] font-normal'>상위 궁합</Button>
       {mbtiList.map(d => (
-        <Button
-          key={d.mbti} title={d.feat} variant={'outline'} className='py-1 px-3 max-h-[30px] font-normal'
-          style={{
-            background: d.score === 100 ? '#ADD8E6' : d.score === 80 ? '#90EE90' : !d.score ? '#ffffff' :'#FFFACD',
-            borderColor: d.score === 100 ? '#ADD8E6' : d.score === 80 ? '#90EE90' : !d.score ? '' : '#FFFACD'
-          }}
-        >
-          {d.mbti}</Button>
+        <Button key={d.mbti} title={d.feat} variant={d.score && d.score >= 90 ? 'default' : 'outline'} className='py-1 px-3 max-h-[30px] font-normal'>
+          {d.mbti}
+        </Button>
       ))}
     </div>
   )

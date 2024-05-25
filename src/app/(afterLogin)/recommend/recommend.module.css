@@ -13,6 +13,12 @@
   }
 }
 
+.carousel {
+  & > div > div {
+    @apply h-full;
+  }
+}
+
 .recommendSection {
   height: calc(100% - 50px);
   @apply relative;

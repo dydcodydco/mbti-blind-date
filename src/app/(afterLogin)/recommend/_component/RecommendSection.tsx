@@ -79,7 +79,7 @@ export default function RecommendSection() {
         <Carousel opts={{loop: true, dragThreshold: 5 }} setApi={setApi} className={style.carousel}>
           <CarouselContent>
             {users[userNumber].image.map((img, index) => (
-              <CarouselItem key={index} onClickCapture={onClick}>
+              <CarouselItem key={index} onClickCapture={onClick} className='aaa'>
                 <img className='w-full h-full block rounded-lg' src={img} alt='image' />
               </CarouselItem>
             ))}
@@ -95,7 +95,7 @@ export default function RecommendSection() {
       </Card>
       <div className='flex gap-2 mt-3'>
         <Button className='flex-1' variant={'outline'} onClick={onClickPass()}>괜찮아요</Button>
-        <Button className='flex-1' onClick={onClickNext()}>좋아요</Button>
+        <Button className='flex-1 bg-black' onClick={onClickNext()}>좋아요</Button>
       </div>
     </div>
   )
