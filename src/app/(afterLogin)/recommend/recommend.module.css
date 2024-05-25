@@ -4,7 +4,7 @@
 }
 
 .carousel {
-  @apply w-full h-full bg-pink-100 cursor-pointer;
+  @apply w-full h-full cursor-pointer;
   & > div {
     @apply h-full cursor-pointer;
     & > div {

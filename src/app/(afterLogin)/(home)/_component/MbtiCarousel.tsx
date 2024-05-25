@@ -71,10 +71,9 @@ export default function MbtiCarousel() {
 
   return (
     <div className={style.menuWrapper}>
-      <div className='w-[800px] flex gap-1 flex-wrap'>
+      <div className='w-[750px] flex gap-1 flex-wrap'>
         <Button variant={'outline'} className='py-1 px-3 max-h-[30px] font-normal'>전체</Button>
-        <Button className='py-1 px-3 max-h-[30px] font-normal'>궁합 100%</Button>
-        <Button className='py-1 px-3 max-h-[30px] font-normal'>궁합 80%</Button>
+        <Button className='py-1 px-3 max-h-[30px] font-normal'>상위 궁합</Button>
         {mbtiList.map(d => (
           <Button
             key={d.mbti} title={d.feat} variant={d.score === 100 || d.score === 90 ? 'default' : 'outline'}
