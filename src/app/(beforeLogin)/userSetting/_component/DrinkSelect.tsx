@@ -20,6 +20,11 @@ export default function DrinkSelect() {
     console.log('음주', drink);
   }, [setDrink, setProgress]);
   
+  const onChange = useCallback((drink: string) => () => {
+    setDrink(drink);
+    setProgress(65);
+    console.log('음주', drink);
+  }, [setDrink, setProgress]);
   return (
     <form
       className={`pt-5 flex flex-col flex-grow`}
@@ -28,7 +33,7 @@ export default function DrinkSelect() {
       <div className='grid grid-cols-2 gap-2 w-full mt-3'>
         {drinkArr.map((d) => (
           <label htmlFor={d} key={d} className={style.radioLabel}>
-            <input id={d} type="radio" value={d} {...register('drink', { required: true })} />
+            <input id={d} type="radio" value={d} {...register('drink', { required: true })} onChange={onChange(d)} />
             <Button variant={'outline'} asChild>
               <div className='flex w-full h-auto bg-white'>
                 {d}

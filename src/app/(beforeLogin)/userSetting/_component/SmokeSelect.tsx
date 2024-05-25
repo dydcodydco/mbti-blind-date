@@ -20,6 +20,11 @@ export default function SmokeSelect() {
     console.log('흡연', smoke);
   }, [setSmoke, setProgress]);
   
+  const onChange = useCallback((smoke: string) => () => {
+    setSmoke(smoke);
+    setProgress(70);
+    console.log('흡연', smoke);
+  }, [setSmoke, setProgress]);
   return (
     <form
       className={`pt-5 flex flex-col flex-grow`}
@@ -28,7 +33,7 @@ export default function SmokeSelect() {
       <div className='grid grid-cols-2 gap-2 w-full mt-3'>
         {drinkArr.map((d) => (
           <label htmlFor={d} key={d} className={style.radioLabel}>
-            <input id={d} type="radio" value={d} {...register('smoke', { required: true })} />
+            <input id={d} type="radio" value={d} {...register('smoke', { required: true })} onChange={onChange(d)} />
             <Button variant={'outline'} asChild>
               <div className='flex w-full h-auto bg-white'>
                 {d}
