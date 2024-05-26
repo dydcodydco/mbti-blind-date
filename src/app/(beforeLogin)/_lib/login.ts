@@ -1,6 +1,8 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+// 서버 컴포넌트에서 로그인할 때 @/auth, 클라이언트 컴포넌트에서 로그인할 때 'next-auth/react'
+import { signIn } from '@/auth';
 
 const login = async (prevState: any, formData: FormData) => {
   // 'use server';
@@ -15,20 +17,26 @@ const login = async (prevState: any, formData: FormData) => {
   
   let shouldRedirect = false;
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {
-      method: 'post',
-      body: formData,
-      credentials: 'include', // 이게 있어야 쿠키전달된다.
+    // const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {
+    //   method: 'post',
+    //   body: formData,
+    //   credentials: 'include', // 이게 있어야 쿠키전달된다.
+    // });
+    // // console.log(response.status);
+    // console.log(response.status, await response.json());
+    // if (response.status === 403) {
+    //   return { message: 'user_no_exists' };
+    // }
+    const response = await signIn("credentials", {
+      id: formData.get("id"),
+      password: formData.get("password"),
+      redirect: false,
     });
-    // console.log(response.status);
-    console.log(response.status, await response.json());
-    if (response.status === 403) {
-      return { message: 'user_no_exists' };
-    }
+    console.log(response, '------------------response');
     shouldRedirect = true;
   } catch (err) {
-    console.error(err);
-    return;
+    console.error(err, '-------------------------err');
+    return { message: 'user_no_exists' };
   }
 
   if (shouldRedirect) {

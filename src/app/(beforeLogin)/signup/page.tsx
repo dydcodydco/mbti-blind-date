@@ -47,7 +47,8 @@ const Page = () => {
 
   const onSignupSubmit = useCallback((data: z.infer<typeof FormSchema>) => {
     console.log(data);
-  }, []);
+    form.reset();
+  }, [form]);
 
   return (
     <section className={style.signupSection}>
