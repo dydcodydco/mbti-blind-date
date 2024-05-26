@@ -31,7 +31,9 @@ export default function UserPage({ params: {userId} }: Props) {
   }
 
   return (
-    <Modal>
+    <>
+      여기는 유저 상세페이지 모달
+      <Modal>
       <div className='flex flex-col w-full md:max-w-[600px] lg:max-w-[800px] md:h-[100dvh] overflow-y-auto overscroll-none'>
         <h2 className='font-bold flex justify-between items-center mb-1 sticky top-0 left-0 z-10 bg-white'>
           <div className='flex items-center'>
@@ -83,5 +85,6 @@ export default function UserPage({ params: {userId} }: Props) {
         </div>
       </div>
     </Modal>
+    </>
   )
 }
