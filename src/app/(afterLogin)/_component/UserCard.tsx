@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { UserPlus } from 'lucide-react';
 import UserCardArticle from './UserCardArticle';
 import Link from 'next/link';
+import ImageWithPlaceholder from './ImageWithPlaceholder';
 
 export default function UserCard() {
   const user = {
@@ -18,11 +19,13 @@ export default function UserCard() {
     ],
     mbti: faker.helpers.arrayElement([{mbti: 'ESFP', score: 100}, {mbti: 'ESFP', score: 90}, {mbti: 'ESFP', score: 80}])
   }
+
   return (
     // <UserCardArticle user={user}>
     <Card className={style.userCard}>
       <Link href={`/${user.id}`} scroll={false} className='w-full h-full absolute top-0 left-0'>
-        <img src={user.image[0]} className='rounded-xl h-full block w-full' alt="img" />
+        {/* <img src={user.image[0]} className='rounded-xl h-full block w-full' alt="img" /> */}
+        <ImageWithPlaceholder src={`${user.image[0]}`} />
         <div className={style.userInfo}>
           <h2 className='text-white font-extrabold text-xl'>{user.mbti.mbti}, 궁합 {user.mbti.score}%</h2>
           <h2 className='text-white font-extrabold text-xl'>{user.nickname}, {user.age}</h2>

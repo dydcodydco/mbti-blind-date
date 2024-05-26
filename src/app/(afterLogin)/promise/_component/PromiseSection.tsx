@@ -14,11 +14,10 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import ImageWithPlaceholder from '@/app/(afterLogin)/_component/ImageWithPlaceholder';
 
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
@@ -57,7 +56,7 @@ export default function PromiseSection() {
       {
         posts.map(d => (
           <Card key={d.id} className='flex flex-col justify-between min-h-[400px] relative bg-black'>
-            {d.Images?.length > 0 && <img className='absolute w-full h-full top-0 left-0' src={d.Images[0]} alt='img' />}
+            {d.Images?.length > 0 && <ImageWithPlaceholder src={`${d.Images[0]}`} />}
             <div className={style.promiseContent}>
               <div className='flex justify-between'>
                 <Link href={`/${d.User.id}`} className='flex items-center'>

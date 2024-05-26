@@ -3,6 +3,7 @@
 import { faker } from '@faker-js/faker';
 import { useCallback, useEffect, useState } from 'react';
 import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function UserCaousel() {
   faker.seed(123);
@@ -10,13 +11,12 @@ export default function UserCaousel() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    if (!api) {
-      return
-    }
+    if (!api) return;
+
     setCurrent(api.selectedScrollSnap() + 1);
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
-    })
+    });
   }, [api]);
 
   const handleDotClick = useCallback((index: any) => {
@@ -36,9 +36,9 @@ export default function UserCaousel() {
       faker.image.urlLoremFlickr({ category: 'cat' }),
       faker.image.urlLoremFlickr({ category: 'cat' }),
     ],
-    mbti: faker.helpers.arrayElement([{mbti: 'ESFP', score: 100}, {mbti: 'ESFP', score: 90}, {mbti: 'ESFP', score: 80}])
-  }
-  
+    mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }])
+  };
+
   return (
     <div className='relative'>
       <div className="w-full flex justify-center gap-1 absolute bottom-4 z-10">
@@ -54,7 +54,10 @@ export default function UserCaousel() {
         <CarouselContent>
           {user.image.map((img, index) => (
             <CarouselItem key={index}>
-              <img className='w-full h-full block rounded-lg' src={img} alt='image' />
+              <div className='h-[400px] w-[100%] relative'>
+                <Skeleton className='w-full h-full absolute top-0 left-0' />
+                <img className='w-full h-full block rounded-lg absolute top-0 left-0 z-10' src={img} alt='image' />
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -62,5 +65,5 @@ export default function UserCaousel() {
         <CarouselNext className='right-[15px] hidden sm:flex' />
       </Carousel>
     </div>
-  )
+  );
 }

@@ -7,6 +7,8 @@ import style from '../recommend.module.css';
 import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import ImageWithPlaceholder from '@/app/(afterLogin)/_component/ImageWithPlaceholder';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function RecommendSection() {
   faker.seed(123);
@@ -67,7 +69,7 @@ export default function RecommendSection() {
   return (
     <div className='p-2 flex flex-col pt-0 sm:pt-[44px] h-full'>
       <Card className='w-full p-2 relative flex-grow max-h-[711px]'>
-        <div className="w-full flex justify-center gap-1 absolute top-10 z-10">
+        <div className="w-full flex justify-center gap-1 absolute top-10 z-20">
           {users[userNumber].image.map((_, index) => (
             <button
               key={index}
@@ -80,12 +82,16 @@ export default function RecommendSection() {
           <CarouselContent>
             {users[userNumber].image.map((img, index) => (
               <CarouselItem key={index} onClickCapture={onClick} className='aaa'>
-                <img className='w-full h-full block rounded-lg' src={img} alt='image' />
+                {/* <ImageWithPlaceholder src={`${img}`} /> */}
+                <div className='relative h-full'>
+                  <Skeleton className='w-full h-full absolute top-0 left-0' />
+                  <img className='w-full h-full block rounded-lg absolute top-0 left-0 z-10' src={img} alt='image' />
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className='left-[15px] hidden sm:flex' />
-          <CarouselNext className='right-[15px] hidden sm:flex' />
+          <CarouselPrevious className='left-[15px] hidden sm:flex z-20' />
+          <CarouselNext className='right-[15px] hidden sm:flex z-20' />
         </Carousel>
         <div className={style.userInfo} onClickCapture={onClick}>
           <h2 className='text-white font-extrabold text-xl'>{users[userNumber].mbti.mbti}, 궁합 {users[userNumber].mbti.score}%</h2>
