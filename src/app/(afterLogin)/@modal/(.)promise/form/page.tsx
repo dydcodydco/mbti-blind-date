@@ -30,7 +30,7 @@ export default function PromiseFormModal() {
   }, [router]);
   return (
     <Modal>
-      <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col flex-grow'>
+      <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col flex-grow overscroll-none'>
         <div className='flex-grow'>
           <h1 className='font-bold flex justify-between items-center mb-1'>
             <Button variant="ghost" size="icon" className='justify-start' onClick={onClickClose}>

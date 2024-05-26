@@ -21,7 +21,7 @@ export default function UserCard() {
   return (
     // <UserCardArticle user={user}>
     <Card className={style.userCard}>
-      <Link href={`/${user.id}`} className='w-full h-full absolute top-0 left-0'>
+      <Link href={`/${user.id}`} scroll={false} className='w-full h-full absolute top-0 left-0'>
         <img src={user.image[0]} className='rounded-xl h-full block w-full' alt="img" />
         <div className={style.userInfo}>
           <h2 className='text-white font-extrabold text-xl'>{user.mbti.mbti}, 궁합 {user.mbti.score}%</h2>
