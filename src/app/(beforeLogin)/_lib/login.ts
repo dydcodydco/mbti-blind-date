@@ -33,10 +33,8 @@ const login = async (prevState: any, formData: FormData) => {
       redirect: false,
     });
     
-    console.log(response, '------------------response');
     shouldRedirect = true;
   } catch (err) {
-    console.error(err, '-------------------------err');
     return { message: 'user_no_exists' };
   }
 

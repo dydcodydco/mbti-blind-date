@@ -19,7 +19,7 @@ import { useCallback } from 'react'
 import Title from '../_component/Title'
 import React from 'react'
 import { signIn } from 'next-auth/react'
-import { redirect, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 const FormSchema = z.object({
   id: z.string().min(2, {
@@ -80,7 +80,7 @@ const SignupPage = () => {
 
     router.replace('/');
 
-  }, [form]);
+  }, [form, router]);
 
   return (
     <section className={style.signupSection}>

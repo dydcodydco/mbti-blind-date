@@ -7,8 +7,6 @@ import Title from '../_component/Title'
 import React from 'react';
 import onLogin from '@/app/(beforeLogin)/_lib/login';
 import { useFormState, useFormStatus } from 'react-dom';
-import { useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
 
 function showMessage(messasge: string | null | undefined) {
   if (messasge === 'no_id') {
@@ -26,12 +24,7 @@ function showMessage(messasge: string | null | undefined) {
 const LoginPage = () => {
   const [state, formAction] = useFormState(onLogin, { message: '' });
   const { pending } = useFormStatus();
-  const { data: me } = useSession();
   console.log(me, '-----------login page (client component)');
-
-  // if (me?.user) {
-  //   redirect('/');
-  // }
 
   return (
     <section className={style.loginSection}>

@@ -4,8 +4,6 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
-  // console.log(request, '-------------------------------------------------------middleware');
-
   const session = await auth();
   if (!session && request.nextUrl.pathname !== '/login' && request.nextUrl.pathname !== '/signup') {
     return NextResponse.redirect('http://localhost:3000/login');

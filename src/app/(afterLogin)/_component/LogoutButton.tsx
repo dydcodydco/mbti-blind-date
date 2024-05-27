@@ -13,7 +13,6 @@ export default function LogoutButton() {
   const onLogout = useCallback(() => {
     signOut({redirect: false}).then(() => {router.replace('/login')});
   }, [router]);
-  console.log(me, '------------client side session');
   
   if (!me?.user) return null;
   return (
