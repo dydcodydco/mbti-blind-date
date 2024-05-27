@@ -2,6 +2,9 @@ import { faker } from '@faker-js/faker';
 import MainTitle from '../_component/MainTitle';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import LogoutButton from '../_component/LogoutButton';
+import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
 
 interface IMbtiCompatibility {
   [key: string]: {
@@ -9,7 +12,7 @@ interface IMbtiCompatibility {
   };
 }
 
-export default function Page() {
+export default async function ProfilePage() {
   const user = {
     id: faker.string.nanoid(10),
     nickname: faker.internet.userName(),
@@ -46,7 +49,12 @@ export default function Page() {
   };
 
   const mbtiList = Object.entries(mbtiCompatibility[user.mbti.mbti]);
-  console.log(mbtiList);
+
+  const session = await auth();
+  console.log(session, '------------ProfilePage (server side session)');
+  if (!session?.user) {
+    redirect('/login');
+  }
 
   return (
     <div className='p-2'>
@@ -63,8 +71,9 @@ export default function Page() {
       </div>
       
       <Button className='w-full mb-10'>프로필 수정</Button>
+      <LogoutButton />
       
-      <div className='lg:hidden'>
+      <div className='lg:hidden mt-10'>
         <h2>MBTI 리스트</h2>
         <div className='grid gap-1 flex-wrap grid-cols-2 sm:grid-cols-3'>
           <Button variant={'outline'} className='py-1 px-3 max-h-[30px] font-normal'>전체</Button>

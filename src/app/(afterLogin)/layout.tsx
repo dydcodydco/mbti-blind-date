@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { ReactNode } from 'react';
 import style from './layout.module.css';
 import LeftNav from '../_component/LeftNav';
@@ -6,8 +5,10 @@ import BottomNav from '../_component/BottomNav';
 import TopNav from '../_component/TopNav';
 import MbtiRecommendSection from './_component/MbtiRecommendSection';
 import FriendRecommendSection from './_component/FriendRecommendSection';
+import { auth } from '@/auth';
 
-export default function Layout({children, modal}: {children: ReactNode, modal: ReactNode}) {
+export default async function Layout({ children, modal }: { children: ReactNode, modal: ReactNode }) {
+  const session = await auth();
   return (
     <div className={style.container}>
       {modal}
@@ -26,8 +27,10 @@ export default function Layout({children, modal}: {children: ReactNode, modal: R
             <div>
               <h3 className='font-extrabold mb-3 mt-12'>궁합 좋은 MBTI</h3>
               <MbtiRecommendSection />
-              <h3 className='font-extrabold mb-3 mt-8'>친구 추천</h3>
-              <FriendRecommendSection />
+              {session?.user && <>
+                <h3 className='font-extrabold mb-3 mt-8'>친구 추천</h3>
+                <FriendRecommendSection />
+              </>}
             </div>
           </section>
         </div>

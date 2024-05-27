@@ -30,15 +30,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         let user = await authResponse.json();
-        console.log(user, '--------------------------------');
-        if (!user) {
-          // No user found, so this is their first attempt to login
-          // meaning this is also the place you could do registration
-          throw new Error("User not found.")
-        }
- 
         // return user object with the their profile data
-        return user
+        console.log(user, '--------------------------------'); 
+        return {
+          ...user,
+          email: user.id,
+          name: user.nickname,
+          image: user.image,
+        }
       },
     }),
   ],

@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import style from './login.module.css';
 import Title from '../_component/Title'
-import React, { useCallback } from 'react';
+import React from 'react';
 import onLogin from '@/app/(beforeLogin)/_lib/login';
 import { useFormState, useFormStatus } from 'react-dom';
+import { useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 
 function showMessage(messasge: string | null | undefined) {
   if (messasge === 'no_id') {
@@ -21,9 +23,15 @@ function showMessage(messasge: string | null | undefined) {
   return '';
 }
 
-const Page = () => {
+const LoginPage = () => {
   const [state, formAction] = useFormState(onLogin, { message: '' });
   const { pending } = useFormStatus();
+  const { data: me } = useSession();
+  console.log(me, '-----------login page (client component)');
+
+  // if (me?.user) {
+  //   redirect('/');
+  // }
 
   return (
     <section className={style.loginSection}>
@@ -77,4 +85,4 @@ const Page = () => {
   )
 }
 
-export default React.memo(Page);
+export default React.memo(LoginPage);

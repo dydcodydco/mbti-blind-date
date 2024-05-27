@@ -67,7 +67,7 @@ export default function MbtiCarousel() {
       mbti.score = value;
     } 
   });
-  console.log(mbtiList);
+  // console.log(mbtiList);
 
   return (
     <div className={style.menuWrapper}>

@@ -18,6 +18,8 @@ import style from './signup.module.css';
 import { useCallback } from 'react'
 import Title from '../_component/Title'
 import React from 'react'
+import { signIn } from 'next-auth/react'
+import { redirect, useRouter } from 'next/navigation'
 
 const FormSchema = z.object({
   id: z.string().min(2, {
@@ -35,7 +37,7 @@ const FormSchema = z.object({
   path: ["passwordCheck"], // This specifies where the error message will be attached
 });
 
-const Page = () => {
+const SignupPage = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -44,10 +46,40 @@ const Page = () => {
       passwordCheck: '',
     },
   });
+  const router = useRouter();
 
-  const onSignupSubmit = useCallback((data: z.infer<typeof FormSchema>) => {
-    console.log(data);
-    form.reset();
+  const onSignupSubmit = useCallback(async (data: z.infer<typeof FormSchema>) => {
+    try {
+      console.log('------------------SignupPage signup response --------------------------------');
+      console.log(data);
+      form.reset();
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/signup`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        credentials: 'include',
+      });
+      console.log(response, '------------------SignupPage signup response');
+      if (!response.ok) {
+        form.setError('root.serverError',
+          { type: `${response.status}`, message: '회원가입 중 에러 발생' })
+        return;
+      }
+
+      await signIn("credentials", {
+        id: data.id,
+        password: data.password,
+        redirect: false,
+      });
+    } catch (err) {
+      console.error(err);
+      return;
+    }
+
+    router.replace('/');
+
   }, [form]);
 
   return (
@@ -107,6 +139,8 @@ const Page = () => {
             )}
           />
 
+          {form.formState.errors.root && form.formState.errors.root.serverError.type === '403'
+            && <p className='text-red-500'>{form.formState.errors.root.serverError.message}</p>}
           <Button type="submit">회원가입</Button>
         </form>
       </Form>
@@ -114,4 +148,4 @@ const Page = () => {
   )
 }
 
-export default React.memo(Page);
+export default React.memo(SignupPage);

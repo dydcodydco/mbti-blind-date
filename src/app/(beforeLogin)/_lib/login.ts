@@ -32,6 +32,7 @@ const login = async (prevState: any, formData: FormData) => {
       password: formData.get("password"),
       redirect: false,
     });
+    
     console.log(response, '------------------response');
     shouldRedirect = true;
   } catch (err) {
