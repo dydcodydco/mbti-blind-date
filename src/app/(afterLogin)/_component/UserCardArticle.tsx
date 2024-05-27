@@ -1,22 +1,20 @@
 'use client';
 
+import { IUser } from '@/model/User';
 import { useRouter } from 'next/navigation';
 import { ReactNode, useCallback } from 'react';
 
-interface userProps {
-  id: string;
-  nickname: string;
-  age: number;
-  distance: number;
-  area: string;
-  image: string[];
+type Props = {
+  children: ReactNode,
+  user: IUser,
 }
 
-export default function UserCardArticle({ children, user }: { children: ReactNode, user: userProps }) {
+export default function UserCardArticle({ children, user }: Props) {
   const router = useRouter();
   const onclick = useCallback(() => {
-    router.push(`/${user.id}`);
+    router.push(`/${user.id}`, {scroll: false});
   }, [router, user]);
+
   return (
     <article onClickCapture={onclick}>
       {children}

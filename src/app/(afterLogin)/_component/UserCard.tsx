@@ -1,31 +1,24 @@
 import { Card } from '@/components/ui/card';
-import { faker } from '@faker-js/faker';
 import style from './userCard.module.css';
 import { Button } from '@/components/ui/button';
 import { UserPlus } from 'lucide-react';
 import UserCardArticle from './UserCardArticle';
 import Link from 'next/link';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
+import { IUser } from '@/model/User';
+import Image from 'next/image';
 
-export default function UserCard() {
-  const user = {
-    id: faker.string.nanoid(10),
-    nickname: faker.internet.userName(),
-    age: faker.number.int({ min: 20, max: 50 }),
-    distance: faker.number.int({ min: 5, max: 100 }),
-    area: faker.location.city(),
-    image: [
-      faker.image.urlLoremFlickr({ category: 'cat' })
-    ],
-    mbti: faker.helpers.arrayElement([{mbti: 'ESFP', score: 100}, {mbti: 'ESFP', score: 90}, {mbti: 'ESFP', score: 80}])
-  }
+type Props = {
+  user: IUser
+}
 
+export default function UserCard({user}: Props) {
   return (
     // <UserCardArticle user={user}>
     <Card className={style.userCard}>
       <Link href={`/${user.id}`} scroll={false} className='w-full h-full absolute top-0 left-0'>
         {/* <img src={user.image[0]} className='rounded-xl h-full block w-full' alt="img" /> */}
-        <ImageWithPlaceholder src={`${user.image[0]}`} />
+        <ImageWithPlaceholder src={`${user.Images[0].link}`} />
         <div className={style.userInfo}>
           <h2 className='text-white font-extrabold text-xl'>{user.mbti.mbti}, 궁합 {user.mbti.score}%</h2>
           <h2 className='text-white font-extrabold text-xl'>{user.nickname}, {user.age}</h2>

@@ -4,6 +4,7 @@ import { faker } from '@faker-js/faker';
 import { useCallback, useEffect, useState } from 'react';
 import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Skeleton } from '@/components/ui/skeleton';
+import ImageWithPlaceholder from '@/app/(afterLogin)/_component/ImageWithPlaceholder';
 
 export default function UserCaousel() {
   faker.seed(123);
@@ -55,8 +56,9 @@ export default function UserCaousel() {
           {user.image.map((img, index) => (
             <CarouselItem key={index}>
               <div className='h-[400px] w-[100%] relative'>
-                <Skeleton className='w-full h-full absolute top-0 left-0' />
-                <img className='w-full h-full block rounded-lg absolute top-0 left-0 z-10' src={img} alt='image' />
+                {/* <Skeleton className='w-full h-full absolute top-0 left-0' /> */}
+                {/* <img className='w-full h-full block rounded-lg absolute top-0 left-0 z-10' src={img} alt='image' /> */}
+                <ImageWithPlaceholder src={img} />
               </div>
             </CarouselItem>
           ))}
