@@ -24,7 +24,6 @@ function showMessage(messasge: string | null | undefined) {
 const LoginPage = () => {
   const [state, formAction] = useFormState(onLogin, { message: '' });
   const { pending } = useFormStatus();
-  console.log(me, '-----------login page (client component)');
 
   return (
     <section className={style.loginSection}>
