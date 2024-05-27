@@ -70,7 +70,7 @@ export const handlers = [
     })
   }),
   http.get('/api/userAll', async () => {
-    faker.seed(123);
+    // faker.seed(123);
     return HttpResponse.json([
       {
         id: faker.string.nanoid(10),
