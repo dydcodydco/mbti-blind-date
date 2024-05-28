@@ -9,14 +9,22 @@ import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ImageWithPlaceholder from '@/app/(afterLogin)/_component/ImageWithPlaceholder';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useQuery } from '@tanstack/react-query';
+import { getUserRecommends } from '../_lib/getUserRecommends';
+import { IUserImage } from '@/model/UserImage';
 
 export default function RecommendSection() {
-  faker.seed(123);
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [userNumber, setUserNumber] = useState(0);
   const router = useRouter();
-
+  const { data: users } = useQuery({
+    queryKey: ['users', 'recommends'],
+    queryFn: getUserRecommends,
+    staleTime: 60 * 1000,
+    gcTime: 60 * 5 * 1000,
+  }) 
+  
   useEffect(() => {
     if (!api) {
       return
@@ -29,29 +37,11 @@ export default function RecommendSection() {
     })
   }, [api]);
 
-  const handleDotClick = (index: any) => {
+  const handleDotClick = useCallback((index: any) => {
     if (api) {
       api.scrollTo(index);
     }
-  };
-
-  const createDummyUser = () => {
-    return {
-      id: faker.string.nanoid(10),
-      nickname: faker.internet.userName(),
-      age: faker.number.int({ min: 20, max: 50 }),
-      distance: faker.number.int({ min: 5, max: 100 }),
-      area: faker.location.city(),
-      image: [
-        faker.image.urlLoremFlickr({ category: 'cat' }),
-        faker.image.urlLoremFlickr({ category: 'cat' }),
-        faker.image.urlLoremFlickr({ category: 'cat' }),
-      ],
-      mbti: faker.helpers.arrayElement([{mbti: 'ESFP', score: 100}, {mbti: 'ESFP', score: 90}, {mbti: 'ESFP', score: 80}])
-    }
-  }
-  const users = faker.helpers.multiple(createDummyUser, { count: 5 });
-
+  }, [api]);
   const onClickPass = useCallback(() => () => {
     if (userNumber === users.length) return;
     setUserNumber(prev => prev + 1);
@@ -70,7 +60,7 @@ export default function RecommendSection() {
     <div className='p-2 flex flex-col pt-0 sm:pt-[44px] h-full'>
       <Card className='w-full p-2 relative flex-grow max-h-[711px]'>
         <div className="w-full flex justify-center gap-1 absolute top-10 z-20">
-          {users[userNumber].image.map((_, index) => (
+          {users[userNumber].Images.map((_: IUserImage, index: number) => (
             <button
               key={index}
               className={`w-3 h-3 rounded-full ${current === index + 1 ? 'bg-black' : 'bg-slate-50'}`}
@@ -80,13 +70,13 @@ export default function RecommendSection() {
         </div>
         <Carousel opts={{loop: true, dragThreshold: 5 }} setApi={setApi} className={style.carousel}>
           <CarouselContent>
-            {users[userNumber].image.map((img, index) => (
+            {users[userNumber].Images.map((img: IUserImage, index: number) => (
               <CarouselItem key={index} onClickCapture={onClick} className='aaa'>
                 {/* <ImageWithPlaceholder src={`${img}`} /> */}
                 <div className='relative h-full'>
                   {/* <Skeleton className='w-full h-full absolute top-0 left-0' /> */}
                   {/* <img className='w-full h-full block rounded-lg absolute top-0 left-0 z-10' src={img} alt='image' /> */}
-                  <ImageWithPlaceholder src={img} />
+                  <ImageWithPlaceholder src={img.link} />
                 </div>
               </CarouselItem>
             ))}
