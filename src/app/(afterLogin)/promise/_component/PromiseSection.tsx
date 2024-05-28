@@ -8,7 +8,7 @@ import PromiseCard from './PromiseCard';
 
 export default function PromiseSection() {
   const { data } = useQuery({
-    queryKey: ['users', 'promise', 'all'],
+    queryKey: ['promise', 'all'],
     queryFn: getPromiseAll,
     staleTime: 60 * 1000,
     gcTime: 60 * 5 * 1000,

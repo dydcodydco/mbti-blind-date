@@ -1,7 +1,7 @@
 export const getPromiseAll = async () => {
   const res = await fetch(`http://localhost:9090/api/promiseAll`, {
     next: {
-      tags: ['users', 'promise', 'all']
+      tags: ['promise', 'all']
     },
     cache: 'no-store',
   });

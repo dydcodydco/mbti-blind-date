@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import LogoutButton from '../_component/LogoutButton';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 
 interface IMbtiCompatibility {
   [key: string]: {
@@ -59,16 +60,18 @@ export default async function ProfilePage() {
   return (
     <div className='p-2'>
       <MainTitle>프로필</MainTitle>
-      <div className='flex justify-center items-center gap-2 mt-10 mb-10'>
-        <Avatar className='w-[70px] h-[70px]'>
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>{user.nickname.slice(0, 2)}</AvatarFallback>
-        </Avatar>
-        <div>
-          <h2 className='font-semibold text-lg'>{user.nickname}</h2>
-          <p className='text-sm'>{user.mbti.mbti}</p>
+      <Link href={`/${user.id}`}>
+        <div className='flex justify-center items-center gap-2 mt-10 mb-10'>
+          <Avatar className='w-[70px] h-[70px]'>
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>{user.nickname.slice(0, 2)}</AvatarFallback>
+          </Avatar>
+          <div>
+            <h2 className='font-semibold text-lg'>{user.nickname}</h2>
+            <p className='text-sm'>{user.mbti.mbti}</p>
+          </div>
         </div>
-      </div>
+      </Link>
       
       <Button className='w-full mb-10'>프로필 수정</Button>
       <LogoutButton />
