@@ -1648,7 +1648,7 @@ export const handlers = [
       },
     ])
   }),
-  http.get('/api/user/:userId/promise', ({request, params}) => {
+  http.get('/api/promise/:userId', ({request, params}) => {
     console.log('특정 유저의 약속글');
     const { userId } = params;
     return HttpResponse.json([
@@ -2022,7 +2022,7 @@ export const handlers = [
       },
     ]);
   }),
-  http.get('/api/userRadomRecommends', () => {
+  http.get('/api/userRandomRecommends', () => {
     console.log('랜덤 유저 추천');
     // faker.seed(123);
     return HttpResponse.json([
