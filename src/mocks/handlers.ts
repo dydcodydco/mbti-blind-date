@@ -323,5 +323,771 @@ export const handlers = [
         createdAt: faker.date.anytime(),
       },
     ]);
+  }),
+  http.get('/api/iLikeUsers', async () => {
+    // faker.seed(123);
+    return HttpResponse.json([
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+    ]);
+  }),
+  http.get('/api/usersLikeMe', async () => {
+    // faker.seed(123);
+    return HttpResponse.json([
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName(),
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+    ]);
+  }),
+  http.get('/api/search:tag', ({ request, params }) => {
+    const {tag} = params;
+    // faker.seed(123);
+    return HttpResponse.json([
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName() + `검색결과 ${tag}`,
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName() + `검색결과 ${tag}`,
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName() + `검색결과 ${tag}`,
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName() + `검색결과 ${tag}`,
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName() + `검색결과 ${tag}`,
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName() + `검색결과 ${tag}`,
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName() + `검색결과 ${tag}`,
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName() + `검색결과 ${tag}`,
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName() + `검색결과 ${tag}`,
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+      {
+        id: faker.string.nanoid(10),
+        nickname: faker.internet.userName() + `검색결과 ${tag}`,
+        age: faker.number.int({ min: 20, max: 50 }),
+        tall: faker.number.int({ min: 150, max: 165 }),
+        distance: faker.number.int({ min: 5, max: 100 }),
+        area: faker.location.city(),
+        Images: [
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
+          },
+        ],
+        mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+        school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
+        createdAt: faker.date.anytime(),
+      },
+    ]);
   })
 ];
