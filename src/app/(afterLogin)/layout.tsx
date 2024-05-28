@@ -4,7 +4,7 @@ import LeftNav from '../_component/LeftNav';
 import BottomNav from '../_component/BottomNav';
 import TopNav from '../_component/TopNav';
 import MbtiRecommendSection from './_component/MbtiRecommendSection';
-import FriendRecommendSection from './_component/FriendRecommendSection';
+import UserRecommendSection from './_component/UserRecommendSection';
 import { auth } from '@/auth';
 import RQProvider from '@/app/(afterLogin)/_component/RQProvider';
 import SearchForm from '@/app/(afterLogin)/_component/SearchForm';
@@ -32,8 +32,8 @@ export default async function Layout({ children, modal }: { children: ReactNode,
                 <h3 className='font-extrabold mb-3 mt-3'>궁합 좋은 MBTI</h3>
                 <MbtiRecommendSection />
                 {session?.user && <>
-                  <h3 className='font-extrabold mb-3 mt-8'>친구 추천</h3>
-                  <FriendRecommendSection />
+                  <h3 className='font-extrabold mb-3 mt-8'>이분들 어떠세요?</h3>
+                  <UserRecommendSection />
                 </>}
               </div>
             </section>
