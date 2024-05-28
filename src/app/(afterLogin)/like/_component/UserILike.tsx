@@ -14,7 +14,7 @@ export default function UserILike() {
   })
 
   return (
-    <div>
+    <div className='flex flex-col gap-2'>
       {data?.map((user: IUser) => (
         <LikeCard key={user.id} user={user} />
       ))}

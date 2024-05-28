@@ -834,8 +834,9 @@ export const handlers = [
       },
     ]);
   }),
-  http.get('/api/search:tag', ({ request, params }) => {
-    const {tag} = params;
+  http.get('/api/search/:tag', ({ request, params }) => {
+    const { tag } = params;
+    console.log('검색', tag);
     // faker.seed(123);
     return HttpResponse.json([
       {

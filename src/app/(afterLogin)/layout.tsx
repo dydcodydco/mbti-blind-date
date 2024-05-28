@@ -7,6 +7,7 @@ import MbtiRecommendSection from './_component/MbtiRecommendSection';
 import FriendRecommendSection from './_component/FriendRecommendSection';
 import { auth } from '@/auth';
 import RQProvider from '@/app/(afterLogin)/_component/RQProvider';
+import SearchForm from '@/app/(afterLogin)/_component/SearchForm';
 
 export default async function Layout({ children, modal }: { children: ReactNode, modal: ReactNode }) {
   const session = await auth();
@@ -26,8 +27,9 @@ export default async function Layout({ children, modal }: { children: ReactNode,
           <div className={style.rightSectionInner}>
             <main className={style.main}>{children}</main>
             <section className={style.rightSection}>
-              <div>
-                <h3 className='font-extrabold mb-3 mt-12'>궁합 좋은 MBTI</h3>
+              <div className='mt-12'>
+                <SearchForm />
+                <h3 className='font-extrabold mb-3 mt-3'>궁합 좋은 MBTI</h3>
                 <MbtiRecommendSection />
                 {session?.user && <>
                   <h3 className='font-extrabold mb-3 mt-8'>친구 추천</h3>

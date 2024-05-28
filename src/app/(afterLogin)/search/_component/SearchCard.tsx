@@ -7,7 +7,7 @@ type Props = {
   user: IUser
 }
 
-export default function LikeCard({ user }: Props) {
+export default function SearchCard({ user }: Props) {
   return (
     <Card key={user.id}>
       <Link href={`/${user.id}`} className='flex items-center p-3'>
