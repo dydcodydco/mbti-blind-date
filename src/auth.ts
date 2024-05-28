@@ -15,28 +15,32 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: {},
       },
       authorize: async (credentials) => {
-        console.log(credentials, '-------------------credentials');
-        const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(credentials),
-        })
-        
-        console.log(authResponse.ok, '-----------------------------authResponse.ok');
-        if (!authResponse.ok) {
-          return null;
-        }
+        try {
+          console.log(credentials, '-------------------credentials');
+          const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(credentials),
+          })
+          
+          console.log(authResponse.ok, '-----------------------------authResponse.ok');
+          if (!authResponse.ok) {
+            return null;
+          }
 
-        let user = await authResponse.json();
-        // return user object with the their profile data
-        console.log(user, '--------------------------------'); 
-        return {
-          ...user,
-          email: user.id,
-          name: user.nickname,
-          image: user.image,
+          let user = await authResponse.json();
+          // return user object with the their profile data
+          console.log(user, '--------------------------------'); 
+          return {
+            ...user,
+            email: user.id,
+            name: user.nickname,
+            image: user.image,
+          }
+        } catch (err) {
+          console.error('로그인 에러', err);
         }
       },
     }),
