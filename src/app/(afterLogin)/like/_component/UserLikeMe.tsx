@@ -1,12 +1,12 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 import { getUserLikeMe } from '../_lib/getUserLikeMe';
 import { IUser } from '@/model/User';
 import LikeCard from './LikeCard';
 
 export default function UserLikeMe() {
-  const { data } = useQuery({
+  const { data } = useSuspenseQuery({
     queryKey: ['users', 'likeMe'],
     queryFn: getUserLikeMe,
     staleTime: 60 * 1000,
