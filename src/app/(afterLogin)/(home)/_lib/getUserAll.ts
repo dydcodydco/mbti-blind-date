@@ -1,5 +1,7 @@
-export async function getUserAll() {
-  const res = await fetch(`http://localhost:9090/api/userAll`, {
+type Props = { pageParam?: number };
+
+export async function getUserAll({ pageParam }: Props) {
+  const res = await fetch(`http://localhost:9090/api/userAll?cursor=${pageParam}`, {
     next: {
       tags: ['users', 'all']
     },

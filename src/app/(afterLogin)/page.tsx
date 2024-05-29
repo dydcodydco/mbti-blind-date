@@ -7,7 +7,11 @@ import UserCardList from './(home)/_component/UserCardList';
 
 export default async function HomePage() {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery({ queryKey: ['users', 'all'], queryFn: getUserAll });
+  await queryClient.prefetchInfiniteQuery({
+    queryKey: ['users', 'all'],
+    queryFn: getUserAll,
+    initialPageParam: 0,
+  });
   const dehydratedState = dehydrate(queryClient);
 
   return (

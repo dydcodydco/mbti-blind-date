@@ -1,7 +1,7 @@
 import { IUserImage } from './UserImage';
 
 export interface IUser {
-  id: string;
+  id: number;
   nickname: string;
   age: number;
   tall: number
