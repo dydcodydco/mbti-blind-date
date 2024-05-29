@@ -587,6 +587,10 @@ export const handlers = [
   http.get('/api/users/:userId', async ({request, params}) => {
     // faker.seed(123);
     console.log('특정 유저');
+    // return HttpResponse.json({message: 'no_such_user'}, {
+    //   status: 404,
+    // })
+
     const { userId } = params;
     return HttpResponse.json({
       id: faker.string.nanoid(10),

@@ -14,7 +14,7 @@ export default function UserCardList() {
     // getTime은 staleTime보다 무조건 더 커야한다!!
   });
   return (
-    data.map((user: IUser) => (
+    data?.map((user: IUser) => (
       <UserCard key={user.id} user={user} />
     ))
   )
