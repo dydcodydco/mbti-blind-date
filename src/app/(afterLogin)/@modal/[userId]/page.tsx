@@ -5,19 +5,19 @@ import { getAUser } from './_lib/getAUser';
 import UserDetailContent from './_component/UserDetailContent';
 import { getUserPromise } from './_lib/getUserPromise';
 
-type Props = { params: { userId: string } };
-
 export async function generateMetadata({ params: {userId} }: Props) {
   return {
     title: userId,
   };
 }
 
+type Props = { params: { userId: string } };
+
 export default async function UserPage({ params }: Props) {
   const { userId } = params;
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({queryKey: ['users', userId], queryFn: getAUser});
-  await queryClient.prefetchQuery({queryKey: ['promise', userId], queryFn: getUserPromise});
+  await queryClient.prefetchQuery({queryKey: ['promise', 'users', userId], queryFn: getUserPromise});
   const dehydratedState = dehydrate(queryClient);
 
   return (

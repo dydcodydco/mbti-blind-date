@@ -1,11 +1,11 @@
 import { IPost } from '@/model/Post';
 import { QueryFunction } from '@tanstack/react-query';
 
-export const getUserPromise: QueryFunction<IPost[], [_1: string, userId: string]> = async ({ queryKey }) => {
-  const [_1, userId] = queryKey;
+export const getUserPromise: QueryFunction<IPost[], [_1: string, _2:string, userId: string]> = async ({ queryKey }) => {
+  const [_1, _2, userId] = queryKey;
   const res = await fetch(`http://localhost:9090/api/promise/${userId}`, {
     next: {
-      tags: ['promise', userId]
+      tags: ['promise', 'users', userId]
     },
     cache: 'no-store',
   });

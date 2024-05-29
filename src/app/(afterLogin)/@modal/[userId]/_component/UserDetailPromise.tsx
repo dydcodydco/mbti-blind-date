@@ -6,8 +6,8 @@ import { IPost } from '@/model/Post';
 import PromiseCard from '@/app/(afterLogin)/promise/_component/PromiseCard';
 
 export default function UserDetailPromise({ userId }: { userId: string }) {
-  const { data } = useQuery<IPost[], Object, IPost[], [_1: string, userId: string]>({
-    queryKey: ['promise', userId],
+  const { data } = useQuery<IPost[], Object, IPost[], [_1: string, _2:string, userId: string]>({
+    queryKey: ['promise', 'users', userId],
     queryFn: getUserPromise,
     staleTime: 60 * 1000,
     gcTime: 60 * 5 * 1000,
