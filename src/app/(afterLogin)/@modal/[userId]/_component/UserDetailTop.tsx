@@ -8,7 +8,7 @@ type Props = {
 
 export default function UserDetailTop({ user }: Props) {
   return (
-    <h2 className='font-bold flex justify-between items-center mb-1 sticky top-0 left-0 z-10 bg-white'>
+    <h2 className='font-bold flex justify-between items-center mb-1 sticky top-0 left-0 z-20 bg-white'>
       <div className='flex items-center'>
         <Back />
         {user.nickname}, {user.age}

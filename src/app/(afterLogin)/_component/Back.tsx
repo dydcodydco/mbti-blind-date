@@ -12,7 +12,7 @@ export default function Back() {
     router.back();
   }, [router])
   return (
-    <Button variant="ghost" size="icon" className='justify-start' onClick={onClickClose}>
+    <Button variant="ghost" size="icon" onClick={onClickClose}>
       <X />
     </Button>
   )
