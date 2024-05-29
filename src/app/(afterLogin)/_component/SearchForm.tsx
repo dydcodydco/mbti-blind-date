@@ -23,7 +23,7 @@ export default function SearchForm() {
     router.push(`search?q=${data.search}`);
   }, [reset, router]);
   return (
-    <Card className='mt-[4px]'>
+    <Card>
       <form onSubmit={handleSubmit(onSubmit)} className='flex items-center'>
         <input type='search' className='text-sm px-3 flex-grow h-[38px] rounded-md' placeholder='검색' {...register('search', { required: true })} />
         <Button variant="outline" size="icon" className='flex-shrink-0 basis-auto' disabled={!isValid}>

@@ -5,16 +5,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import style from './nav.module.css';
 import { BookHeart, BookUser, Calendar, CalendarHeart, Heart, MessageCircle, MessageCircleMore, Settings, UserRoundCheck, UserRoundPlus } from 'lucide-react';
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { User } from 'next-auth';
 
-export default function LeftNavMenu() {
+export default function LeftNav({session}: {session: User | undefined}) {
   const segment = useSelectedLayoutSegment();
-  const { data: session } = useSession();
 
   return (
     <nav className={style.lefNav}>
       <div>
-        <Link href={`${session?.user ? '/' : '/login'}`} className={style.lefNavLink}>
+        <Link href={`${session ? '/' : '/login'}`} className={style.lefNavLink}>
           <span className="hidden lg:block font-bold text-xl">MBTI<span className='text-sm'>가 어떻게 되세요?</span></span>
           <span className="md:block lg:hidden font-extrabold text-center">What is your MBTI</span>
         </Link>
@@ -26,7 +25,7 @@ export default function LeftNavMenu() {
           <span className='hidden lg:inline-block'>홈</span>
         </Link>
         
-        {session?.user && <>
+        {session && <>
           <Link href="/recommend" className={style.lefNavLink}>
             {segment === 'recommend' ? <BookHeart className='lg:mr-2' /> : <BookUser className='lg:mr-2' />}
             <span className='hidden lg:inline-block'>추천</span>
@@ -49,11 +48,11 @@ export default function LeftNavMenu() {
         </>}
         
       
-        {session?.user ? (
+        {session ? (
           <Link href="/profile" className={style.lefNavLink}>
             <Avatar className='w-[25px] h-[25px] lg:mr-2'>
               <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>{session?.user.name?.slice(0, 2)}</AvatarFallback>
+              <AvatarFallback>{session?.name?.slice(0, 2)}</AvatarFallback>
             </Avatar>
             <span className='hidden lg:inline-block'>프로필</span>
           </Link>
@@ -71,7 +70,7 @@ export default function LeftNavMenu() {
         )}
       </div>
 
-      {session?.user && <Link href="/setting" className={style.lefNavLink}>
+      {session && <Link href="/setting" className={style.lefNavLink}>
         <Settings className='lg:mr-2' fill={segment === 'setting' ? '#000' : '#fff'} />
         <span className='hidden lg:inline-block'>세팅</span>
       </Link>}

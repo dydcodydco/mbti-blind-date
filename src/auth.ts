@@ -16,14 +16,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
       authorize: async (credentials) => {
         try {
-          console.log(credentials, '-------------------credentials');
-          const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(credentials),
-          })
+          const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, 
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(credentials),
+            }
+          );
           
           console.log(authResponse.ok, '-----------------------------authResponse.ok');
           if (!authResponse.ok) {

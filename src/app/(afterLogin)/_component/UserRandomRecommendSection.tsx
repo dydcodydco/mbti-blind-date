@@ -6,21 +6,20 @@ import { Card } from '@/components/ui/card';
 import { useQuery } from '@tanstack/react-query';
 import { IUser } from '@/model/User';
 import { getUserRandomRecommends } from '@/app/(afterLogin)/_lib/getUserRandomRecommends';
-import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { User } from 'next-auth';
 
-export default function UserRandomRecommendSection() {
-  const { data: session } = useSession();
+export default function UserRandomRecommendSection({session}: {session: User}) {
   const { data } = useQuery<IUser[]>({
     queryKey: ['users', 'random', 'recommends'],
     queryFn: getUserRandomRecommends,
     staleTime: 60 * 1000,
     gcTime: 60 * 5 * 1000,
-    enabled: !!session?.user,
-  })
+    enabled: !!session,
+  });
 
   return (
-    session?.user ? (
+    session ? (
       <div className='flex flex-col gap-2 px-1'>
         {data?.map((user: IUser) => (
           <Card key={user.id}>

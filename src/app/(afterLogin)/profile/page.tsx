@@ -74,7 +74,7 @@ export default async function ProfilePage() {
       </Link>
       
       <Button className='w-full mb-10'>프로필 수정</Button>
-      <LogoutButton />
+      <LogoutButton session={session?.user} />
       
       <div className='lg:hidden mt-10'>
         <h2>MBTI 리스트</h2>

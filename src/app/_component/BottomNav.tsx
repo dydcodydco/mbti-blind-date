@@ -5,11 +5,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import style from './nav.module.css';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import { BookHeart, BookUser, Calendar, CalendarHeart, Heart, MessageCircle, MessageCircleMore, WalletCards } from 'lucide-react';
-import { useSession } from 'next-auth/react';
+import { User } from 'next-auth';
 
-export default function BottomNav() {
+export default function BottomNav({session}: {session: User | undefined}) {
   const segment = useSelectedLayoutSegment();
-  const { data: session } = useSession();
+  
   return (
     <nav className={style.bottomNav}>
       <Link href="/" className="flex items-center justify-end flex-col">
@@ -19,7 +19,7 @@ export default function BottomNav() {
         <span className='text-[9px] mt-[2px]'>홈</span>
       </Link>
       
-      {session?.user && (
+      {session && (
         <>
           <Link href="/recommend" className="flex items-center justify-end flex-col">
             {segment === 'recommend' ? <BookHeart /> : <BookUser />}
