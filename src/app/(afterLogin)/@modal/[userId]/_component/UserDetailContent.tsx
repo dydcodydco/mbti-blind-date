@@ -4,7 +4,7 @@ import { UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import UserDetailTop from './UserDetailTop';
 import { useQuery } from '@tanstack/react-query';
-import { getAUser } from '../_lib/getAUser';
+import { getSingleUser } from '../_lib/getSingleUser';
 import { IUser } from '@/model/User';
 import UserDetailPromise from './UserDetailPromise';
 import UserInfo from './UserInfo';
@@ -17,7 +17,7 @@ type Props = {
 export default function UserDetailContent({userId}: {userId: string}) {
   const { data: user, error, isLoading } = useQuery<IUser, Object, IUser, [_1: string, userId: string]>({
     queryKey: ['users', userId],
-    queryFn: getAUser,
+    queryFn: getSingleUser,
     staleTime: 60 * 1000,
     gcTime: 60 * 5 * 1000,
   })
