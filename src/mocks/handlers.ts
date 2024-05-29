@@ -1939,6 +1939,10 @@ export const handlers = [
           {
             link: faker.image.urlLoremFlickr({ category: 'cat' }),
             imageId: faker.string.nanoid(10),
+          },
+          {
+            link: faker.image.urlLoremFlickr({ category: 'cat' }),
+            imageId: faker.string.nanoid(10),
           }
         ],
         mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
@@ -1953,14 +1957,6 @@ export const handlers = [
         distance: faker.number.int({ min: 5, max: 100 }),
         area: faker.location.city(),
         Images: [
-          {
-            link: faker.image.urlLoremFlickr({ category: 'cat' }),
-            imageId: faker.string.nanoid(10),
-          },
-          {
-            link: faker.image.urlLoremFlickr({ category: 'cat' }),
-            imageId: faker.string.nanoid(10),
-          },
           {
             link: faker.image.urlLoremFlickr({ category: 'cat' }),
             imageId: faker.string.nanoid(10),

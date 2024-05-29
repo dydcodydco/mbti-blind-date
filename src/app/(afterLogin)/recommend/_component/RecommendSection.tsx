@@ -29,9 +29,7 @@ export default function RecommendSection() {
     if (!api) {
       return
     }
- 
     setCurrent(api.selectedScrollSnap() + 1);
- 
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     })
@@ -42,11 +40,13 @@ export default function RecommendSection() {
       api.scrollTo(index);
     }
   }, [api]);
+  
   const onClickPass = useCallback(() => () => {
     if (userNumber === users.length) return;
     setUserNumber(prev => prev + 1);
     api?.scrollTo(0, true);
   }, [api, userNumber, users]);
+
   const onClickNext = useCallback(() => () => {
     if (userNumber === users.length) return;
     setUserNumber(prev => prev + 1);
@@ -60,7 +60,7 @@ export default function RecommendSection() {
     <div className='p-2 flex flex-col pt-0 sm:pt-[44px] h-full'>
       <Card className='w-full p-2 relative flex-grow max-h-[711px]'>
         <div className="w-full flex justify-center gap-1 absolute top-10 z-20">
-          {users[userNumber].Images.map((_: IUserImage, index: number) => (
+          {users[userNumber].Images.length > 1 && users[userNumber].Images.map((_: IUserImage, index: number) => (
             <button
               key={index}
               className={`w-3 h-3 rounded-full ${current === index + 1 ? 'bg-black' : 'bg-slate-50'}`}
@@ -81,8 +81,10 @@ export default function RecommendSection() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className='left-[15px] hidden sm:flex z-20' />
-          <CarouselNext className='right-[15px] hidden sm:flex z-20' />
+          {users[userNumber].Images.length > 1 && <>
+            <CarouselPrevious className='left-[15px] hidden sm:flex z-20' />
+            <CarouselNext className='right-[15px] hidden sm:flex z-20' />
+          </>}
         </Carousel>
         <div className={style.userInfo} onClickCapture={onClick}>
           <h2 className='text-white font-extrabold text-xl'>{users[userNumber].mbti.mbti}, 궁합 {users[userNumber].mbti.score}%</h2>
