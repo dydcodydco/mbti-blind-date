@@ -145,8 +145,7 @@ const SignupPage = () => {
             )}
           />
 
-          {form.formState.errors.root && form.formState.errors.root.serverError.type === '403'
-            && <p className='text-red-500'>{form.formState.errors.root.serverError.message}</p>}
+          {form.formState.errors.root && <p className='text-red-500'>{form.formState.errors.root.serverError.message}</p>}
           <Button type="submit">회원가입</Button>
         </form>
       </Form>

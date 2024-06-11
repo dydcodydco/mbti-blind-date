@@ -22,7 +22,7 @@ export default function UserCardList() {
     gcTime: 60 * 1000 * 5, // 캐시타임, 기본 5분
     // getTime은 staleTime보다 무조건 더 커야한다!!
     initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.at(-1)?.id,
+    getNextPageParam: (lastPage) => (lastPage as any).at(-1)?.id,
   });
 
   const { ref, inView } = useInView({

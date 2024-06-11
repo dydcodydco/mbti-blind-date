@@ -8,6 +8,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: '/login',
     newUser: '/signup',
   },
+  debug: true, // 디버그 모드 활성화
   providers: [
     Credentials({
       // You can specify which fields should be submitted, by adding keys to the `credentials` object.
@@ -19,7 +20,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       authorize: async (credentials) => {
         try {
           // 백엔드서버로 요청보낼 때 토큰을 쿠키에 넣어서 보내주고 있다.
-          const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, 
+          const authResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/login`, 
             {
               method: 'POST',
               headers: {
