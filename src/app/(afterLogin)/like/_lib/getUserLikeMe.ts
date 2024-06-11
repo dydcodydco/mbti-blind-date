@@ -1,5 +1,5 @@
 export async function getUserLikeMe() {
-  const res = await fetch(`http://localhost:9090/api/usersLikeMe`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/usersLikeMe`, {
     next: {
       tags: ['users', 'likeMe']
     },

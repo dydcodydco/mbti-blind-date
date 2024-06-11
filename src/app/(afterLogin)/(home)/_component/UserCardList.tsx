@@ -1,6 +1,6 @@
 'use client';
 
-import { InfiniteData, useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { InfiniteData, useInfiniteQuery, useQuery, useSuspenseInfiniteQuery } from '@tanstack/react-query';
 import { getUserAll } from '../_lib/getUserAll';
 import UserCard from '@/app/(afterLogin)/_component/UserCard';
 import { IUser } from '@/model/User';
@@ -15,7 +15,7 @@ export default function UserCardList() {
     isFetching,
     isPending,
     isLoading,
-  } = useInfiniteQuery<IUser[], Object, InfiniteData<IUser[]>, [_1: string, _2: string], number>({
+  } = useSuspenseInfiniteQuery<IUser[], Object, InfiniteData<IUser[]>, [_1: string, _2: string], number>({
     queryKey: ['users', 'all'],
     queryFn: getUserAll,
     staleTime: 60 * 1000, // fresh -> stale, 5분 기준,
