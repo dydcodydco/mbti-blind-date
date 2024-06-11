@@ -22,7 +22,7 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
 const FormSchema = z.object({
-  id: z.string().min(2, {
+  email: z.string().min(2, {
     message: "id must be at least 2 characters.",
   }),
   password: z.string().min(2, {
@@ -41,7 +41,7 @@ const SignupPage = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      id: "",
+      email: "",
       password: '',
       passwordCheck: '',
     },
@@ -53,23 +53,29 @@ const SignupPage = () => {
       console.log('------------------SignupPage signup response --------------------------------');
       console.log(data);
       form.reset();
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/signup`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
-        credentials: 'include',
+        // credentials: 'include',
       });
       console.log(response, '------------------SignupPage signup response');
       if (!response.ok) {
-        form.setError('root.serverError',
-          { type: `${response.status}`, message: '회원가입 중 에러 발생' })
+        if (response.status === 500) {
+          form.setError('root.serverError',
+            { type: `${response.status}`, message: '회원가입 중 에러 발생' });
+        } else {
+          const responseJson = await response.json();
+          form.setError('root.serverError',
+            { type: `${response.status}`, message: responseJson.message ?? '회원가입 중 에러 발생' });
+        }
         return;
       }
 
       await signIn("credentials", {
-        id: data.id,
+        id: data.email,
         password: data.password,
         redirect: false,
       });
@@ -90,12 +96,12 @@ const SignupPage = () => {
         <form onSubmit={form.handleSubmit(onSignupSubmit)} className={style.signupForm}>
           <FormField
             control={form.control}
-            name="id"
+            name="email"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>id</FormLabel>
                 <FormControl>
-                  <Input placeholder="id" {...field} />
+                  <Input placeholder="email" {...field} />
                 </FormControl>
                 {/* <FormDescription>
                   This is your public display phone number.
