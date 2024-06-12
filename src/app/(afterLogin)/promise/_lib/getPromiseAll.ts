@@ -1,7 +1,7 @@
 export const getPromiseAll = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/promiseAll`, {
     next: {
-      tags: ['promise', 'all']
+      tags: ['posts', 'all']
     },
     cache: 'no-store',
   });

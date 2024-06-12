@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery({ queryKey: ['promise', 'all'], queryFn: getPromiseAll });
+  await queryClient.prefetchQuery({ queryKey: ['posts', 'all'], queryFn: getPromiseAll });
   const dehydratedState = dehydrate(queryClient);
   return (
     <HydrationBoundary state={dehydratedState}>
