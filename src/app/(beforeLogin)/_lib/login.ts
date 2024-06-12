@@ -27,15 +27,16 @@ const login = async (prevState: any, formData: FormData) => {
     // if (response.status === 403) {
     //   return { message: 'user_no_exists' };
     // }
-    console.log(formData.get("password"), '---------------------------------------data.password')
+    console.log(formData.get("password"), '---------------------------------------data.password');
     const response = await signIn("credentials", {
       email: formData.get("email"),
-      password: 'zzim',
+      password: formData.get("password"),
       redirect: false,
     });
     console.log(response, '------------login page response');
-    // shouldRedirect = true;
+    shouldRedirect = true;
   } catch (err) {
+    console.log('---------------login page error')
     return { message: 'user_no_exists' };
   }
 

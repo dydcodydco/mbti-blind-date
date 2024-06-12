@@ -64,10 +64,10 @@ export default async function ProfilePage() {
         <div className='flex justify-center items-center gap-2 mt-10 mb-10'>
           <Avatar className='w-[70px] h-[70px]'>
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>{user.nickname.slice(0, 2)}</AvatarFallback>
+            <AvatarFallback>{(session?.user.name || session?.user.email as string).slice(0, 2)}</AvatarFallback>
           </Avatar>
           <div>
-            <h2 className='font-semibold text-lg'>{user.nickname}</h2>
+            <h2 className='font-semibold text-lg'>{session?.user.name || session?.user.email}</h2>
             <p className='text-sm'>{user.mbti.mbti}</p>
           </div>
         </div>
