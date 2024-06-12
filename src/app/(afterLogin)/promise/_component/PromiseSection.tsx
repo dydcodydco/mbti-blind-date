@@ -13,6 +13,7 @@ export default function PromiseSection() {
     staleTime: 60 * 1000,
     gcTime: 60 * 5 * 1000,
   })
+  console.log(data, '------------------PromiseSection')
   return (
     data?.map((promise: IPost) => (
       <PromiseCard key={promise.id} promise={promise} />

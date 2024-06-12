@@ -73,7 +73,7 @@ export default function PromiseFormModal() {
       console.error('게시물 업로드 중 에러 발생', error);
     },
     onSettled() {
-      // router.back();
+      router.back();
     }
   })
   
