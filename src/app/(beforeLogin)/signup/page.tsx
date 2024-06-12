@@ -23,7 +23,7 @@ import { useRouter } from 'next/navigation'
 
 const FormSchema = z.object({
   email: z.string().min(2, {
-    message: "id must be at least 2 characters.",
+    message: "email must be at least 2 characters.",
   }),
   password: z.string().min(2, {
     message: "Password must be at least 2 characters.",
@@ -75,7 +75,7 @@ const SignupPage = () => {
       }
 
       await signIn("credentials", {
-        id: data.email,
+        email: data.email,
         password: data.password,
         redirect: false,
       });
@@ -99,7 +99,7 @@ const SignupPage = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>id</FormLabel>
+                <FormLabel>email</FormLabel>
                 <FormControl>
                   <Input placeholder="email" {...field} />
                 </FormControl>

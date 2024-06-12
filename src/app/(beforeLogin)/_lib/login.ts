@@ -6,10 +6,10 @@ import { signIn } from '@/auth';
 
 const login = async (prevState: any, formData: FormData) => {
   // 'use server';
-  console.log(formData.get('id'));
+  console.log(formData.get('email'));
   
-  if (!formData.get('id') || !(formData.get('id') as string)?.trim()) {
-    return {message: 'no_id'};
+  if (!formData.get('email') || !(formData.get('email') as string)?.trim()) {
+    return {message: 'no_email'};
   }
   if (!formData.get('password') || !(formData.get('password') as string)?.trim()) {
     return {message: 'no_password'};
@@ -27,13 +27,14 @@ const login = async (prevState: any, formData: FormData) => {
     // if (response.status === 403) {
     //   return { message: 'user_no_exists' };
     // }
+    console.log(formData.get("password"), '---------------------------------------data.password')
     const response = await signIn("credentials", {
-      id: formData.get("id"),
-      password: formData.get("password"),
+      email: formData.get("email"),
+      password: 'zzim',
       redirect: false,
     });
-    
-    shouldRedirect = true;
+    console.log(response, '------------login page response');
+    // shouldRedirect = true;
   } catch (err) {
     return { message: 'user_no_exists' };
   }
