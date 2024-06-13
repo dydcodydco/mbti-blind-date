@@ -6,9 +6,10 @@ import { IPost } from '@/model/Post';
 import PromiseCard from './PromiseCard';
 import { useInView } from 'react-intersection-observer';
 import { Fragment, useEffect } from 'react';
+import { Session } from 'next-auth';
 
 
-export default function PromiseSection() {
+export default function PromiseSection({session}: {session: Session}) {
   const {
     data,
     fetchNextPage,
@@ -42,10 +43,10 @@ export default function PromiseSection() {
     <>
       {data?.pages.map((page, i) => (
         <Fragment key={i}>
-          {page.map((post: IPost) => <PromiseCard key={post.id} post={post} />)}
+          {page.map((post: IPost) => <PromiseCard key={post.id} post={post} session={session} />)}
         </Fragment>
       ))}
-      <div ref={ref} style={{height: 50}}></div>
+      {hasNextPage && <div ref={ref} style={{ height: 50 }}></div>}
     </>
   )
 }

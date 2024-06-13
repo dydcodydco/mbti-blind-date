@@ -1,3 +1,5 @@
+'use client';
+
 import { IPost } from '@/model/Post';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -13,16 +15,20 @@ import { InfiniteData, useMutation, useQueryClient } from '@tanstack/react-query
 import { useSession } from 'next-auth/react';
 import { produce } from 'immer';
 import { MouseEventHandler, useCallback } from 'react';
+import { Session } from 'next-auth';
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
 
-export default function PromiseCard({ post }: { post: IPost }) {
-  const queryClient = useQueryClient();
-  const { data: session } = useSession();
+type Props = { post: IPost, session: Session };
 
-  console.log(post.Likers, '--------------------------post.Likers');
-  const liked = !!post.Likers?.find(d => d?.email === session?.user?.email);
-  console.log(liked, post.id, '--------------------------liked');
+export default function PromiseCard({ post, session }: Props) {
+  const queryClient = useQueryClient();
+  // const { data: clientSession } = useSession();
+
+  console.log(session, '-----------------------------PromiseCard session')
+  const liked = !!post.Likers?.find(d => {
+    return d?.email === session?.user?.email;
+  });
   const { id: postId } = post;
 
   const like = useMutation({
