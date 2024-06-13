@@ -10,6 +10,7 @@
     "mock": "npx tsx watch ./src/mocks/http.ts"
   },
   "dependencies": {
+    "@auth/core": "^0.32.0",
     "@faker-js/faker": "^8.4.1",
     "@hookform/resolvers": "^3.4.0",
     "@plaiceholder/next": "^3.0.0",
@@ -28,7 +29,7 @@
     "immer": "^10.1.1",
     "lucide-react": "^0.378.0",
     "next": "14.2.3",
-    "next-auth": "^5.0.0-beta.18",
+    "next-auth": "^5.0.0-beta.19",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.51.4",
