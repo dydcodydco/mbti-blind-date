@@ -61,6 +61,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             email: user.email,
             name: user.nickname,
             image: user.image,
+            id: user.id,
           }
         } catch (err) {
           console.error('로그인 에러', err);

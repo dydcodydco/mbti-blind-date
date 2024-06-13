@@ -7,4 +7,6 @@ export interface IPost {
   createdAt: Date;
   Images: IPostImage[];
   User: IUser;
+  UserId: string;
+  Likers?: any[];
 }

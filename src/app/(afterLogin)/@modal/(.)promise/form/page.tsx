@@ -64,6 +64,7 @@ export default function PromiseFormModal() {
             const shallow = produce(value, draft => {
               draft.pages[0].unshift(newPost);
             })
+            console.log(shallow, '----------------------------shallow');
             queryClient.setQueryData(queryKey, shallow);
           }
         }

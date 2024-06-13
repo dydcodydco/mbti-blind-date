@@ -10,7 +10,7 @@ import {
 import { IPost } from '@/model/Post'
 import { EllipsisVertical } from 'lucide-react'
 
-export default function PromiseCardDropdown({promise}: {promise: IPost}) {
+export default function PromiseCardDropdown({post}: {post: IPost}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

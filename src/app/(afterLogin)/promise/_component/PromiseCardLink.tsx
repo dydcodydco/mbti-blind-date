@@ -3,18 +3,18 @@ import { IPost } from '@/model/Post'
 import Link from 'next/link'
 
 type Props = {
-  promise: IPost
+  post: IPost
 }
 
-export default function PromiseCardLink({ promise }: Props) {
+export default function PromiseCardLink({ post }: Props) {
   return (
-    <Link href={`/${promise.User.id}`} className='flex items-center'>
+    <Link href={`/${post?.UserId}`} className='flex items-center'>
       <Avatar>
         <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>{promise.User.nickname.slice(0, 2)}</AvatarFallback>
+        <AvatarFallback>{post?.User?.nickname.slice(0, 2)}</AvatarFallback>
       </Avatar>
       <div className='ml-2 flex flex-col justify-center'>
-        <h3 className='font-semibold text-white'>{promise.User.nickname}, {promise.User.age}</h3>
+        <h3 className='font-semibold text-white'>{post?.User?.nickname || '테스트'}, {post?.User?.age || 30}</h3>
       </div>
     </Link>
   )
