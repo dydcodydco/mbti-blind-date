@@ -11,4 +11,5 @@ export interface IUser {
   mbti: {[key: string]: string | number};
   school: string;
   createdAt: Date;
+  email: number | string;
 }

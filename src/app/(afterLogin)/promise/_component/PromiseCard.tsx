@@ -25,7 +25,7 @@ export default function PromiseCard({ post, session }: Props) {
   const queryClient = useQueryClient();
   // const { data: clientSession } = useSession();
 
-  console.log(session, '-----------------------------PromiseCard session')
+  console.log(session, '-----------------------------PromiseCard session');
   const liked = !!post.Likers?.find(d => {
     return d?.email === session?.user?.email;
   });
@@ -202,11 +202,11 @@ export default function PromiseCard({ post, session }: Props) {
             <MapPin color='#ffffff' className='mr-1' />
               {post.User?.area || '서울'} · {dayjs(post.createdAt).fromNow()}
           </span>
-          <Button variant={'outline'} className='flex w-full mt-1' onClick={onClickLike}>
+          {post?.User?.email !== session?.user?.email && <Button variant={'outline'} className='flex w-full mt-1' onClick={onClickLike}>
             {!liked
               ? <><span className='mr-2'>궁금해요</span><HandMetal /></>
               : <><span className='mr-2'>안궁금해요</span><SquareX /></>}
-          </Button>
+          </Button>}
         </div>
       </div>
     </Card>
