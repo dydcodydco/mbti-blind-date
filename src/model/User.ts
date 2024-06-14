@@ -8,7 +8,8 @@ export interface IUser {
   distance: number
   area: string;
   Images: IUserImage[];
-  mbti: {[key: string]: string | number};
+  mbti: string;
+  region: string;
   school: string;
   createdAt: Date;
   email: number | string;

@@ -6,9 +6,27 @@ import { useForm } from 'react-hook-form';
 import { useCallback, useContext } from 'react';
 import { setUserContext } from './SetUserProvider2';
 import Link from 'next/link';
+import { calculateAge } from '../_lib/getAgeByBirthday';
+import { updateSession } from '@/app/(beforeLogin)/_lib/updateSession';
 
 export default function MbtiSelect({ }) {
-  const { setMbti, setProgress } = useContext(setUserContext);
+  const {
+    setMbti,
+    setProgress,
+    mbti,
+    gender,
+    nickname,
+    region,
+    tall,
+    religion,
+    drink,
+    smoke,
+    school,
+    job,
+    birthdayYear,
+    birthdayMonth,
+    birthdayDay,
+  } = useContext(setUserContext);
   
   const {handleSubmit, register, formState: {errors, isValid}} = useForm({defaultValues: {
     ie: "",
@@ -17,12 +35,44 @@ export default function MbtiSelect({ }) {
     pj: '',
   }});
 
-  const onMbtiSubmit = useCallback((data: any) => {
-    console.log(data);
-    const { ie, sn, ft, pj } = data;
-    setMbti(`${ie}${sn}${ft}${pj}`);
-    setProgress(100);
-  }, [setMbti, setProgress]);
+  const onMbtiSubmit = useCallback(async (data: any) => {
+    try {
+      console.log(data);
+      const { ie, sn, ft, pj } = data;
+      setMbti(`${ie}${sn}${ft}${pj}`);
+      const userSettingObj = {
+        mbti: `${ie}${sn}${ft}${pj}`,
+        gender,
+        nickname,
+        region,
+        tall,
+        religion: religion.ko,
+        drink,
+        smoke,
+        school,
+        job,
+        age: calculateAge(birthdayYear, birthdayMonth, birthdayDay),
+      }
+      console.log(userSettingObj);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/setting`, {
+        method: 'PATCH',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userSettingObj),
+      });
+      console.log(response);
+      if (response.ok) {
+        const sessionUpdateInfo = await response.json();
+        await updateSession(sessionUpdateInfo);
+        setProgress(100);
+      }
+    } catch (error) {
+      console.error(error);
+    } 
+  }, [birthdayDay, birthdayMonth, birthdayYear, drink, gender, job, nickname, region, religion.ko, school, setMbti, setProgress, smoke, tall]);
+
   return (
     <form className={style.mbtiForm} onSubmit={handleSubmit(onMbtiSubmit)}>
       <h1>MBTI를 선택해주세요.</h1>

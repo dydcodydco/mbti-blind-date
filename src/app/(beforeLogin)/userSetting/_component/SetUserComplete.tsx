@@ -11,7 +11,7 @@ export default function SetUserComplete() {
   useEffect(() => {
     timeRef.current = setTimeout(() => {
       router.push('/');
-    }, 3000);
+    }, 800);
 
     return () => {
       if (timeRef.current) {
