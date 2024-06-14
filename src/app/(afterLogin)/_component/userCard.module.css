@@ -1,7 +1,7 @@
 .userCard {
   min-height: 400px;
   height: 400px;
-  @apply rounded-xl relative block;
+  @apply rounded-xl relative block bg-black;
   & > img {
     @apply h-full w-full block;
   }

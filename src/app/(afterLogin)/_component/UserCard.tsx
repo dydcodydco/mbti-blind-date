@@ -12,17 +12,21 @@ type Props = {
   user: IUser
 }
 
-export default function UserCard({user}: Props) {
+export default function UserCard({ user }: Props) {
+  console.log(user);
   return (
     // <UserCardArticle user={user}>
     <Card className={style.userCard}>
       <Link href={`/${user.id}`} scroll={false} className='w-full h-full absolute top-0 left-0'>
         {/* <img src={user.image[0]} className='rounded-xl h-full block w-full' alt="img" /> */}
-        <ImageWithPlaceholder src={`${user.Images[0].link}`} />
+        {/* <ImageWithPlaceholder src={`${user.Images[0].link}`} /> */}
         <div className={style.userInfo}>
-          <h2 className='text-white font-extrabold text-xl'>{user.mbti.mbti}, 궁합 {user.mbti.score}%</h2>
-          <h2 className='text-white font-extrabold text-xl'>{user.nickname}, {user.age}</h2>
-          <p className='text-white font-semibold text-base'>{user.distance}km, {user.area}</p>
+          <h2 className='text-white font-extrabold text-xl'>{user?.mbti}, 궁합 %</h2>
+          <h2 className='text-white font-extrabold text-xl'>{user?.nickname}, {user?.age}</h2>
+          <p className='text-white font-semibold text-base'>
+            {user?.distance}km,
+            {user?.region}
+          </p>
         </div>
       </Link>
       <div className='absolute bottom-3 px-3 w-full'>

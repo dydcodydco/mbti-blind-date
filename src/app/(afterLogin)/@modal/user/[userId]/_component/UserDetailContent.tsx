@@ -14,7 +14,7 @@ type Props = {
   userId: string
 }
 
-export default function UserDetailContent({userId}: {userId: string}) {
+export default function UserDetailContent({userId}: Props) {
   const { data: user, error, isLoading } = useQuery<IUser, Object, IUser, [_1: string, userId: string]>({
     queryKey: ['users', userId],
     queryFn: getSingleUser,
