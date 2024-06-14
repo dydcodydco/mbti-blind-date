@@ -6,6 +6,7 @@ export const updateSession = async (updatedUser: any) => {
     if (!csrfToken) {
       throw new Error('Failed to get CSRF token');
     }
+    console.log(csrfToken, '---------------------------------updateSession csrfToken');
     const response = await fetch('/api/auth/session?update', {
       method: 'POST',
       headers: {
@@ -15,6 +16,7 @@ export const updateSession = async (updatedUser: any) => {
       body: JSON.stringify({ user: updatedUser }),
     });
 
+    console.log(response, '---------------------------------updateSession rseponse');
     if (!response.ok) {
       throw new Error('Failed to update session');
     }

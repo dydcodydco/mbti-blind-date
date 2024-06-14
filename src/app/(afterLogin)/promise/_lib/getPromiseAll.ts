@@ -4,6 +4,7 @@ export const getPromiseAll = async () => {
       tags: ['posts', 'all']
     },
     cache: 'no-store',
+    credentials: 'include',
   });
 
   if (!res.ok) {

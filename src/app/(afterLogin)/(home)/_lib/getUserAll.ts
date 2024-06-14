@@ -6,6 +6,7 @@ export async function getUserAll({ pageParam }: Props) {
       tags: ['users', 'all']
     },
     cache: 'no-store',
+    credentials: 'include',
   });
 
   if (!res.ok) {
