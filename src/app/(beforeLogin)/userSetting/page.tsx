@@ -3,7 +3,7 @@ import SetUser from './_component/SetUser2';
 import SetUserTop from './_component/SetUserTop';
 import style from './userSetting.module.css';
 
-export default function Page () {  
+export default function UserSettingPage () { 
   return (
     <SetUserProvider>
       <div className={style.userSetting}>

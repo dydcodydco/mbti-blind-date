@@ -8,7 +8,7 @@ type Props = {
 
 export default function PromiseCardLink({ post }: Props) {
   return (
-    <Link href={`/${post?.UserId}`} className='flex items-center'>
+    <Link href={`/user/${post?.UserId}`} className='flex items-center'>
       <Avatar>
         <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
         <AvatarFallback>{post?.User?.nickname.slice(0, 2)}</AvatarFallback>

@@ -6,6 +6,7 @@ export const getDummyUser = (): IUser  => {
   // const imageArr = await Promise.allSettled([getBase64(faker.image.urlLoremFlickr({ category: 'cat' })), getBase64(faker.image.urlLoremFlickr({ category: 'cat' })), getBase64(faker.image.urlLoremFlickr({ category: 'cat' }))]) as any;
   // console.log(imageArr[0].value.img.src);
   return {
+    email: faker.internet.email(),
     id: faker.string.nanoid(10),
     nickname: faker.internet.userName(),
     age: faker.number.int({ min: 20, max: 50 }),

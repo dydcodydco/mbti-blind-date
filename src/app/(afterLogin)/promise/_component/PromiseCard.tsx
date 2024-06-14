@@ -19,7 +19,7 @@ import { Session } from 'next-auth';
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
 
-type Props = { post: IPost, session: Session };
+type Props = { post: IPost, session?: Session | null };
 
 export default function PromiseCard({ post, session }: Props) {
   const queryClient = useQueryClient();
@@ -194,7 +194,7 @@ export default function PromiseCard({ post, session }: Props) {
       <div className={style.promiseContent}>
         <div className='flex justify-between'>
           <PromiseCardLink post={post} />
-          <PromiseCardDropdown post={post} />
+          <PromiseCardDropdown post={post} session={session} />
         </div>
         <p className='font-extrabold text-xl text-white text-center'>{post.content}</p>
         <div>

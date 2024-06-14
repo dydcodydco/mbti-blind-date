@@ -8,8 +8,9 @@ import { useInView } from 'react-intersection-observer';
 import { Fragment, useEffect } from 'react';
 import { Session } from 'next-auth';
 
+type Props = { session?: Session | null };
 
-export default function PromiseSection({session}: {session: Session}) {
+export default function PromiseSection({session}: Props) {
   const {
     data,
     fetchNextPage,

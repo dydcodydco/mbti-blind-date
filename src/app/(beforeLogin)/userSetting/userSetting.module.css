@@ -1,5 +1,5 @@
 .userSetting {
-  @apply flex flex-col px-3 h-dvh;
+  @apply flex flex-col px-3 h-dvh pb-3;
 }
 
 .mbtiForm {

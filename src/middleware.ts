@@ -8,7 +8,8 @@ export async function middleware(request: NextRequest) {
   console.log('------------------------middleware');
   console.log('session', session);
   console.log('request.nextUrl.pathname', request.nextUrl.pathname);
-  if (!session && request.nextUrl.pathname !== '/login' && request.nextUrl.pathname !== '/signup') {
+  console.log('--------------------------------------------------------');
+  if (!session && request.nextUrl.pathname !== '/login' && request.nextUrl.pathname !== '/signup' && request.nextUrl.pathname !== '/usersetting') {
     return NextResponse.redirect('http://localhost:3000/login');
   }
 
@@ -22,5 +23,5 @@ export async function middleware(request: NextRequest) {
 
 // 미들웨어를 적용할 라우트
 export const config = {
-  matcher: ['/recommend', '/promise', '/promise/form', '/profile', '/messages', '/like', '/login', '/signup'],
+  matcher: ['/recommend', '/promise', '/promise/form', '/profile', '/messages', '/like', '/login', '/signup', '/usersetting'],
 }

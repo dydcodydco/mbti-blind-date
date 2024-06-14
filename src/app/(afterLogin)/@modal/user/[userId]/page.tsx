@@ -1,6 +1,5 @@
 import Modal from '@/app/(afterLogin)/_component/Modal';
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
-import { IUser } from '@/model/User';
 import { getSingleUser } from './_lib/getSingleUser';
 import UserDetailContent from './_component/UserDetailContent';
 import { getUserPromise } from './_lib/getUserPromise';

@@ -2,6 +2,7 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import PromiseSection from './PromiseSection';
 import { getPromiseAll } from '../_lib/getPromiseAll';
 import { auth } from '@/auth';
+import { Session } from 'next-auth';
 
 export default async function PromiseSectionSuspense() {
   const queryClient = new QueryClient();
@@ -11,7 +12,7 @@ export default async function PromiseSectionSuspense() {
     initialPageParam: 0,
   });
   const dehydratedState = dehydrate(queryClient);
-  const session = await auth();
+  const session: Session | null = await auth();
   return (
     <HydrationBoundary state={dehydratedState}>
       <PromiseSection session={session} />
