@@ -84,7 +84,7 @@ const SignupPage = () => {
       return;
     }
 
-    router.replace('/');
+    router.replace('/usersetting');
 
   }, [form, router]);
 

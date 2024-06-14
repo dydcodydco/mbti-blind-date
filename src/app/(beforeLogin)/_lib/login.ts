@@ -33,15 +33,15 @@ const login = async (prevState: any, formData: FormData) => {
       password: formData.get("password"),
       redirect: false,
     });
-    console.log(response, '------------login page response');
+    console.log(response, '------------------------------------login page response');
     shouldRedirect = true;
   } catch (err) {
-    console.log('---------------login page error')
+    console.log('------------------------------------login page error')
     return { message: 'user_no_exists' };
   }
 
   if (shouldRedirect) {
-    redirect('/'); // redirect는 try catch문에 있으면 안된다.
+    redirect('/usersetting'); // redirect는 try catch문에 있으면 안된다.
   }
 }
 
