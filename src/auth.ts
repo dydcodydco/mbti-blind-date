@@ -2,6 +2,9 @@ import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { cookies } from 'next/headers';
 import cookie from 'cookie';
+import { JWT } from '@auth/core/jwt';
+import { Session } from 'inspector';
+import { AdapterUser } from '@auth/core/adapters';
  
 export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
@@ -9,6 +12,46 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     newUser: '/signup',
   },
   debug: true, // 디버그 모드 활성화
+  callbacks: {
+    async jwt({ token, user }: {token: JWT, user: any}) {
+      /* Step 1: update the token based on the user object */
+      if (user) {
+        // console.log(user, '--------------------auth callback jwt user');
+        token.age = user.age;
+        token.mbti = user.mbti;
+        token.gender = user.gender;
+        token.nickname = user.nickname;
+        token.region = user.region;
+        token.religion = user.religion;
+        token.drink = user.drink;
+        token.smoke = user.smoke;
+        token.school = user.school;
+        token.job = user.job;
+        token.age = user.age;
+        token.id = user.id;
+      }
+      return token;
+    },
+    session({ session, token }: {session: any, token: any}) {
+      /* Step 2: update the session.user based on the token object */
+      if (token && session.user) {
+        // console.log(token, '---------------------auth callback session token');
+        session.user.age = token.age;
+        session.user.mbti = token.mbti;
+        session.user.gender = token.gender;
+        session.user.nickname = token.nickname;
+        session.user.region = token.region;
+        session.user.religion = token.religion;
+        session.user.drink = token.drink;
+        session.user.smoke = token.smoke;
+        session.user.school = token.school;
+        session.user.job = token.job;
+        session.user.age = token.age;
+        session.user.id = token.id;
+      }
+      return session;
+    },
+  },
   providers: [
     Credentials({
       // You can specify which fields should be submitted, by adding keys to the `credentials` object.
