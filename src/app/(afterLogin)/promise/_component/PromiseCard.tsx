@@ -25,7 +25,7 @@ export default function PromiseCard({ post, session }: Props) {
   const queryClient = useQueryClient();
   // const { data: clientSession } = useSession();
 
-  console.log(session, '-----------------------------PromiseCard session');
+  // console.log(session, '-----------------------------PromiseCard session');
   const liked = !!post.Likers?.find(d => {
     return d?.email === session?.user?.email;
   });

@@ -12,24 +12,10 @@ interface IMbtiCompatibility {
     [key: string]: number;
   };
 }
-
+    
 export default async function ProfilePage() {
-  const user = {
-    id: faker.string.nanoid(10),
-    nickname: faker.internet.userName(),
-    age: faker.number.int({ min: 20, max: 50 }),
-    tall: faker.number.int({ min: 150, max: 165 }),
-    distance: faker.number.int({ min: 5, max: 100 }),
-    area: faker.location.city(),
-    image: [
-      faker.image.urlLoremFlickr({ category: 'cat' }),
-      faker.image.urlLoremFlickr({ category: 'cat' }),
-      faker.image.urlLoremFlickr({ category: 'cat' }),
-    ],
-    mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
-    school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
-  }
-
+  const session = await auth();
+  const user = session?.user as any;
   const mbtiCompatibility: IMbtiCompatibility = {
     ENFJ: { ENFJ: 100, ENFP: 100, ENTJ: 80, ENTP: 100, ESFJ: 60, ESFP: 80, ESTJ: 40, ESTP: 100, INFJ: 80, INFP: 80, INTJ: 60, INTP: 100, ISFJ: 60, ISFP: 60, ISTJ: 40, ISTP: 80 },
     ENFP: { ENFJ: 100, ENFP: 100, ENTJ: 100, ENTP: 80, ESFJ: 80, ESFP: 60, ESTJ: 100, ESTP: 40, INFJ: 80, INFP: 80, INTJ: 100, INTP: 60, ISFJ: 60, ISFP: 60, ISTJ: 80, ISTP: 40 },
@@ -49,9 +35,10 @@ export default async function ProfilePage() {
     ISTP: { ENFJ: 80, ENFP: 40, ENTJ: 60, ENTP: 60, ESFJ: 100, ESFP: 60, ESTJ: 80, ESTP: 80, INFJ: 100, INFP: 40, INTJ: 80, INTP: 60, ISFJ: 100, ISFP: 80, ISTJ: 100, ISTP: 100 },
   };
 
-  const mbtiList = Object.entries(mbtiCompatibility[user.mbti.mbti]);
+  console.log(user?.mbti, '---------------------------ProfilePage user?.mbti');
 
-  const session = await auth();
+  const mbtiList = Object.entries(mbtiCompatibility[user?.mbti.toUpperCase()]);
+
   console.log(session, '------------ProfilePage (server side session)');
   if (!session?.user) {
     redirect('/login');
@@ -60,15 +47,15 @@ export default async function ProfilePage() {
   return (
     <div className='p-2'>
       <MainTitle>프로필</MainTitle>
-      <Link href={`/${user.id}`}>
+      <Link href={`/${user?.id}`}>
         <div className='flex justify-center items-center gap-2 mt-10 mb-10'>
           <Avatar className='w-[70px] h-[70px]'>
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>{(session?.user.name || session?.user.email as string).slice(0, 2)}</AvatarFallback>
+            <AvatarFallback>{(session?.user?.name || session?.user?.email as string).slice(0, 2)}</AvatarFallback>
           </Avatar>
           <div>
-            <h2 className='font-semibold text-lg'>{session?.user.name || session?.user.email}</h2>
-            <p className='text-sm'>{user.mbti.mbti}</p>
+            <h2 className='font-semibold text-lg'>{session?.user?.name || session?.user?.email}</h2>
+            <p className='text-sm'>{user?.mbti}</p>
           </div>
         </div>
       </Link>

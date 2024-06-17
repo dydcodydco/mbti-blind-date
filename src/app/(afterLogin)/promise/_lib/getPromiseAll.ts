@@ -1,5 +1,7 @@
-export const getPromiseAll = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts/all`, {
+type Props = { pageParam?: number };
+
+export const getPromiseAll = async ({pageParam}: Props) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts/all?cursor=${pageParam}`, {
     next: {
       tags: ['posts', 'all']
     },
@@ -13,5 +15,6 @@ export const getPromiseAll = async () => {
 
   // revalidateTag('all'); 초기화하기위한 함수
   // revalidatePath('/'); 초기화하기위한 함수
+  // console.log(res.json(), '---------------------getPromiseAll res');
   return res.json();
 }

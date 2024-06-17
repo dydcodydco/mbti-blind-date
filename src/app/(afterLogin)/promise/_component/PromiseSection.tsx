@@ -18,6 +18,7 @@ export default function PromiseSection({session}: Props) {
     isFetching,
     isPending,
     isLoading,
+    isError
   } = useSuspenseInfiniteQuery<IPost[], Object, InfiniteData<IPost[]>, [_1: string, _2: string], number>({
     queryKey: ['posts', 'all'],
     queryFn: getPromiseAll,
@@ -35,9 +36,13 @@ export default function PromiseSection({session}: Props) {
   
   useEffect(() => {
     if (inView) {
-      !isFetching && hasNextPage && fetchNextPage();
+      hasNextPage && fetchNextPage();
     }
-  }, [inView, fetchNextPage, isFetching, hasNextPage]);
+  }, [inView, fetchNextPage, hasNextPage]);
+
+  if (isError) {
+    return 'postRecommends 에러 발생'
+  }
   
   console.log(data, '------------------PromiseSection')
   return (

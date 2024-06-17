@@ -15,6 +15,7 @@ export default function UserCardList() {
     isFetching,
     isPending,
     isLoading,
+    isError,
   } = useSuspenseInfiniteQuery<IUser[], Object, InfiniteData<IUser[]>, [_1: string, _2: string], number>({
     queryKey: ['users', 'all'],
     queryFn: getUserAll,
@@ -32,9 +33,13 @@ export default function UserCardList() {
 
   useEffect(() => {
     if (inView) {
-      !isFetching && hasNextPage && fetchNextPage();
+      hasNextPage && fetchNextPage();
     }
-  }, [inView, fetchNextPage, isFetching, hasNextPage]);
+  }, [inView, fetchNextPage, hasNextPage]);
+
+  if (isError) {
+    return 'postRecommends 에러 발생'
+  }
 
   return (
     <>
@@ -43,7 +48,7 @@ export default function UserCardList() {
           {page.map((user: IUser) => <UserCard key={user.id} user={user} />)}
         </Fragment>
       ))}
-      <div ref={ref} style={{height: 50}}></div>
+      {hasNextPage && <div ref={ref} style={{ height: 50 }}></div>}
     </>
   )
 } 
