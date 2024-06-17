@@ -27,9 +27,11 @@ export const getDummyUser = (): IUser  => {
         imageId: faker.string.nanoid(10),
       },
     ],
-    mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
+    // mbti: faker.helpers.arrayElement([{ mbti: 'ESFP', score: 100 }, { mbti: 'ESFP', score: 90 }, { mbti: 'ESFP', score: 80 }]),
     school: faker.helpers.arrayElement(['충남대', '서울대', '연세대', '고려대']),
     createdAt: faker.date.anytime(),
+    region: '서울',
+    mbti: 'isfp',
   }
 }
 
