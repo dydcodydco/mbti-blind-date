@@ -13,7 +13,7 @@ type Props = {
 }
 
 export default function UserCard({ user }: Props) {
-  console.log(user);
+  // console.log(user);
   return (
     // <UserCardArticle user={user}>
     <Card className={style.userCard}>

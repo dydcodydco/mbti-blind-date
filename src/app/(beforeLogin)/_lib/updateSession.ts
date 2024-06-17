@@ -1,3 +1,5 @@
+'use client';
+
 import { getCsrfToken } from 'next-auth/react';
 
 export const updateSession = async (updatedUser: any) => {
@@ -16,7 +18,7 @@ export const updateSession = async (updatedUser: any) => {
       body: JSON.stringify({ user: updatedUser }),
     });
 
-    console.log(response, '---------------------------------updateSession rseponse');
+    console.log(response, '---------------------------------updateSession response');
     if (!response.ok) {
       throw new Error('Failed to update session');
     }
