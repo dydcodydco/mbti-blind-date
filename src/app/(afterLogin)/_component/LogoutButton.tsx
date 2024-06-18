@@ -24,6 +24,7 @@ export default function LogoutButton({session}: {session: User}) {
         method: 'post',
         credentials: 'include',
       })
+      router.refresh();
       router.replace('/login');
     });
   }, [router, queryClient]);
