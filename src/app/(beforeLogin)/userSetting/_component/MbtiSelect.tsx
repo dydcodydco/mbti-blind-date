@@ -6,9 +6,9 @@ import { useForm } from 'react-hook-form';
 import { useCallback, useContext } from 'react';
 import { setUserContext } from './SetUserProvider2';
 import Link from 'next/link';
-import { calculateAge } from '../_lib/getAgeByBirthday';
 import { updateSession } from '@/app/(beforeLogin)/_lib/updateSession';
 import { useRouter } from 'next/navigation';
+import { calculateAge } from '../_lib/getAgeByBirthday';
 
 export default function MbtiSelect({ }) {
   const {

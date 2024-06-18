@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function PromiseFormButton() {
   return (
-    <Link href={'/promise/form'} className='px-2 block'>
+    <Link href={'/promise/form'} className='px-2 block mt-2'>
       <Button className='flex justify-between w-full py-3 h-[50px]'>
         <span className='flex items-center'>
           <CalendarPlus2 className='mr-1' />

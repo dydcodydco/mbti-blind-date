@@ -189,7 +189,7 @@ export default function PromiseCard({ post, session }: Props) {
   }, [liked, unLike, like]);
 
   return (
-    <Card key={post.id} className='flex flex-col justify-between min-h-[400px] relative bg-black'>
+    <Card key={post.id} className='flex flex-col justify-between min-h-[300px] relative bg-black'>
       {post.Images?.length > 0 && <ImageWithPlaceholder src={`${post.Images[0]}`} />}
       <div className={style.promiseContent}>
         <div className='flex justify-between'>
@@ -202,11 +202,14 @@ export default function PromiseCard({ post, session }: Props) {
             <MapPin color='#ffffff' className='mr-1' />
               {post.User?.area || '서울'} · {dayjs(post.createdAt).fromNow()}
           </span>
-          {post?.User?.email !== session?.user?.email && <Button variant={'outline'} className='flex w-full mt-1' onClick={onClickLike}>
-            {!liked
-              ? <><span className='mr-2'>궁금해요</span><HandMetal /></>
-              : <><span className='mr-2'>안궁금해요</span><SquareX /></>}
-          </Button>}
+          {
+            post?.User?.email !== session?.user?.email &&
+            <Button variant={'outline'} className='flex w-full mt-1' onClick={onClickLike}>
+              {!liked
+                ? <><span className='mr-2'>궁금해요</span><HandMetal /></>
+                : <><span className='mr-2'>안궁금해요</span><SquareX /></>}
+            </Button>
+          }
         </div>
       </div>
     </Card>
