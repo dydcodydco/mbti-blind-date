@@ -1,5 +1,3 @@
-'use client';
-
 import { getCsrfToken } from 'next-auth/react';
 
 export const updateSession = async (updatedUser: any) => {
@@ -9,7 +7,8 @@ export const updateSession = async (updatedUser: any) => {
       throw new Error('Failed to get CSRF token');
     }
     console.log(csrfToken, '---------------------------------updateSession csrfToken');
-    const response = await fetch('/api/auth/session?update', {
+    
+    const response = await fetch('/api/session/update', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

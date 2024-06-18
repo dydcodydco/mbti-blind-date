@@ -8,6 +8,7 @@ import { setUserContext } from './SetUserProvider2';
 import Link from 'next/link';
 import { calculateAge } from '../_lib/getAgeByBirthday';
 import { updateSession } from '@/app/(beforeLogin)/_lib/updateSession';
+import { useRouter } from 'next/navigation';
 
 export default function MbtiSelect({ }) {
   const {
@@ -27,6 +28,7 @@ export default function MbtiSelect({ }) {
     birthdayMonth,
     birthdayDay,
   } = useContext(setUserContext);
+  const router = useRouter();
   
   const {handleSubmit, register, formState: {errors, isValid}} = useForm({defaultValues: {
     ie: "",
@@ -53,7 +55,7 @@ export default function MbtiSelect({ }) {
         job,
         age: calculateAge(birthdayYear, birthdayMonth, birthdayDay),
       }
-      console.log(userSettingObj);
+
       const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/setting`, {
         method: 'PATCH',
         credentials: 'include',
@@ -62,16 +64,15 @@ export default function MbtiSelect({ }) {
         },
         body: JSON.stringify(userSettingObj),
       });
-      console.log(response);
       if (response.ok) {
         const sessionUpdateInfo = await response.json();
         await updateSession(sessionUpdateInfo);
-        setProgress(100);
+        router.push('/');
       }
     } catch (error) {
       console.error(error);
     } 
-  }, [birthdayDay, birthdayMonth, birthdayYear, drink, gender, job, nickname, region, religion.ko, school, setMbti, setProgress, smoke, tall]);
+  }, [birthdayDay, birthdayMonth, birthdayYear, drink, gender, job, nickname, region, religion.ko, router, school, setMbti, smoke, tall]);
 
   return (
     <form className={style.mbtiForm} onSubmit={handleSubmit(onMbtiSubmit)}>

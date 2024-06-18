@@ -11,25 +11,29 @@ export async function middleware(request: NextRequest) {
   console.log('request.nextUrl.pathname', request.nextUrl.pathname);
   console.log('--------------------------------------------------------');
   
-  if (!session && request.nextUrl.pathname !== '/login' && request.nextUrl.pathname !== '/signup') {
+  const path = request.nextUrl.pathname;
+
+  // 로그인되지 않은 사용자는 로그인 페이지로 리디렉션
+  if (!session && path !== '/login' && path !== '/signup') {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
   // 가입은 했지만 유저 정보 세팅 하지 않았을 때,
-  if (session && !(session?.user as any)?.age && ['/recommend', '/promise', '/promise/form', '/messages', '/like', '/login', '/signup', '/'].includes(request.nextUrl.pathname)) {
+  if (session && !(session?.user as any)?.age && ['/recommend', '/promise', '/promise/form', '/messages', '/like', '/login', '/signup', '/'].includes(path)) {
     return NextResponse.redirect(new URL('/usersetting', request.url));
   }
 
   // 유저 정보 세팅되어있는데 유저세팅 화면에으로 갈 때
-  if (session && (session?.user as any)?.age && request.nextUrl.pathname === '/usersetting') {
+  if (session && (session?.user as any)?.age && path === '/usersetting') {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
   // 로그인 페이지로 접근 시
-  if (session && (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/signup')) {
+  if (session && (path === '/login' || path === '/signup')) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
+  console.log(path, '---------------------------------------4');
   // return NextResponse.redirect('http://localhost:3000/signup');
   return NextResponse.next();
 }

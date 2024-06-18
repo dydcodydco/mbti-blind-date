@@ -6,15 +6,25 @@ import { JWT } from '@auth/core/jwt';
 import { Session } from 'inspector';
 import { AdapterUser } from '@auth/core/adapters';
  
-export const { handlers, signIn, signOut, auth } = NextAuth({
+export const { handlers, signIn, signOut, auth, unstable_update, } = NextAuth({
   pages: {
     signIn: '/login',
     newUser: '/signup',
   },
   debug: true, // 디버그 모드 활성화
   callbacks: {
-    async jwt({ token, user }: {token: JWT, user: any}) {
+    async jwt(params: any) {
       /* Step 1: update the token based on the user object */
+      let { token, user, trigger, session } = params;
+      console.log(params, '--------------------------update the token based on the user object--------------------------');
+
+      if (user?.accessToken) {
+        token.accessToken = user.accessToken
+      }
+      if (trigger === 'update' && session) {
+        token = { ...token, ...session.user }
+      }
+
       if (user) {
         // console.log(user, '--------------------auth callback jwt user');
         token.age = user.age;
