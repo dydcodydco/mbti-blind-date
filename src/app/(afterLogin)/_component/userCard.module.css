@@ -1,6 +1,6 @@
 .userCard {
-  min-height: 400px;
-  height: 400px;
+  min-height: 300px;
+  height: 300px;
   @apply rounded-xl relative block bg-black;
   & > img {
     @apply h-full w-full block;
@@ -9,6 +9,5 @@
 
 .userInfo {
   background: linear-gradient(to top, rgba(0, 0, 0, 1) 26px, rgba(0, 0, 0, 0),  rgba(0, 0, 0, 0));
-  @apply rounded-xl absolute w-full h-full top-0 left-0 flex flex-col justify-end p-3;
-  padding-bottom: 60px;
+  @apply rounded-xl absolute w-full h-full top-0 left-0 flex flex-col justify-center items-center p-3;
 }

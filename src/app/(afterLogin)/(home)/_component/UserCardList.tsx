@@ -6,8 +6,11 @@ import UserCard from '@/app/(afterLogin)/_component/UserCard';
 import { IUser } from '@/model/User';
 import { Fragment, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { Session } from 'next-auth';
 
-export default function UserCardList() {
+type Props = { session: Session | null };
+
+export default function UserCardList({session}: Props) {
   const {
     data,
     fetchNextPage,
@@ -45,7 +48,7 @@ export default function UserCardList() {
     <>
       {data?.pages.map((page, i) => (
         <Fragment key={i}>
-          {page.map((user: IUser) => <UserCard key={user.id} user={user} />)}
+          {page.map((user: IUser) => <UserCard key={user.id} user={user} session={session} />)}
         </Fragment>
       ))}
       {hasNextPage && <div ref={ref} style={{ height: 50 }}></div>}
