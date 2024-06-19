@@ -3,11 +3,16 @@ import MainTitle from '../_component/MainTitle';
 import MbtiCarousel from '../(home)/_component/MbtiCarousel';
 import Loading from '@/app/(afterLogin)/(home)/loading';
 import UserMbtiCardListSuspense from './_component/UserMbtiCardListSuspense';
-import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import { mbtiCompatibility } from '../_constants/constants';
 import { auth } from '@/auth';
 
-export default async function Page({ searchParams }: Params) {
+type Props = {
+  searchParams: {
+    [key: string]: string;
+  };
+};
+
+export default async function Page({ searchParams }: Props) {
   console.log(searchParams, '------------------------------UserMbtiCardListSuspense searchPparams');
   const session = await auth();
   const mbtiCompatibilityData = mbtiCompatibility;

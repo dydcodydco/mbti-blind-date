@@ -7,9 +7,13 @@ import { Fragment, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Session } from 'next-auth';
 import { getUserAllMbti } from '../_lib/getUserAllMbti';
-import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 
-type Props = { session: Session | null, searchParams: Params};
+type Props = {
+  session: Session | null,
+  searchParams: {
+    [key: string]: string;
+  };
+};
 
 export default function UserMbtiCardList({session, searchParams}: Props) {
   const {

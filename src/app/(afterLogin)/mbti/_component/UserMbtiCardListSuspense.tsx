@@ -4,7 +4,11 @@ import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import { getUserAllMbti } from '../_lib/getUserAllMbti';
 import UserMbtiCardList from './UserMbtiCardList';
 
-type Props = { searchParams: Params };
+type Props = {
+  searchParams: {
+    [key: string]: string;
+  };
+};
 
 export default async function UserMbtiCardListSuspense({searchParams}: Props) {
   const session = await auth();
