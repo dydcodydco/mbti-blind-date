@@ -8,7 +8,7 @@ import { setUserContext } from './SetUserProvider2';
 import Link from 'next/link';
 import { updateSession } from '@/app/(beforeLogin)/_lib/updateSession';
 import { useRouter } from 'next/navigation';
-import { calculateAge } from '../_lib/getAgeByBirthday';
+import { calculateAge } from '@/app/(beforeLogin)/usersetting/_lib/getAgeByBirthday';
 
 export default function MbtiSelect({ }) {
   const {
