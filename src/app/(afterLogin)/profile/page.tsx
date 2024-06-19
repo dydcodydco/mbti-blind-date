@@ -7,6 +7,7 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { mbtiCompatibility } from '../_constants/constants';
+import MbtiButtonList from '../_component/MbtiButtonList';
     
 export default async function ProfilePage() {
   const session = await auth();
@@ -40,15 +41,9 @@ export default async function ProfilePage() {
       <LogoutButton session={session?.user} />
       
       <div className='lg:hidden mt-10'>
-        <h2>MBTI 리스트</h2>
+        <h2 className='mb-3 text-center font-semibold'>MBTI 리스트</h2>
         <div className='grid gap-1 flex-wrap grid-cols-2 sm:grid-cols-3'>
-          <Button variant={'outline'} className='py-1 px-3 max-h-[30px] font-normal'>전체</Button>
-          <Button className='py-1 px-3 max-h-[30px] font-normal'>상위 궁합</Button>
-          {mbtiList.map(([key, value]) => (
-            <Button key={key} title={key} variant={value >= 80 ? 'default' : 'outline'} className='py-1 px-3 max-h-[30px] font-normal'>
-              {key}
-            </Button>
-          ))}
+          <MbtiButtonList mbtiList={mbtiList} />
         </div>
       </div>
     </div>
