@@ -1,5 +1,9 @@
 import { IUserImage } from './UserImage';
 
+interface UserID {
+  id: string,
+}
+
 export interface IUser {
   id: number | string;
   nickname: string;
@@ -13,4 +17,10 @@ export interface IUser {
   school: string;
   createdAt: Date;
   email: number | string;
+  Followers: UserID[];
+  Followings: UserID[];
+  _count: {
+    Followers: number;
+    Followings: number;
+  }
 }

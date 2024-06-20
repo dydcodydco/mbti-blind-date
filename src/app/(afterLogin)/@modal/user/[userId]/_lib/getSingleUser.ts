@@ -4,7 +4,7 @@ import { QueryFunction } from '@tanstack/react-query';
 export const getSingleUser: QueryFunction<IUser, [_1: string, userId: string]> = async ({ queryKey }) => {
   const [_1, userId] = queryKey;
   console.log(userId, '---------------------------getSingleUser');
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users/${userId}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/${userId}`, {
     next: {
       tags: ['users', userId]
     },

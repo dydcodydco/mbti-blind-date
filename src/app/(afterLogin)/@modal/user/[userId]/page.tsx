@@ -3,6 +3,7 @@ import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query
 import { getSingleUser } from './_lib/getSingleUser';
 import UserDetailContent from './_component/UserDetailContent';
 import { getUserPromise } from './_lib/getUserPromise';
+import { auth } from '@/auth';
 
 export async function generateMetadata({ params: {userId} }: Props) {
   return {
@@ -18,11 +19,12 @@ export default async function UserPage({ params }: Props) {
   await queryClient.prefetchQuery({queryKey: ['users', userId], queryFn: getSingleUser});
   await queryClient.prefetchQuery({queryKey: ['promise', 'users', userId], queryFn: getUserPromise});
   const dehydratedState = dehydrate(queryClient);
+  const session = await auth();
 
   return (
     <HydrationBoundary state={dehydratedState}>
       <Modal>
-        <UserDetailContent userId={userId} />
+        <UserDetailContent userId={userId} session={session} />
       </Modal>
     </HydrationBoundary>
   )
