@@ -12,7 +12,7 @@ type Props = {
   };
 };
 
-export default async function Page({ searchParams }: Props) {
+export default async function MbtiPage({ searchParams }: Props) {
   console.log(searchParams, '------------------------------UserMbtiCardListSuspense searchPparams');
   const session = await auth();
   const mbtiCompatibilityData = mbtiCompatibility;
@@ -22,7 +22,7 @@ export default async function Page({ searchParams }: Props) {
       <MainTitle>홈</MainTitle>
       <MbtiCarousel mbtiList={mbtiList} />
       <div className='flex flex-col gap-2 px-2 pb-[100px] pt-[74px] sm:pt-2'>
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<Loading className='mt-20' />}>
           <UserMbtiCardListSuspense searchParams={searchParams} />
         </Suspense>
       </div>

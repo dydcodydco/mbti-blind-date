@@ -16,7 +16,7 @@ export default async function PromisePage() {
       <MainTitle>약속</MainTitle>
       <PromiseFormButton />
       <div className='p-2 gap-2 flex flex-col pb-[50px]'>
-        <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading className='mt-20' />}>
           <PromiseSectionSuspense />
         </Suspense>
       </div>
