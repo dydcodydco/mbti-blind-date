@@ -2,7 +2,7 @@ import { IUser } from '@/model/User';
 import { faker } from '@faker-js/faker';
 import { http, HttpResponse } from 'msw';
 
-export const getDummyUser = (): IUser  => {
+export const getDummyUser = ()  => {
   // const imageArr = await Promise.allSettled([getBase64(faker.image.urlLoremFlickr({ category: 'cat' })), getBase64(faker.image.urlLoremFlickr({ category: 'cat' })), getBase64(faker.image.urlLoremFlickr({ category: 'cat' }))]) as any;
   // console.log(imageArr[0].value.img.src);
   return {
@@ -32,6 +32,8 @@ export const getDummyUser = (): IUser  => {
     createdAt: faker.date.anytime(),
     region: '서울',
     mbti: 'isfp',
+    Followers: [],
+    Followings: [],
   }
 }
 
