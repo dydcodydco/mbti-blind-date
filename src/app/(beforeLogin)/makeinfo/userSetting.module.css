@@ -1,0 +1,59 @@
+.userSetting {
+  @apply flex flex-col px-3 h-dvh pb-3;
+}
+
+.mbtiForm {
+  @apply flex flex-col flex-grow mt-5;
+}
+
+.carousel {
+  @apply overflow-hidden text-center;
+  & > div {
+    @apply overflow-visible;
+  }
+  & > div:before {
+    content: "";
+      height: 55px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0));
+      z-index: 2;
+      @apply w-full top-0 left-0 absolute border-b-2 border-black;
+  }
+  & > div:after {
+    content: "";
+    height: 55px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1) 30%, rgba(255, 255, 255, 0));
+    z-index: 2;
+    @apply w-full bottom-0 left-0 absolute border-t-2 border-black; 
+  }
+}
+
+.mbtiInput {
+  @apply hidden;
+  &:checked + label > div {
+    @apply border-black;
+  }
+  & + label > div:hover,
+  & + label > div:focus {
+    background-color: white;
+  }
+}
+
+.radioLabel {
+  @apply w-full;
+  & > input {
+    @apply hidden;
+  }
+  & > input:checked + div {
+    @apply border-black bg-black text-white;
+  }
+  & > input + div:hover,
+  & > input + div:focus {
+    @apply bg-black;
+  }
+}
+
+.progress {
+  & > div {
+    border-radius: 15px;
+  }
+}
