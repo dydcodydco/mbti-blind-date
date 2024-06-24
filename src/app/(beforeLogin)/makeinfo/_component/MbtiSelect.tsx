@@ -8,9 +8,11 @@ import { setUserContext } from './SetUserProvider2';
 import Link from 'next/link';
 import { updateSession } from '@/app/(beforeLogin)/_lib/updateSession';
 import { useRouter } from 'next/navigation';
-import { calculateAge } from '@/app/(beforeLogin)/usersetting/_lib/getAgeByBirthday';
+import { calculateAge } from '@/app/(beforeLogin)/makeinfo/_lib/getAgeByBirthday';
+import { useSession } from 'next-auth/react';
 
 export default function MbtiSelect({ }) {
+  const { data: session } = useSession();
   const {
     setMbti,
     setProgress,
@@ -56,23 +58,25 @@ export default function MbtiSelect({ }) {
         age: calculateAge(birthdayYear, birthdayMonth, birthdayDay),
       }
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/setting`, {
+      console.log('------------------------------');
+      const response = await fetch('/api/user/update', {
         method: 'PATCH',
-        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(userSettingObj),
       });
-      if (response.ok) {
+      console.log(response, '-----------------------/api/user/update response-------------------------');
+      if (response?.ok) {
         const sessionUpdateInfo = await response.json();
-        await updateSession(sessionUpdateInfo);
+        console.log(sessionUpdateInfo, '------------------------------------MbtiSelect sessionUpdateInfo')
+        await updateSession({...session?.user, ...userSettingObj, name: userSettingObj.nickname});
         router.push('/');
       }
     } catch (error) {
       console.error(error);
     } 
-  }, [birthdayDay, birthdayMonth, birthdayYear, drink, gender, job, nickname, region, religion.ko, router, school, setMbti, smoke, tall]);
+  }, [birthdayDay, birthdayMonth, birthdayYear, drink, gender, job, nickname, region, religion.ko, router, school, session?.user, setMbti, smoke, tall]);
 
   return (
     <form className={style.mbtiForm} onSubmit={handleSubmit(onMbtiSubmit)}>

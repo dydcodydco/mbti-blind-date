@@ -84,7 +84,7 @@ const SignupPage = () => {
       return;
     }
 
-    router.replace('/usersetting');
+    router.replace('/makeinfo');
 
   }, [form, router]);
 
