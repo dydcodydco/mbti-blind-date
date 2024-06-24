@@ -74,7 +74,7 @@ export default function MbtiSelect({ }) {
         // console.log(result);
         // const jsonResult = await result?.json();
         // console.log(jsonResult);
-        router.push('/home');
+        router.push('/');
       }
     } catch (error) {
       console.error(error);
@@ -84,7 +84,7 @@ export default function MbtiSelect({ }) {
   return (
     <form className={style.mbtiForm} onSubmit={handleSubmit(onMbtiSubmit)}>
       <h1>MBTI를 선택해주세요.</h1>
-      <p>MBTI를 모르신다면 바로 알아보세요! <Link href='/home'>검사하러가기</Link></p>
+      <p>MBTI를 모르신다면 바로 알아보세요! <Link href='/'>검사하러가기</Link></p>
       <div className='flex-grow mt-3'>
         <div className='flex justify-between w-full mb-2 flex-col'>
           <h2 className='text-sm mb-1'>외향형/내향형</h2>

@@ -17,7 +17,7 @@ function MbtiButtonList({ mbtiList }: Props) {
   return (
     <>
       <Button variant={'outline'} className='p-0'>
-        <Link className='w-full h-full flex py-1 px-3 max-h-[40px] font-normal items-center justify-center' href='/home'>전체</Link>
+        <Link className='w-full h-full flex py-1 px-3 max-h-[40px] font-normal items-center justify-center' href='/'>전체</Link>
       </Button>
       <Button className='p-0'>
         <Link className='w-full h-full flex py-1 px-3 max-h-[40px] font-normal items-center justify-center' href={`/mbti?type=${highList}`}>상위궁합</Link>

@@ -18,7 +18,7 @@ export default function MbtiCarousel({mbtiList}: Props) {
     <div className={style.menuWrapper}>
       <div className='w-[750px] flex gap-1 flex-wrap'>
         <Button variant={'outline'} className='p-0 max-h-[30px]'>
-          <Link className='w-full h-full flex py-1 px-3 max-h-[30px] font-normal items-center justify-center' href='/home'>전체</Link>
+          <Link className='w-full h-full flex py-1 px-3 max-h-[30px] font-normal items-center justify-center' href='/'>전체</Link>
         </Button>
         <Button className='p-0 max-h-[30px]'>
           <Link className='w-full h-full flex py-1 px-3 max-h-[30px] font-normal items-center justify-center' href={`/mbti?type=${highList}`}>상위궁합</Link>
