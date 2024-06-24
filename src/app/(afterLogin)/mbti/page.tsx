@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import MainTitle from '../_component/MainTitle';
-import MbtiCarousel from '../(home)/_component/MbtiCarousel';
-import Loading from '@/app/(afterLogin)/(home)/loading';
+import MbtiCarousel from '../home/_component/MbtiCarousel';
+import Loading from '@/app/(afterLogin)/home/loading';
 import UserMbtiCardListSuspense from './_component/UserMbtiCardListSuspense';
 import { mbtiCompatibility } from '../_constants/constants';
 import { auth } from '@/auth';
