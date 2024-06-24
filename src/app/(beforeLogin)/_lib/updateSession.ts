@@ -23,8 +23,9 @@ export const updateSession = async (updatedUser: any) => {
     }
 
     // Reload the session
-    const session = await response.json();
-    console.log('Session updated', session);
+    // const session = await response.json();
+    // console.log('Session updated', session);
+    return response;
   } catch (error) {
     console.error('Error updating session', error);
   }

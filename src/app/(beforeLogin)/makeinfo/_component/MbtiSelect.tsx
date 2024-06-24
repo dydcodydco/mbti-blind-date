@@ -70,7 +70,10 @@ export default function MbtiSelect({ }) {
       if (response?.ok) {
         const sessionUpdateInfo = await response.json();
         console.log(sessionUpdateInfo, '------------------------------------MbtiSelect sessionUpdateInfo')
-        await updateSession({...session?.user, ...userSettingObj, name: userSettingObj.nickname});
+        const result = await updateSession({ ...session?.user, ...userSettingObj, name: userSettingObj.nickname });
+        // console.log(result);
+        // const jsonResult = await result?.json();
+        // console.log(jsonResult);
         router.push('/');
       }
     } catch (error) {
