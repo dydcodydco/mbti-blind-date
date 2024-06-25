@@ -16,7 +16,7 @@ export const { handlers, signIn, signOut, auth, unstable_update, } = NextAuth({
     async jwt(params: any) {
       /* Step 1: update the token based on the user object */
       let { token, user, trigger, session } = params;
-      console.log(params, '--------------------------update the token based on the user object--------------------------');
+      // console.log(params, '--------------------------update the token based on the user object--------------------------');
 
       if (user?.accessToken) {
         token.accessToken = user.accessToken
@@ -90,14 +90,28 @@ export const { handlers, signIn, signOut, auth, unstable_update, } = NextAuth({
           // cookie라이브러리로 객체로 만들어준다.
           let setCookie = authResponse.headers.get('Set-Cookie');
 
-          console.log('set-cookie', setCookie);
+          console.log(authResponse, '---------------------------------------------------authResponse');
+          console.log(setCookie, '---------------------------------------------------set-cookie');
           if (setCookie) {
             const parsed = cookie.parse(setCookie);
             console.log(parsed, '---------------parsed cookie');
             // 브론트서버에서 브라우저에 쿠키를 심어준다.
             // 프론트서버에 쿠키를 심으면 안된다! 왜냐하면 프론트서버는 서버라서 공용이다.
             // 여러 브라우저가 전부 프론트서버르 바라본다. 개인정보 유출 문제 발생할 수 있다.
-            cookies().set('connect.sid', parsed['connect.sid'], parsed); // parsed = 나머지 옵션들
+
+            // 쿠키 설정을 위해 필요한 속성을 소문자로 변경
+            const cookieOptions = {
+              ...parsed,
+              httpOnly: true,
+              secure: process.env.NEXT_PUBLIC_MODE === 'production',
+            } as any;
+            if (process.env.NEXT_PUBLIC_MODE === 'production') {
+              cookieOptions.domain = '.zzimzzim.com';
+            }
+
+            console.log(cookieOptions, '----------------------------------------------cookieOptions');
+
+            cookies().set('connect.sid', parsed['connect.sid'], cookieOptions); // parsed = 나머지 옵션들
           }
           
           console.log(authResponse, '--------------------------------authResponse');
