@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card';
 import style from './userCard.module.css';
 import { Button } from '@/components/ui/button';
-import { UserPlus } from 'lucide-react';
+import { Heart, UserPlus } from 'lucide-react';
 import UserCardArticle from './UserCardArticle';
 import Link from 'next/link';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
@@ -20,6 +20,7 @@ const UserCard = ({ user, session }: Props) => {
   const myMbti = useMemo(() => (session?.user as IUser)?.mbti.toUpperCase(), [session?.user]);
   const userMbti = useMemo(() => (user as IUser)?.mbti?.toUpperCase(), [user]);
   const mbtiData = mbtiCompatibility[myMbti];
+  const isLiked = !!user.Followers.find(v => v.id.toString() === session?.user?.id);
 
   if (!session) {
     return null;
@@ -38,6 +39,7 @@ const UserCard = ({ user, session }: Props) => {
           <p className='text-white font-semibold text-base'>
             {user?.region}, {user?.age}
           </p>
+          {isLiked && <Heart className='absolute top-[10px] right-[10px] text-white stroke-2' />}
         </div>
       </Link>
       {/* <div className='absolute bottom-3 px-3 w-full'>

@@ -3,7 +3,7 @@
 import { UserMinus, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import UserDetailTop from './UserDetailTop';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { InfiniteData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getSingleUser } from '../_lib/getSingleUser';
 import { IUser } from '@/model/User';
 import UserDetailPromise from './UserDetailPromise';
@@ -59,8 +59,38 @@ export default function UserDetailContent({userId, session}: Props) {
         queryClient.setQueryData(['users', userIdStr], shallow);
       }
     },
+    onSuccess: async (response, variables, context) => {
+      const userId = variables.toString();
+      console.log(variables);
+      const queryCache = queryClient.getQueryCache();
+      const queryKeys = queryCache.getAll().map(cache => cache.queryKey);
+      queryKeys.forEach((queryKey) => {
+        if (queryKey[0] === 'users') {
+          const value: IUser | InfiniteData<IUser[]> | undefined = queryClient.getQueryData(queryKey);
+          if (value && 'pages' in value) {
+            const obj = value.pages.flat().find(v => v.id.toString() === userId);
+            if (obj) {
+              const pageIndex = value.pages.findIndex(v => v.includes(obj));
+              const index = value.pages[pageIndex].findIndex(v => v.id.toString() === userId);
+              const shallow = produce(value, (draft) => {
+                draft.pages[pageIndex][index].Followers = [{ id: session?.user?.id as string }];
+              });
+              queryClient.setQueryData(queryKey, shallow);
+            }
+          } else if (value) {
+            const shallow = produce(value, (draft) => {
+              draft.Followers = [{ id: session?.user?.id as string }];
+            });
+            queryClient.setQueryData(queryKey, shallow);
+          }
+        }
+      })
+      await queryClient.invalidateQueries({
+        queryKey: ['users'],
+      });
+    },
     onSettled() {
-    }
+    },
   });
 
   const unfollow = useMutation({
@@ -90,7 +120,37 @@ export default function UserDetailContent({userId, session}: Props) {
         });
         queryClient.setQueryData(['users', userIdStr], shallow);
       }
-    }
+    },
+    onSuccess: async (response, variables, context) => {
+      const userId = variables.toString();
+      console.log(variables);
+      const queryCache = queryClient.getQueryCache();
+      const queryKeys = queryCache.getAll().map(cache => cache.queryKey);
+      queryKeys.forEach((queryKey) => {
+        if (queryKey[0] === 'users') {
+          const value: IUser | InfiniteData<IUser[]> | undefined = queryClient.getQueryData(queryKey);
+          if (value && 'pages' in value) {
+            const obj = value.pages.flat().find(v => v.id.toString() === userId);
+            if (obj) {
+              const pageIndex = value.pages.findIndex(v => v.includes(obj));
+              const index = value.pages[pageIndex].findIndex(v => v.id.toString() === userId);
+              const shallow = produce(value, (draft) => {
+                draft.pages[pageIndex][index].Followers = [];
+              });
+              queryClient.setQueryData(queryKey, shallow);
+            }
+          } else if (value) {
+            const shallow = produce(value, (draft) => {
+              draft.Followers = [];
+            });
+            queryClient.setQueryData(queryKey, shallow);
+          }
+        }
+      })
+      await queryClient.invalidateQueries({
+        queryKey: ['users'],
+      });
+    },
   });
 
 
