@@ -17,7 +17,7 @@ export default async function UserPage({ params }: Props) {
   const { userId } = params;
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({queryKey: ['users', userId], queryFn: getSingleUser});
-  await queryClient.prefetchQuery({queryKey: ['promise', 'users', userId], queryFn: getUserPromise});
+  // await queryClient.prefetchQuery({queryKey: ['promise', 'users', userId], queryFn: getUserPromise});
   const dehydratedState = dehydrate(queryClient);
   const session = await auth();
 

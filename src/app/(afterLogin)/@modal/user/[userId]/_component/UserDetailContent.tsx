@@ -12,6 +12,8 @@ import Back from '@/app/(afterLogin)/_component/Back';
 import { Session } from 'next-auth';
 import { produce } from 'immer';
 import { MouseEventHandler } from 'react';
+import PromiseCard from '@/app/(afterLogin)/promise/_component/PromiseCard';
+import { IPost } from '@/model/Post';
 
 type Props = {
   userId: string;
@@ -182,7 +184,12 @@ export default function UserDetailContent({userId, session}: Props) {
     <div className='flex flex-col w-full md:w-[600px] xl:w-[800px] md:max-h-[95dvh] overflow-y-auto overscroll-none'>
       <UserDetailTop user={user} />
       <UserInfo user={user} session={session} />
-      <UserDetailPromise userId={userId} />
+      {/* <UserDetailPromise userId={userId} /> */}
+      <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3'>
+        {user?.Posts.map((post: IPost) => (
+          <PromiseCard key={post.id} post={post} />
+        ))}
+      </div>
       <div className='w-full sticky bottom-0 z-10 p-3 bg-white'>
         <Button variant={'default'} className='w-full bg-black z-10' onClick={onFollow}>
           {!followed ? (

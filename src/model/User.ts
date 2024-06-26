@@ -1,3 +1,4 @@
+import { IPost } from './Post';
 import { IUserImage } from './UserImage';
 
 interface UserID {
@@ -19,6 +20,7 @@ export interface IUser {
   email: number | string;
   Followers: UserID[];
   Followings: UserID[];
+  Posts: IPost[];
   _count: {
     Followers: number;
     Followings: number;
