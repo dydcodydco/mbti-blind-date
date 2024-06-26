@@ -4,10 +4,11 @@ import { useQuery, useSuspenseInfiniteQuery, useSuspenseQuery } from '@tanstack/
 import { IUser } from '@/model/User';
 import { getFollowings } from '../_lib/getFollowings';
 import LikeCard from './LikeCard';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 export default function Followings() {
-  const { data } = useSuspenseInfiniteQuery({
+  const { data, fetchNextPage, hasNextPage, isError } = useSuspenseInfiniteQuery({
     queryKey: ['users', 'followings'],
     queryFn: getFollowings,
     staleTime: 60 * 1000,
@@ -16,8 +17,24 @@ export default function Followings() {
     getNextPageParam: (lastPage => lastPage.at(-1)?.id),
   })
 
+  const { ref, inView } = useInView({
+    threshold: 0,
+    delay: 0,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      hasNextPage && fetchNextPage();
+    }
+  }, [inView, fetchNextPage, hasNextPage]);
+
+  if (isError) {
+    return 'Followings 에러 발생'
+  }
+
   return (
-    <div className='flex flex-col gap-2'>
+    <>
+      <div className='flex flex-col gap-2'>
       {data?.pages.length > 0 && data?.pages[0].length > 0 ? data?.pages.map((page: IUser[], i) => (
         <Fragment key={i}>
           {page.map((user: IUser) => (
@@ -30,5 +47,7 @@ export default function Followings() {
           </>
       )}
     </div>
+    {hasNextPage && <div ref={ref} style={{ height: 50 }}></div>}
+    </>
   )
 }

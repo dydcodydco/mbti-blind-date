@@ -41,7 +41,7 @@ export default function PromiseSection({session}: Props) {
   }, [inView, fetchNextPage, hasNextPage]);
 
   if (isError) {
-    return 'postRecommends 에러 발생'
+    return 'PromiseSection 에러 발생'
   }
   
   console.log(data, '------------------PromiseSection')
