@@ -31,12 +31,17 @@ export default function BottomNav({session}: {session: User | undefined}) {
             <span className='text-[9px] mt-[2px]'>약속</span>
           </Link>
           
+          <Link href="/like" className="flex items-center justify-end flex-col">
+            <Heart fill={segment === 'like' ? '#000': '#fff'} />
+            <span className='text-[9px] mt-[2px]'>좋아요</span>
+          </Link>
+          
           <Link href="/messages" className="flex items-center justify-end flex-col">
             {segment === 'messages' ? <MessageCircleMore /> : <MessageCircle />}
             <span className='text-[9px] mt-[2px]'>채팅</span>
           </Link>
         
-          <Link href="profile" className="flex items-center justify-end flex-col">
+          <Link href="/profile" className="flex items-center justify-end flex-col">
             <Avatar className='w-[25px] h-[25px]'>
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>ZZ</AvatarFallback>
@@ -46,10 +51,6 @@ export default function BottomNav({session}: {session: User | undefined}) {
         </>
       )}
 
-      {/* <Link href="/like" className="flex items-center justify-end flex-col">
-        <Heart fill={segment === 'like' ? '#000': '#fff'} />
-        <span className='text-[9px] mt-[2px]'>좋아요</span>
-      </Link> */}
     </nav>
   )
 }
