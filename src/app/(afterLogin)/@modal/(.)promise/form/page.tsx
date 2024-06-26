@@ -131,12 +131,16 @@ export default function PromiseFormModal() {
             />
           </div>
           {errors.content && <p>{errors.content.message}</p>}
-          <div className='relative h-[400px] mt-4'>
-            {preview.map((v, index) => (
+          <div className='relative h-[300px] mt-4'>
+            {/* {preview.map((v, index) => (
               v && (
                 <Image src={v.dataUrl} key={index} fill={true}
                   sizes='100%' alt='image' onClick={onRemoveImage(index)} />
               )
+            ))} */}
+            {preview.map((v, index) => (
+                v?.dataUrl && (<Image src={v?.dataUrl as any} key={index} fill={true}
+                  sizes='100%' alt='image' onClick={onRemoveImage(index)} />)
             ))}
           </div>
         </div>
