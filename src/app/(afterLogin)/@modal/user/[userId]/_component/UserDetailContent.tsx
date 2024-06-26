@@ -76,6 +76,9 @@ export default function UserDetailContent({userId, session}: Props) {
               const index = value.pages[pageIndex].findIndex(v => v.id.toString() === userId);
               const shallow = produce(value, (draft) => {
                 draft.pages[pageIndex][index].Followers = [{ id: session?.user?.id as string }];
+                if (queryKey[1] === 'followings' || queryKey[1] === 'followers') {
+                  draft.pages[0].push(obj);
+                }
               });
               queryClient.setQueryData(queryKey, shallow);
             }
@@ -138,6 +141,9 @@ export default function UserDetailContent({userId, session}: Props) {
               const index = value.pages[pageIndex].findIndex(v => v.id.toString() === userId);
               const shallow = produce(value, (draft) => {
                 draft.pages[pageIndex][index].Followers = [];
+                if (queryKey[1] === 'followings' || queryKey[1] === 'followers') {
+                  draft.pages[pageIndex] = draft.pages[pageIndex].filter(d => d.id.toString() !== userId);
+                }
               });
               queryClient.setQueryData(queryKey, shallow);
             }

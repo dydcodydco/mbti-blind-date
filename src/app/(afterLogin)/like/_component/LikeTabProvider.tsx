@@ -1,5 +1,6 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
 import { Dispatch, ReactNode, SetStateAction, createContext, useMemo, useState } from 'react'
 
 type tabContext = {
@@ -16,7 +17,9 @@ type Props = {
 }
 
 export default function LikeTabProvider({ children }: Props) {
-  const [like, setLike] = useState(true);
+  const searchParams = useSearchParams();
+  const newSearchParams = new URLSearchParams(searchParams);
+  const [like, setLike] = useState(newSearchParams.get('type') !== 'followings');
   const contextValue = useMemo(() => ({ like, setLike }), [like, setLike]);
   return (
     <TabContext.Provider value={contextValue}>

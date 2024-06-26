@@ -10,9 +10,9 @@ type Props = {
 export default function LikeCard({ user }: Props) {
   return (
     <Card key={user?.id}>
-      <Link href={`/${user.id}`} className='flex items-center p-3'>
+      <Link href={`/tester/${user.id}`} className='flex items-center p-3'>
         <Avatar className='w-[40px] h-[40px] mr-3'>
-          <AvatarImage src={user?.Images[0].link} />
+          {user?.Images && user?.Images.length > 0 && <AvatarImage src={user?.Images[0]?.link} />}
           <AvatarFallback>ZZ</AvatarFallback>
         </Avatar>
         <div className='flex flex-col justify-center'>

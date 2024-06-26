@@ -2,12 +2,12 @@
 
 import { useContext } from 'react'
 import { TabContext } from './LikeTabProvider'
-import UserLikeMe from './UserLikeMe';
-import UserILike from './UserILike';
+import Followers from './Followers';
+import Followings from './Followings';
 
 export default function TabDecider() {
   const { like } = useContext(TabContext);
   return (
-    like ? <UserLikeMe /> : <UserILike />
+    like ? <Followers /> : <Followings />
   )
 }

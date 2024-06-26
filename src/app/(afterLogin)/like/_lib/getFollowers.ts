@@ -1,9 +1,10 @@
-export async function getUserILike() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/iLikeUsers`, {
+export async function getFollowers() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users/followers`, {
     next: {
-      tags: ['users', 'iLike']
+      tags: ['users', 'followers']
     },
     cache: 'no-store',
+    credentials: 'include',
   });
 
   if (!res.ok) {

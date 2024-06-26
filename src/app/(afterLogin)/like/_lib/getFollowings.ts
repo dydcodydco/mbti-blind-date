@@ -1,9 +1,10 @@
-export async function getUserLikeMe() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/usersLikeMe`, {
+export async function getFollowings() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users/followings`, {
     next: {
-      tags: ['users', 'likeMe']
+      tags: ['users', 'followings']
     },
     cache: 'no-store',
+    credentials: 'include',
   });
 
   if (!res.ok) {
