@@ -32,19 +32,17 @@ export default function PromiseFormModal() {
     mutationFn: async (data: FormProps) => {
       const formData = new FormData;
       formData.append('content', data.content);
+      formData.append('region', '서울');
       preview.forEach(d => {
-        d && formData.append('images', d?.file);
+        d && formData.append('image', d?.file);
       })
-      return fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post`, {
+      return fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/images`, {
         method: 'post',
         credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          content: data.content!,
-          region: '서울',
-        }),
+        // headers: {
+        //   'Content-Type': 'application/json',
+        // },
+        body: formData
       })
     },
     async onSuccess(response, variable, context) {

@@ -190,7 +190,7 @@ export default function PromiseCard({ post, session }: Props) {
 
   return (
     <Card key={post.id} className='flex flex-col justify-between min-h-[300px] relative bg-black'>
-      {post.Images?.length > 0 && <ImageWithPlaceholder src={`${post.Images[0]}`} />}
+      {post.Images?.length > 0 && <ImageWithPlaceholder src={`${(post.Images[0] as any).src}`} />}
       <div className={style.promiseContent}>
         <div className='flex justify-between'>
           <PromiseCardLink post={post} />
