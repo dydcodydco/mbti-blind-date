@@ -25,7 +25,7 @@ export default function UserRandomRecommendSection({session}: {session: User}) {
           <Card key={user.id}>
             <Link className='p-2 flex items-center' href={`/${user.id}`}>
               <Avatar className='w-[40px] h-[40px]'>
-                <AvatarImage src={(user.Images as any)[0]?.src ? (user.Images as any)[0]?.src : 'https://github.com/shadcn.png'} />
+                <AvatarImage src={user.Images &&(user.Images as any)[0]?.src ? (user.Images as any)[0]?.src : 'https://github.com/shadcn.png'} />
                 <AvatarFallback>ZZ</AvatarFallback>
               </Avatar>
               <div className='text-ellipsis text-xs w-[100px] xl:w-[130px] ml-2 overflow-hidden'>

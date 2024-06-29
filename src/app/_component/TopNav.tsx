@@ -9,7 +9,7 @@ export default async function TopNav() {
   console.log(session, '----------top nav')
   return (
     <nav className={style.topNav}>
-      <Link href={`${session?.user ? '/' : '/login'}`}>
+      <Link href='/'>
         <h1>MBTI</h1>
         <span>가 어떻게 되세요?</span>
       </Link>
