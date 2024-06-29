@@ -52,7 +52,7 @@ export default function LeftNav({session}: {session: User | undefined}) {
         {session ? (
           <Link href="/profile" className={style.lefNavLink}>
             <Avatar className='w-[25px] h-[25px] lg:mr-2'>
-              <AvatarImage src={((session as IUser)?.Images as any)[0]?.src ? ((session as IUser)?.Images as any)[0].src : 'https://github.com/shadcn.png'} />
+              <AvatarImage src={(session as IUser)?.Images as any && ((session as IUser)?.Images as any)[0]?.src ? ((session as IUser)?.Images as any)[0].src : 'https://github.com/shadcn.png'} />
               <AvatarFallback>{session?.name?.slice(0, 2)}</AvatarFallback>
             </Avatar>
             <span className='hidden lg:inline-block'>프로필</span>

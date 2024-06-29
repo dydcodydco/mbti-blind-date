@@ -24,10 +24,10 @@ export default async function ProfilePage() {
   return (
     <div className='p-2'>
       <MainTitle>프로필</MainTitle>
-      <Link href={`/${user?.id}`}>
+      <Link href={`/tester/${user?.id}`}>
         <div className='flex justify-center items-center gap-2 mt-10 mb-10'>
           <Avatar className='w-[70px] h-[70px]'>
-            <AvatarImage src={(user.Images as any)[0]?.src ? (user.Images as any)[0]?.src : 'https://github.com/shadcn.png'} />
+            <AvatarImage src={user.Images && (user.Images as any)[0]?.src ? (user.Images as any)[0]?.src : 'https://github.com/shadcn.png'} />
             <AvatarFallback>{user?.name?.slice(0, 2)}</AvatarFallback>
           </Avatar>
           <div>

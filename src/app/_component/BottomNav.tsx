@@ -44,7 +44,7 @@ export default function BottomNav({session}: {session: User | undefined}) {
         
           <Link href="/profile" className="flex items-center justify-end flex-col">
             <Avatar className='w-[25px] h-[25px]'>
-            <AvatarImage src={((session as IUser)?.Images as any)[0]?.src ? ((session as IUser)?.Images as any)[0].src : 'https://github.com/shadcn.png'} />
+            <AvatarImage src={(session as IUser)?.Images as any && ((session as IUser)?.Images as any)[0]?.src ? ((session as IUser)?.Images as any)[0].src : 'https://github.com/shadcn.png'} />
               <AvatarFallback>{session.name?.slice(0, 2)}</AvatarFallback>
             </Avatar>
             <span className='text-[9px] mt-[2px]'>프로필</span>
