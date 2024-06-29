@@ -14,7 +14,7 @@ export default function LeftNav({session}: {session: User | undefined}) {
     <nav className={style.lefNav}>
       <div>
         <Link href={`${session ? '/' : '/login'}`} className={style.lefNavLink}>
-          <span className="hidden lg:block font-bold text-xl">MBTI<span className='text-sm'>가 어떻게 되세요?</span></span>
+          <span className="hidden lg:block font-extrabold text-xl">MBTI<span className='text-sm'>가 어떻게 되세요?</span></span>
           <span className="md:block lg:hidden font-extrabold text-center">What is your MBTI</span>
         </Link>
 

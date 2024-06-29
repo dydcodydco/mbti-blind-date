@@ -8,6 +8,7 @@ import React from 'react';
 import onLogin from '@/app/(beforeLogin)/_lib/login';
 import { useFormState, useFormStatus } from 'react-dom';
 import { Label } from '@/components/ui/label';
+import Link from 'next/link';
 
 function showMessage(messasge: string | null | undefined) {
   if (messasge === 'no_email') {
@@ -31,12 +32,17 @@ const LoginPage = () => {
       <Title />
       <form action={formAction}>
         <Label htmlFor="email">email</Label>
-        <Input id='email' name='email' type='text' placeholder="email" required className='mb-4 mt-2' />
+        <Input id='email' name='email' type='text' placeholder="email" required className='mb-6 mt-2' />
         <Label htmlFor="password">password</Label>
-        <Input id='password' name='password' type='password' required placeholder="password" className='mt-2' />
+        <Input id='password' name='password' type='password' required placeholder="password" className='mt-2 mb-4' />
 
+        {state?.message && <p className='text-red-500 text-[14px]'>{showMessage(state.message)}</p>}
         <Button type="submit" disabled={pending} className='w-full mt-4'>로그인</Button>
-        {state?.message && <p className='text-red-500'>{showMessage(state.message)}</p>}
+        <div className='mt-4 text-center'>
+          <Button variant="link" disabled={pending}>
+            <Link href='/signup'>회원가입</Link>
+          </Button>
+        </div>
       </form>
       {/* <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className={style.loginForm}>
