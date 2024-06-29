@@ -42,7 +42,7 @@ export default function UserCaousel({user}: {user: IUser}) {
               <div className='h-[400px] w-[100%] relative'>
                 {/* <Skeleton className='w-full h-full absolute top-0 left-0' /> */}
                 {/* <img className='w-full h-full block rounded-lg absolute top-0 left-0 z-10' src={img} alt='image' /> */}
-                <ImageWithPlaceholder src={img.link} />
+                <ImageWithPlaceholder src={img.src} />
               </div>
             </CarouselItem>
           ))}
