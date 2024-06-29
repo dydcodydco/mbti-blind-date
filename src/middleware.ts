@@ -19,7 +19,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // 가입은 했지만 유저 정보 세팅 하지 않았을 때,
-  if (session && !(session?.user as any)?.age && ['/recommend', '/promise', '/promise/form', '/messages', '/like', '/login', '/signup', '/', '/mbti', '/user'].includes(path)) {
+  if (session && !(session?.user as any)?.age && ['/recommend', '/promise', '/promise/form', '/messages', '/like', '/login', '/signup', '/', '/mbti', '/user', '/tester'].includes(path)) {
     return NextResponse.redirect(new URL('/makeinfo', request.url));
   }
 
