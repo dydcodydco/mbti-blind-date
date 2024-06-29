@@ -10,7 +10,7 @@ export default function PromiseCardLink({ post }: Props) {
   return (
     <Link href={`/tester/${post?.UserId}`} className='flex items-center'>
       <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarImage src={(post.User.Images as any)[0]?.src ? (post.User.Images as any)[0]?.src : 'https://github.com/shadcn.png'} />
         <AvatarFallback>{post?.User?.nickname.slice(0, 2)}</AvatarFallback>
       </Avatar>
       <div className='ml-2 flex flex-col justify-center'>
