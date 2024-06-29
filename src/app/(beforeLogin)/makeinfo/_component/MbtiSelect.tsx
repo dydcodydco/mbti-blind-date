@@ -89,7 +89,7 @@ export default function MbtiSelect({ }) {
         // console.log(result);
         // const jsonResult = await result?.json();
         // console.log(jsonResult);
-        router.push('/login');
+        router.replace('/login');
       }
     } catch (error) {
       console.error(error);

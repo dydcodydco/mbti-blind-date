@@ -6,9 +6,9 @@ import type { NextRequest } from 'next/server'
 export async function middleware(request: NextRequest) {
   const session = await auth();
   console.log('------------------------middleware');
-  console.log(session, '---------------------middleware session');
+  // console.log(session, '---------------------middleware session');
   console.log(session?.user, '---------------------middleware session user');
-  console.log('request.nextUrl.pathname', request.nextUrl.pathname);
+  // console.log('request.nextUrl.pathname', request.nextUrl.pathname);
   console.log('--------------------------------------------------------');
   
   const path = request.nextUrl.pathname;

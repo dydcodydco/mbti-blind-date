@@ -34,7 +34,7 @@ export default async function Layout({ children, modal }: { children: ReactNode,
                 <MbtiRecommendSection />
                 {session?.user && <>
                   <h3 className='font-extrabold mb-3 mt-8'>이분들 어떠세요?</h3>
-                  <UserRandomRecommendSection session={session?.user} />
+                  {/* <UserRandomRecommendSection session={session?.user} /> */}
                 </>}
               </div>
             </section>
