@@ -14,6 +14,7 @@ import { produce } from 'immer';
 import { MouseEventHandler } from 'react';
 import PromiseCard from '@/app/(afterLogin)/promise/_component/PromiseCard';
 import { IPost } from '@/model/Post';
+import dayjs from 'dayjs';
 
 type Props = {
   userId: string;
@@ -193,7 +194,7 @@ export default function UserDetailContent({userId, session}: Props) {
       {/* <UserDetailPromise userId={userId} /> */}
       <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3'>
         {user?.Posts.map((post: IPost) => (
-          <PromiseCard key={post.id} post={post} />
+          <PromiseCard key={post.id} post={post} postTime={dayjs(post.createdAt).fromNow()} />
         ))}
       </div>
       <div className='w-full sticky bottom-0 z-10 p-3 bg-white'>
