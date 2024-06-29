@@ -16,12 +16,14 @@ import { useSession } from 'next-auth/react';
 import { produce } from 'immer';
 import { MouseEventHandler, useCallback } from 'react';
 import { Session } from 'next-auth';
+import { usePathname } from 'next/navigation';
 dayjs.locale('ko');
 dayjs.extend(relativeTime)
 
-type Props = { post: IPost, session?: Session | null };
+type Props = { post: IPost, session?: Session | null, postTime: string };
 
-export default function PromiseCard({ post, session }: Props) {
+export default function PromiseCard({ post, session, postTime }: Props) {
+  const pathName = usePathname();
   const queryClient = useQueryClient();
   // const { data: clientSession } = useSession();
 
@@ -192,15 +194,17 @@ export default function PromiseCard({ post, session }: Props) {
     <Card key={post.id} className='flex flex-col justify-between min-h-[300px] relative bg-black'>
       {post.Images?.length > 0 && <ImageWithPlaceholder src={`${(post.Images[0] as any).src}`} />}
       <div className={style.promiseContent}>
-        <div className='flex justify-between'>
-          <PromiseCardLink post={post} />
-          <PromiseCardDropdown post={post} session={session} />
+        <div className='flex justify-between' >
+          {pathName.indexOf('tester') === -1 && <>
+            <PromiseCardLink post={post} />
+            <PromiseCardDropdown post={post} session={session} />
+          </>}
         </div>
         <p className='font-extrabold text-xl text-white text-center'>{post.content}</p>
         <div>
           <span className='text-white font-semibold text-sm flex items-center'>
             <MapPin color='#ffffff' className='mr-1' />
-              {post.User?.area || '서울'} · {dayjs(post.createdAt).fromNow()}
+              {post.User?.area || '서울'} · {postTime}
           </span>
           {
             post?.User?.email !== session?.user?.email &&

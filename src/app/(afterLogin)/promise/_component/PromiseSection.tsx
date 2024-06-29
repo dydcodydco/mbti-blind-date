@@ -7,6 +7,7 @@ import PromiseCard from './PromiseCard';
 import { useInView } from 'react-intersection-observer';
 import { Fragment, useEffect } from 'react';
 import { Session } from 'next-auth';
+import dayjs from 'dayjs';
 
 type Props = { session?: Session | null };
 
@@ -49,7 +50,9 @@ export default function PromiseSection({session}: Props) {
     <>
       {data?.pages.map((page, i) => (
         <Fragment key={i}>
-          {page.map((post: IPost) => <PromiseCard key={post.id} post={post} session={session} />)}
+          {page.map((post: IPost) => (
+            <PromiseCard key={post.id} post={post} session={session} postTime={dayjs(post.createdAt).fromNow()} />
+          ))}
         </Fragment>
       ))}
       {hasNextPage && <div ref={ref} style={{ height: 50 }}></div>}
