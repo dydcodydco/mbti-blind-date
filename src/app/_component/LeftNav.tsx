@@ -6,6 +6,7 @@ import style from './nav.module.css';
 import { BookHeart, BookUser, Calendar, CalendarHeart, Heart, MessageCircle, MessageCircleMore, Settings, UserRoundCheck, UserRoundPlus } from 'lucide-react';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import { User } from 'next-auth';
+import { IUser } from '@/model/User';
 
 export default function LeftNav({session}: {session: User | undefined}) {
   const segment = useSelectedLayoutSegment();
@@ -51,7 +52,7 @@ export default function LeftNav({session}: {session: User | undefined}) {
         {session ? (
           <Link href="/profile" className={style.lefNavLink}>
             <Avatar className='w-[25px] h-[25px] lg:mr-2'>
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage src={((session as IUser)?.Images as any)[0]?.src ? ((session as IUser)?.Images as any)[0].src : 'https://github.com/shadcn.png'} />
               <AvatarFallback>{session?.name?.slice(0, 2)}</AvatarFallback>
             </Avatar>
             <span className='hidden lg:inline-block'>프로필</span>

@@ -26,7 +26,7 @@ export const { handlers, signIn, signOut, auth, unstable_update, } = NextAuth({
       }
 
       if (user) {
-        // console.log(user, '--------------------auth callback jwt user');
+        console.log(user, '--------------------auth callback jwt user');
         token.age = user.age;
         token.mbti = user.mbti;
         token.gender = user.gender;
@@ -39,13 +39,14 @@ export const { handlers, signIn, signOut, auth, unstable_update, } = NextAuth({
         token.job = user.job;
         token.age = user.age;
         token.id = user.id;
+        token.Images = user.Images.map((d: any) => ({id: d.id, src: d.src}));
       }
       return token;
     },
     session({ session, token }: {session: any, token: any}) {
       /* Step 2: update the session.user based on the token object */
       if (token && session.user) {
-        // console.log(token, '---------------------auth callback session token');
+        console.log(token, '---------------------auth callback session token');
         session.user.age = token.age;
         session.user.mbti = token.mbti;
         session.user.gender = token.gender;
@@ -58,6 +59,7 @@ export const { handlers, signIn, signOut, auth, unstable_update, } = NextAuth({
         session.user.job = token.job;
         session.user.age = token.age;
         session.user.id = token.id;
+        session.user.Images = token.Images;
       }
       return session;
     },

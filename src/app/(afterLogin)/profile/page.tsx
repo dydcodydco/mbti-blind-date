@@ -27,8 +27,8 @@ export default async function ProfilePage() {
       <Link href={`/${user?.id}`}>
         <div className='flex justify-center items-center gap-2 mt-10 mb-10'>
           <Avatar className='w-[70px] h-[70px]'>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>{(session?.user?.name || session?.user?.email as string).slice(0, 2)}</AvatarFallback>
+            <AvatarImage src={(user.Images as any)[0]?.src ? (user.Images as any)[0]?.src : 'https://github.com/shadcn.png'} />
+            <AvatarFallback>{user?.name?.slice(0, 2)}</AvatarFallback>
           </Avatar>
           <div>
             <h2 className='font-semibold text-lg'>{session?.user?.name || session?.user?.email}</h2>

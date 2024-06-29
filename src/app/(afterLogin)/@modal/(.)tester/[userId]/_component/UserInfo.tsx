@@ -11,7 +11,7 @@ export default function UserInfo({ user, session }: Props) {
   return (
     <div className='pb-[80px]'>
       <div>
-        {/* <UserCaousel user={user} /> */}
+        <UserCaousel user={user} />
       </div>
       <h1 className='font-bold text-xl sm:text-2xl mt-2 break-all'>
         {user.nickname}, {user?.age}

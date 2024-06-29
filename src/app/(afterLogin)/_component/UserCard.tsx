@@ -29,7 +29,7 @@ const UserCard = ({ user, session }: Props) => {
   return (
     // <UserCardArticle user={user}>
     <Card className={style.userCard}>
-      <Link href={`/user/${user.id}`} scroll={false} className='w-full h-full absolute top-0 left-0'>
+      <Link href={`/tester/${user.id}`} scroll={false} className='w-full h-full absolute top-0 left-0'>
         {/* <img src={user.image[0]} className='rounded-xl h-full block w-full' alt="img" /> */}
         {/* <ImageWithPlaceholder src={`${user.Images[0].link}`} /> */}
         <div className={style.userInfo}>

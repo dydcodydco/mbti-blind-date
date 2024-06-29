@@ -1,8 +1,8 @@
 import { IUser } from './User';
 
 export interface IUserImage {
-  link: string;
+  src: string;
   base64?: string;
-  imageId: string;
+  id: string;
   User?: IUser;
 }

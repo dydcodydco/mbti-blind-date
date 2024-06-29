@@ -29,6 +29,7 @@ export default function MbtiSelect({ }) {
     birthdayYear,
     birthdayMonth,
     birthdayDay,
+    userImages,
   } = useContext(setUserContext);
   const router = useRouter();
   
@@ -57,15 +58,29 @@ export default function MbtiSelect({ }) {
         job,
         age: calculateAge(birthdayYear, birthdayMonth, birthdayDay),
       }
+      const formData = new FormData;
+      formData.append('mbti', `${ie}${sn}${ft}${pj}`);
+      formData.append('gender', gender);
+      formData.append('nickname', nickname);
+      formData.append('region', region);
+      formData.append('tall', tall.toString());
+      formData.append('religion', religion.ko);
+      formData.append('drink', drink);
+      formData.append('smoke', smoke);
+      formData.append('school', school);
+      formData.append('job', job);
+      formData.append('age', calculateAge(birthdayYear, birthdayMonth, birthdayDay).toString());
+      userImages.forEach(d => {
+        formData.append('image', d);
+      })
 
       console.log('------------------------------');
-      const response = await fetch('/api/user/update', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/setting`, {
         method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userSettingObj),
+        credentials: 'include',
+        body: formData
       });
+
       console.log(response, '-----------------------/api/user/update response-------------------------');
       if (response?.ok) {
         const sessionUpdateInfo = await response.json();
@@ -79,7 +94,7 @@ export default function MbtiSelect({ }) {
     } catch (error) {
       console.error(error);
     } 
-  }, [birthdayDay, birthdayMonth, birthdayYear, drink, gender, job, nickname, region, religion.ko, router, school, session?.user, setMbti, smoke, tall]);
+  }, [birthdayDay, birthdayMonth, birthdayYear, drink, gender, job, nickname, region, religion.ko, router, school, session?.user, setMbti, smoke, tall, userImages]);
 
   return (
     <form className={style.mbtiForm} onSubmit={handleSubmit(onMbtiSubmit)}>
