@@ -85,11 +85,11 @@ export default function RecommendSection({ session, mbtiList }: Props) {
       await queryClient.invalidateQueries({
         queryKey: ['users'],
       });
+    },
+    onSettled() {
       if (userNumber === users.length) return;
       setUserNumber(prev => prev + 1);
       api?.scrollTo(0, true);
-    },
-    onSettled() {
     },
   });
 
@@ -138,6 +138,8 @@ export default function RecommendSection({ session, mbtiList }: Props) {
       await queryClient.invalidateQueries({
         queryKey: ['users'],
       });
+    },
+    onSettled() {
       if (userNumber === users.length) return;
       setUserNumber(prev => prev + 1);
       api?.scrollTo(0, true);
@@ -182,7 +184,7 @@ export default function RecommendSection({ session, mbtiList }: Props) {
   }, [userNumber, users, isLiked, follow, api]);
 
   const onClick = useCallback(() => {
-    router.push(`/${users[userNumber].id}`);
+    router.push(`/tester/${users[userNumber].id}`);
   }, [router, users, userNumber]);
 
 
@@ -208,7 +210,7 @@ export default function RecommendSection({ session, mbtiList }: Props) {
             <Carousel opts={{loop: true, dragThreshold: 5 }} setApi={setApi} className={style.carousel}>
               <CarouselContent>
                 {users[userNumber].Images.map((img: IUserImage, index: number) => (
-                  <CarouselItem key={index} onClickCapture={onClick} className='aaa'>
+                  <CarouselItem key={index} className='aaa'>
                     {/* <ImageWithPlaceholder src={`${img}`} /> */}
                     <div className='relative h-full'>
                       {/* <Skeleton className='w-full h-full absolute top-0 left-0' /> */}
