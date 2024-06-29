@@ -7,9 +7,12 @@ import { Progress } from '@/components/ui/progress';
 import { useCallback, useContext } from 'react';
 import { setUserContext } from './SetUserProvider2';
 import style from '../userSetting.module.css'
+import LogoutButton from '@/app/(beforeLogin)/_component/LogoutButton';
+import { Session } from 'next-auth';
 
+type Props = { session: Session | null };
 
-export default function SetUserTop() {
+export default function SetUserTop({session}: Props) {
   const { progress, setProgress } = useContext(setUserContext);
   const onClickBack = useCallback(() => {
     switch (progress) {
@@ -54,6 +57,7 @@ export default function SetUserTop() {
       <Button variant="outline" size="icon" className='absolute left-2 top-[30px] w-[30px] h-[30px]' onClick={onClickBack}>
         <ArrowLeft className="h-4 w-4"  />
       </Button>
+      <LogoutButton session={session?.user} makeInfo={true} />
       <Title />
       <Progress className={style.progress} value={progress} />
     </>
