@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import style from './nav.module.css';
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { BookHeart, BookUser, Calendar, CalendarHeart, Heart, MessageCircle, MessageCircleMore, WalletCards } from 'lucide-react';
-import { User } from 'next-auth';
+import { BookHeart, BookUser, Calendar, CalendarHeart, Heart, MessageCircle, MessageCircleMore, User, WalletCards } from 'lucide-react';
 import { IUser } from '@/model/User';
+import { User as AuthUser } from 'next-auth';
 
-export default function BottomNav({session}: {session: User | undefined}) {
+export default function BottomNav({session}: {session: AuthUser | undefined}) {
   const segment = useSelectedLayoutSegment();
   
   return (
@@ -44,8 +44,12 @@ export default function BottomNav({session}: {session: User | undefined}) {
         
           <Link href="/profile" className="flex items-center justify-end flex-col">
             <Avatar className='w-[25px] h-[25px]'>
-            <AvatarImage src={(session as IUser)?.Images as any && ((session as IUser)?.Images as any)[0]?.src ? ((session as IUser)?.Images as any)[0].src : 'https://github.com/shadcn.png'} />
-              <AvatarFallback>{session.name?.slice(0, 2)}</AvatarFallback>
+              {(session as IUser)?.Images && ((session as IUser)?.Images as any)[0]?.src
+                ? (<>
+                    <AvatarImage src={((session as IUser)?.Images as any)[0]?.src} />
+                    <AvatarFallback>{(session as IUser)?.nickname?.slice(0, 2)}</AvatarFallback>
+                  </>)
+                : <User className='w-[25px] h-[25px] rounded-full' />}
             </Avatar>
             <span className='text-[9px] mt-[2px]'>프로필</span>
           </Link>

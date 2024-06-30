@@ -7,9 +7,10 @@ import { useQuery } from '@tanstack/react-query';
 import { IUser } from '@/model/User';
 import { getUserRandomRecommends } from '@/app/(afterLogin)/_lib/getUserRandomRecommends';
 import Link from 'next/link';
-import { User } from 'next-auth';
+import { User as AuthUser } from 'next-auth';
+import { User } from 'lucide-react';
 
-export default function UserRandomRecommendSection({session}: {session: User}) {
+export default function UserRandomRecommendSection({session}: {session: AuthUser}) {
   const { data } = useQuery<IUser[]>({
     queryKey: ['users', 'random', 'recommends'],
     queryFn: getUserRandomRecommends,
@@ -24,10 +25,14 @@ export default function UserRandomRecommendSection({session}: {session: User}) {
         {data?.map((user: IUser) => (
           <Card key={user.id}>
             <Link className='p-2 flex items-center' href={`/${user.id}`}>
-              <Avatar className='w-[40px] h-[40px]'>
-                <AvatarImage src={user.Images &&(user.Images as any)[0]?.src ? (user.Images as any)[0]?.src : 'https://github.com/shadcn.png'} />
-                <AvatarFallback>ZZ</AvatarFallback>
-              </Avatar>
+            <Avatar className='w-[40px] h-[40px]'>
+              {user.Images && (user.Images as any)[0]?.src
+                ? (<>
+                    <AvatarImage src={(user.Images as any)[0]?.src} />
+                    <AvatarFallback>{user.nickname.slice(0, 2)}</AvatarFallback>
+                  </>)
+                : <User className='w-[40px] h-[40px] rounded-full' />}
+            </Avatar>
               <div className='text-ellipsis text-xs w-[100px] xl:w-[130px] ml-2 overflow-hidden'>
                 {user.nickname}
                 <p className='text-ellipsis overflow-hidden'>{user.id}</p>

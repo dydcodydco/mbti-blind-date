@@ -75,7 +75,8 @@ export default function ImageSelect() {
         </div>
       </div>
 
-      <Button className='w-full' disabled={preview.length === 0} onClick={nextStep}>다음</Button>
+      {/* <Button className='w-full' disabled={preview.length === 0} onClick={nextStep}>다음</Button> */}
+      <Button className='w-full' onClick={nextStep}>다음</Button>
     </div>
   )
 }

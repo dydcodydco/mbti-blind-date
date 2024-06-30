@@ -8,6 +8,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { mbtiCompatibility } from '../_constants/constants';
 import MbtiButtonList from '../_component/MbtiButtonList';
+import { User } from 'lucide-react';
     
 export default async function ProfilePage() {
   const session = await auth();
@@ -27,8 +28,12 @@ export default async function ProfilePage() {
       <Link href={`/tester/${user?.id}`}>
         <div className='flex justify-center items-center gap-2 mt-10 mb-10'>
           <Avatar className='w-[70px] h-[70px]'>
-            <AvatarImage src={user.Images && (user.Images as any)[0]?.src ? (user.Images as any)[0]?.src : 'https://github.com/shadcn.png'} />
-            <AvatarFallback>{user?.name?.slice(0, 2)}</AvatarFallback>
+            {user.Images && (user.Images as any)[0]?.src
+              ? (<>
+                  <AvatarImage src={(user.Images as any)[0]?.src} />
+                  <AvatarFallback>{user?.name?.slice(0, 2)}</AvatarFallback>
+                </>)
+              : <User className='w-[70px] h-[70px] rounded-full' />}
           </Avatar>
           <div>
             <h2 className='font-semibold text-lg'>{session?.user?.name || session?.user?.email}</h2>
