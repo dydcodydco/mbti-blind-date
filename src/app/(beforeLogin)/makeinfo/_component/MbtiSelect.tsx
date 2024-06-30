@@ -45,19 +45,6 @@ export default function MbtiSelect({ }) {
       console.log(data);
       const { ie, sn, ft, pj } = data;
       setMbti(`${ie}${sn}${ft}${pj}`);
-      const userSettingObj = {
-        mbti: `${ie}${sn}${ft}${pj}`,
-        gender,
-        nickname,
-        region,
-        tall,
-        religion: religion.ko,
-        drink,
-        smoke,
-        school,
-        job,
-        age: calculateAge(birthdayYear, birthdayMonth, birthdayDay),
-      }
       const formData = new FormData;
       formData.append('mbti', `${ie}${sn}${ft}${pj}`);
       formData.append('gender', gender);
@@ -85,7 +72,7 @@ export default function MbtiSelect({ }) {
       if (response?.ok) {
         const sessionUpdateInfo = await response.json();
         console.log(sessionUpdateInfo, '------------------------------------MbtiSelect sessionUpdateInfo----------------------------------')
-        const result = await updateSession({ ...session?.user, ...userSettingObj, name: userSettingObj.nickname, Images: sessionUpdateInfo.Images });
+        await updateSession({ ...session?.user, ...sessionUpdateInfo });
         // console.log(result);
         // const jsonResult = await result?.json();
         // console.log(jsonResult);
