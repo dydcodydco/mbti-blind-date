@@ -20,7 +20,7 @@ const UserCard = ({ user, session }: Props) => {
   const myMbti = useMemo(() => (session?.user as IUser)?.mbti.toUpperCase(), [session?.user]);
   const userMbti = useMemo(() => (user as IUser)?.mbti?.toUpperCase(), [user]);
   const mbtiData = mbtiCompatibility[myMbti];
-  const isLiked = !!user.Followers.find(v => v.id.toString() === session?.user?.id);
+  const isLiked = !!user.Followers.find(v => v.id.toString() === session?.user?.id?.toString());
 
   if (!session) {
     return null;
