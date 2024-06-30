@@ -72,7 +72,7 @@ export default function MbtiSelect({ }) {
       if (response?.ok) {
         const sessionUpdateInfo = await response.json();
         console.log(sessionUpdateInfo, '------------------------------------MbtiSelect sessionUpdateInfo----------------------------------')
-        await updateSession({ ...session?.user, ...sessionUpdateInfo });
+        await updateSession({ ...session?.user, ...sessionUpdateInfo, name: nickname });
         // console.log(result);
         // const jsonResult = await result?.json();
         // console.log(jsonResult);
