@@ -38,12 +38,12 @@ const LoginPage = () => {
 
         {state?.message && <p className='text-red-500 text-[14px]'>{showMessage(state.message)}</p>}
         <Button type="submit" disabled={pending} className='w-full mt-4'>로그인</Button>
-        <div className='mt-4 text-center'>
-          <Button variant="link" disabled={pending}>
-            <Link href='/signup'>회원가입</Link>
-          </Button>
-        </div>
       </form>
+      <div className='mt-4 text-center'>
+        <Button variant="link" disabled={pending}>
+          <Link href='/signup'>회원가입</Link>
+        </Button>
+      </div>
       {/* <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className={style.loginForm}>
           <FormField

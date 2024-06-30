@@ -148,12 +148,12 @@ const SignupPage = () => {
 
           {form.formState.errors.root && <p className='text-red-500 text-[14px]'>{form.formState.errors.root.serverError.message}</p>}
           <Button type="submit">회원가입</Button>
-          <div className='mt-4 text-center'>
+        </form>
+        <div className='mt-4 text-center'>
           <Button variant="link">
             <Link href='/login'>로그인</Link>
           </Button>
         </div>
-        </form>
       </Form>
     </section>
   )
