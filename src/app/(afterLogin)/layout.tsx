@@ -9,9 +9,10 @@ import { auth } from '@/auth';
 import RQProvider from '@/app/(afterLogin)/_component/RQProvider';
 import SearchForm from '@/app/(afterLogin)/_component/SearchForm';
 
-export default async function Layout({ children, modal }: { children: ReactNode, modal: ReactNode }) {
-  const session = await auth();
+type Props = { children: ReactNode, modal: ReactNode };
 
+export default async function Layout({ children, modal }: Props) {
+  const session = await auth();
   return (
     <div className={style.container}>
       <RQProvider>

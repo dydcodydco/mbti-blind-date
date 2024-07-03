@@ -1,7 +1,8 @@
 import { IUser } from '@/model/User';
 import { QueryFunction } from '@tanstack/react-query';
+import { cookies } from 'next/headers';
 
-export const getSingleUser: QueryFunction<IUser, [_1: string, userId: string]> = async ({ queryKey }) => {
+export const getSingleUserServer: QueryFunction<IUser, [_1: string, userId: string]> = async ({ queryKey }) => {
   const [_1, userId] = queryKey;
   console.log(userId, '---------------------------getSingleUser');
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/${userId}`, {
@@ -10,6 +11,7 @@ export const getSingleUser: QueryFunction<IUser, [_1: string, userId: string]> =
     },
     cache: 'no-store',
     credentials: 'include',
+    headers: {Cookie: cookies().toString()}
   });
 
   if (!res.ok) {
