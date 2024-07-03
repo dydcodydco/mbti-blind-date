@@ -6,8 +6,11 @@ import { getFollowings } from '../_lib/getFollowings';
 import LikeCard from './LikeCard';
 import { Fragment, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { Session } from 'next-auth';
 
-export default function Followings() {
+type Props = { session: Session | null }
+
+export default function Followings({session}: Props) {
   const { data, fetchNextPage, hasNextPage, isError } = useSuspenseInfiniteQuery({
     queryKey: ['users', 'followings'],
     queryFn: getFollowings,
@@ -38,7 +41,7 @@ export default function Followings() {
       {data?.pages.length > 0 && data?.pages[0].length > 0 ? data?.pages.map((page: IUser[], i) => (
         <Fragment key={i}>
           {page.map((user: IUser) => (
-            <LikeCard key={user.id} user={user} />
+            <LikeCard key={user.id} user={user} session={session} />
           ))}
         </Fragment>
       )) : (
