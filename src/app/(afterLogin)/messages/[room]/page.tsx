@@ -22,7 +22,7 @@ export default async function ChatRoom({ params }: Props) {
       <div className='flex flex-col h-dvh sm:pb-0 p-0 sm:p-2 overflow-hidden'>
         <MessageHeader id={ids[0]}/>
         <MessageList id={ids[0]} session={session} />
-        <MessageForm id={ids[0]} />
+        <MessageForm id={ids[0]} session={session} />
       </div>
     </HydrationBoundary>
   )

@@ -4,19 +4,18 @@ import { Button } from '@/components/ui/button';
 import { ChangeEventHandler, KeyboardEventHandler, useCallback, useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import TextareaAutosize from 'react-textarea-autosize';
-import { useSession } from 'next-auth/react';
 import { InfiniteData, useQueryClient } from '@tanstack/react-query';
 import { Message } from '@/model/Message';
 import { produce } from 'immer';
 import { SocketContext } from '../../_component/SocketProvider';
+import { Session } from 'next-auth';
 
-type Props = { id: string };
+type Props = { id: string, session: Session | null; };
 interface IFormProps {
   content: string;
 }
 
-export default function MessageForm({ id }: Props) {
-  const { data: session } = useSession();
+export default function MessageForm({ id, session }: Props) {
   const { socket, setGoDown } = useContext(SocketContext);
   const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm<IFormProps>();
   const queryClient = useQueryClient();
