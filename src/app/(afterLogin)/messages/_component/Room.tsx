@@ -7,7 +7,7 @@ import { User } from 'lucide-react';
 import { Session } from 'next-auth';
 import Link from 'next/link';
 
-type Props = { room: IRoom, session: Session };
+type Props = { room: IRoom, session: Session | null };
 
 export default function Room({ room, session }: Props) {
   console.log(session);
