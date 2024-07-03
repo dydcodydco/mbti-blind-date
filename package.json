@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "cross-env NODE_ENV=production next build",
-    "start": "cross-env NODE_ENV=production next start -p 3060",
+    "start": "cross-env NODE_ENV=production next start -p 3065",
     "lint": "next lint",
     "mock": "npx tsx watch ./src/mocks/http.ts"
   },
@@ -36,7 +36,10 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.4",
     "react-intersection-observer": "^9.10.2",
+    "react-textarea-autosize": "^8.5.3",
     "sass": "^1.77.2",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
