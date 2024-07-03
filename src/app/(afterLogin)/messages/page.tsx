@@ -1,9 +1,6 @@
 import { Metadata } from 'next';
 import MainTitle from '../_component/MainTitle';
 import { auth } from '@/auth';
-import { getRooms } from './_lib/getRooms';
-import { Room as IRoom } from '@/model/Room';
-import Room from './_component/Room';
 import { Suspense } from 'react';
 import Loading from './loading';
 import RoomSection from './_component/RoomSection';
@@ -18,11 +15,12 @@ export default async function Page() {
   const queryClient = new QueryClient();
   queryClient.prefetchInfiniteQuery({ queryKey: ['rooms'], queryFn: getRoomsServer, initialPageParam: 0 });
   const dehydrateState = dehydrate(queryClient);
+  const session = await auth();
   return (
     <HydrationBoundary state={dehydrateState}>
       <MainTitle>채팅</MainTitle>
       <Suspense fallback={<Loading />}>
-        <RoomSection />
+        <RoomSection session={session} />
       </Suspense>
     </HydrationBoundary>
   )

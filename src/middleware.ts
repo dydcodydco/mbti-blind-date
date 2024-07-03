@@ -7,12 +7,12 @@ export async function middleware(request: NextRequest) {
   const session = await auth();
   console.log('------------------------middleware');
   // console.log(session, '---------------------middleware session');
-  console.log(session?.user, '---------------------middleware session user');
+  // console.log(session?.user, '---------------------middleware session user');
   // console.log('request.nextUrl.pathname', request.nextUrl.pathname);
-  console.log('--------------------------------------------------------');
+  // console.log('--------------------------------------------------------');
   
   const path = request.nextUrl.pathname;
-console.log(path, '---------------------------------path-----------------------------------')
+// console.log(path, '---------------------------------path-----------------------------------')
   // 로그인되지 않은 사용자는 로그인 페이지로 리디렉션
   if (!session && path !== '/login' && path !== '/signup') {
     return NextResponse.redirect(new URL('/login', request.url));
@@ -33,7 +33,7 @@ console.log(path, '---------------------------------path------------------------
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  console.log(path, '---------------------------------------4');
+  // console.log(path, '---------------------------------------4');
   // return NextResponse.redirect('http://localhost:3000/signup');
   return NextResponse.next();
 }

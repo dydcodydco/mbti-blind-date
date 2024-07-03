@@ -16,9 +16,9 @@ export default function Room({ room, session }: Props) {
     <Card>
       <Link href={`/messages/${room.room}`} className='flex items-center p-3'>
         <Avatar className='w-[40px] h-[40px] mr-3'>
-          {room.RoomReceiver.Images && (room.RoomReceiver.Images as any)[0]?.src
+          {receiver.Images && (receiver.Images as any)[0]?.src
             ? (<>
-                <AvatarImage src={(room.RoomReceiver.Images as any)[0]?.src} />
+                <AvatarImage src={(receiver.Images as any)[0]?.src} />
                 <AvatarFallback>ZZ</AvatarFallback>
               </>)
             : <User className='w-[40px] h-[40px] rounded-full' />}

@@ -5,6 +5,11 @@ interface UserID {
   id: string,
 }
 
+interface FollowsID {
+  FollowingId?: string,
+  FollowerId?: string,
+}
+
 export interface IUser {
   id: number | string;
   nickname: string;
@@ -20,9 +25,11 @@ export interface IUser {
   email: number | string;
   Followers: UserID[];
   Followings: UserID[];
+  Follows?: FollowsID;
   Posts: IPost[];
   _count: {
     Followers: number;
     Followings: number;
   }
+  isFollowEachother?: boolean;
 }

@@ -7,14 +7,14 @@ import { SocketContext } from './SocketProvider';
 import { DefaultError, InfiniteData, useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
 import { getRooms } from '../_lib/getRooms';
 import { produce } from 'immer';
-import { Message } from '@/model/Message';
 import { useInView } from 'react-intersection-observer';
-import { useSession } from 'next-auth/react';
+import { Session } from 'next-auth';
 
-export default function RoomSection() {
+type Props = {session: Session | null}
+
+export default function RoomSection({session} : Props) {
   const { socket } = useContext(SocketContext);
   const queryClient = useQueryClient();
-  const { data: session } = useSession();
   const { data, isFetching, hasNextPage, fetchNextPage } = useInfiniteQuery<IRoom[], DefaultError, InfiniteData<IRoom[]>, [string], number>({
     queryKey: ['rooms'],
     queryFn: getRooms,
@@ -22,7 +22,7 @@ export default function RoomSection() {
     getNextPageParam: (lastPage) => lastPage?.at(-1)?.id,
   });
 
-  socket?.on('receiveMessage', (data: Message) => {
+  socket?.on('receiveRoom', (data: IRoom) => {
     console.log(data, '-----------------룸 섹션에 메세지가 왔습니다.');
     const rooms = queryClient.getQueryData<InfiniteData<IRoom[]>>
       (['rooms']);
@@ -35,10 +35,15 @@ export default function RoomSection() {
         draft.pages[pagesIndex][index].content = data.content;
       });
       queryClient.setQueryData(['rooms'], shallow);
+    } else {
+      const shallow = produce(rooms, (draft) => {
+        draft.pages[0].push(data);
+      });
+      queryClient.setQueryData(['rooms'], shallow);
     }
   });
 
-  const { ref, inView } = useInView({
+  const { ref, inView } = useInView({ 
     delay: 0,
     threshold: 0,
   });
