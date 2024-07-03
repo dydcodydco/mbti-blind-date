@@ -12,14 +12,14 @@ export async function middleware(request: NextRequest) {
   console.log('--------------------------------------------------------');
   
   const path = request.nextUrl.pathname;
-
+console.log(path, '---------------------------------path-----------------------------------')
   // 로그인되지 않은 사용자는 로그인 페이지로 리디렉션
   if (!session && path !== '/login' && path !== '/signup') {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
   // 가입은 했지만 유저 정보 세팅 하지 않았을 때,
-  if (session && !(session?.user as any)?.age && ['/recommend', '/promise', '/promise/form', '/messages', '/like', '/login', '/signup', '/', '/mbti', '/user', '/tester'].includes(path)) {
+  if (session && !(session?.user as any)?.age && ['/recommend', '/promise', '/promise/form', '/messages', '/like', '/login', '/signup', '/', '/mbti', '/user', '/tester', '/tester', '/tester/:path*', '/messages/:path*'].includes(path)) {
     return NextResponse.redirect(new URL('/makeinfo', request.url));
   }
 
@@ -40,5 +40,5 @@ export async function middleware(request: NextRequest) {
 
 // 미들웨어를 적용할 라우트
 export const config = {
-  matcher: ['/recommend', '/promise', '/promise/form', '/profile', '/messages', '/like', '/login', '/signup', '/usersetting', '/', '/mbti', '/user', '/makeinfo'],
+  matcher: ['/recommend', '/promise', '/promise/form', '/profile', '/messages', '/like', '/login', '/signup', '/usersetting', '/', '/mbti', '/user', '/makeinfo', '/tester/:path*', '/messages/:path*'],
 }
