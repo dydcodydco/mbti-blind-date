@@ -38,7 +38,9 @@ export default function SocketProvider({ children }: Props) {
   useEffect(() => {
     console.log(socket, '-----------------------------------------socket???');
     if (!socket) {
-      const socketInstance = io(`${process.env.NEXT_PUBLIC_BASE_URL}/messages`);
+      const socketInstance = io(`${process.env.NEXT_PUBLIC_BASE_URL}/messages`, {
+        withCredentials: true,
+      });
   
       socketInstance.on('connect', async () => {
         setIsConnected(true);
