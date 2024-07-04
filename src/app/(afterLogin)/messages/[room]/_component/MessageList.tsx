@@ -120,7 +120,7 @@ export default function MessageList({ id, session }: Props) {
       {messages?.pages.map((page, pageIndex) => (
         <Fragment key={pageIndex}>
           {page.map(d => (
-            d.SenderId === session?.user?.id ? (
+            d.SenderId?.toString() === session?.user?.id?.toString() ? (
               <div key={d.id} className='flex justify-center items-end flex-col'>
                 <span className='inline-flex justify-center items-center p-3 py-2 sm:py-3 rounded-lg bg-slate-500 rounded-br-none text-white text-xs sm:text-base mb-1'>{d.content}</span>
                 <span className='text-xs sm:text-sm'>{dayjs(d.createdAt).format('YYYY년 MM월 DD일 A HH시 mm분')}</span>
