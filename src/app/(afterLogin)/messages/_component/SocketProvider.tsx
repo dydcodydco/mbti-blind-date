@@ -1,10 +1,11 @@
 'use client';
 
+import { Session } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import { ReactNode, createContext, useCallback, useEffect, useMemo, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 
-type Props = { children: ReactNode };
+type Props = { children: ReactNode, session: Session | null };
 type SocketContextType = {
   socket: Socket | null;
   isConnected: boolean;
@@ -21,8 +22,7 @@ export const SocketContext = createContext<SocketContextType>({
   setGoDown: () => {},
 })
 
-export default function SocketProvider({ children }: Props) {
-  const { data: session } = useSession();
+export default function SocketProvider({ children, session }: Props) {
   const [socket, setSocket] = useState<any | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [goDown, setGoDown] = useState(false);
