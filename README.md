@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MBTI-blind-date (MBTI가 어떻게되세요? What is your MBTI)
+sns형 소개팅 웹페이지
 
-## Getting Started
+기존 소개팅 앱에서 아쉽다고 생각하는 부분들을 sns와 결합함으로써 해결하려고 했습니다.
+(이성을 만날 수 있는 기회가 제한적, 추가로 원할때 과금 필요)
+기본적으로 프로세스는 일반 소개팅앱과 비슷합니다. (회원가입, 유저정보 세팅, 이후에 이성에게 표현)
+다만 sns형이다보니 다양한 사람들을 보고 좋아요 표시할 수 있습니다.
 
-First, run the development server:
 
+## 프로젝트 소개
+### sns형 소개팅 앱
+- 회원가입 / 로그인
+- 사용자 정보 업데이트
+- 회원가입 + 사용자정보 업데이트 한 사람만 메인 페이지에 접속할 수 있습니다.
+
+
+### 프로젝트의 핵심인 MBTI
+단순히 소개팅앱을 만드는건 다른 어플들과의 차이점이 없다고 생각했습니다.
+사용자들에게 이 어플을 사용하게 혹은 흥미를 끌게 하기 위해서는 어떤 포인트가 필요하다고 생각했는데
+저는 이것을 MBTI로 정했습니다.
+예전 보다는 유행이 줄어든 느낌이 있지만 MBTI는 이제 어느 자리에서도 기본적인 정보가 되어버린 것 처럼
+생각되기에 이를 이요하면 만드는 나도 재미있고 유저들도 흥미를 느끼지 않을까 했습니다.
+
+
+### 유사 앱들과의 차이점
+물론 MBTI를 키워드로한 앱들이 있었습니다.
+그래서 아쉬웠고 다른 방향으로 가야하나 싶었는데, 직접 사용해보고 이걸로 가야겠다는 확신이 섰습니다.
+왜냐하면 제가 생각한 MBTI소개팅 앱의 핵심 기능은
+원하는 mbti에 따라 리스트를 볼 수 있는 것이었습니다.
+다른 앱들은 mbti로 심리테스트를 하거나, 관계에 대한 내용을 핵심적으로 다뤘지만 제가 생각한 리스트를 분리하는 기능은 없었습니다.
+그래서 나와 mbti 성향이 잘맞는, 혹은 i만 따로 e만 따로 유저들을 볼 수 있도록 했습니다.
+
+
+### 구현된 기능
+- 회원가입 / 로그인
+- 유저정보 세팅
+- 유저 리스트
+- 유저 리스트를 원하는 mbti에 맞게 리스트 보여주기
+- 추천 유저 보기 / 좋아요, 좋아요 취소 기능
+- 유저 상세 화면 / 좋아요, 좋아요 취소 기능
+- 좋아요 유저(팔로워)를 한눈에 볼수있는 좋아요 페이지 / 좋아요, 좋아요 취소 기능
+- 서로 좋아요 한 사람과 채팅하기
+- 채팅 리스트에서 채팅 선택 가능
+- 프로필 페이지
+
+
+## 적용된 기술
+프론트
+- Next
+- Shadcn/Ui
+
+백엔드 (https://github.com/dydcodydco/zzim-back)
+- Express (node)
+- MySql
+- AWS (EC2, S3)
+
+
+## 실행
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 추가 구현 할 기능
+- 유저 정보를 세팅 후 다시 변경할 수 있도록
+- 보여지는 리스트의 옵션 선택 ( 나이, 지역, 키 등등 을 기준으로 리스트 볼 수 있도록 )
+- 로딩화면 추가
+- mbti를 모르거나 좀 더 확실한 정보를 위해 mbti 테스트 추가
+- 유저 정보를 확실하게 하기위해 회원가입때 휴대폰 확인 추가 
+- 람다로 이미지 리사이징
+- 인증 시간 지났을때에 대한 로직 짜기
+- 검색 기능
