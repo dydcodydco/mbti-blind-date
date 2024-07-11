@@ -79,3 +79,31 @@ npm run dev
 - 람다로 이미지 리사이징
 - 인증 시간 지났을때에 대한 로직 짜기
 - 검색 기능
+
+# 화면 이미지
+## 웹 화면
+![1](https://github.com/user-attachments/assets/2707fee3-e5b4-40f0-8fd7-1c908ff5afb9)
+
+## 모바일 화면 + 프로세스
+<img src="https://github.com/user-attachments/assets/95dcf1d3-d533-4546-8736-ef99e0d37351" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/679ac17f-7f92-4200-bf8e-9afb383d73bb" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/57a56c82-bf8e-412c-bdb7-be8c4632e7ad" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/549739bf-6a1b-4a85-af61-46686d57a53e" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/4e20e82c-0be9-430a-bd02-1d77d07db3ff" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/2d315d87-2e1e-49b8-94c5-69db3b5b7fe9" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/2f82d1d1-c33c-47da-818d-70055b278d6d" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/1555dba6-cc9f-4334-b2a1-efa96868baed" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/155a0d41-5972-4a89-9c6f-5f76a647f14a" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/6a198b9b-6265-4f97-a57c-e55af32b2b6d" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/dcb0cb63-0f8a-416d-a8f3-86ab2a8abbb1" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/2eb229f5-0d04-41be-b2b7-803a63e8d1d8" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/555e4a22-b0e7-4283-b794-23e88a0f46b9" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/8fc7e5ba-e8f0-4e36-8b9b-598ded9cc0da" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/8be6772c-b288-4505-b7ae-15aa024c1ce2" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/c11b9147-308f-44f3-9b28-b1ea8cfd7a19" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/9633abdb-5c1c-4967-bf93-6511ca1431ee" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/2b7a9251-5674-4db8-a5c0-380d928c5e17" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/1d181646-4abd-4212-a80b-a73f427230af" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/2ad18c61-e076-455c-84c6-a8efd42832b0" width="33%" height="500" />
+<img src="https://github.com/user-attachments/assets/ba689bf9-887c-41f6-8640-adde1da60460" width="33%" height="500" />
+
