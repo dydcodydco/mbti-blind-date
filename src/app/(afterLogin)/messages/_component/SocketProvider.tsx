@@ -46,11 +46,16 @@ export default function SocketProvider({ children, session }: Props) {
         setIsConnected(true);
         console.log("소켓연결 성공!!!", socketInstance.id);
         // console.log(socketInstance, '--------------------socketInstance');
+
+        if (session?.user?.id) {
+          socketInstance.emit('login', { id: session.user.id });
+          console.log('--------------------------------------------socket emit login on connect')
+        }
       })
   
       setSocket(socketInstance);
     }
-  }, [socket]);
+  }, [session?.user?.id, socket]);
 
   useEffect(() => {
     if (socket?.connected && session?.user?.id) {
